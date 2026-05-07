@@ -472,36 +472,26 @@
     margin-bottom: 12px;
     font-size: 9px; color: var(--color-text-tertiary); text-align: center;
   }
+  .founders__headline { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .founders__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 10px; }
   .founders__names {
-    display: flex; justify-content: center;
-    gap: 24px; margin-bottom: 12px;
+    display: flex; align-items: flex-start;
+    gap: 12px; margin-bottom: 12px;
   }
-  .founders__name-item { text-align: center; }
   .founders__name { font-size: 10px; font-weight: 500; }
   .founders__role { font-size: 8px; color: var(--color-text-tertiary); }
-  .founders__divider { width: 0.5px; background: var(--color-border-tertiary); }
-  .founders__headline { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
-  .founders__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 12px; }
-  .founders__video {
-    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden;
-  }
-  .founders__video-thumb {
-    position: relative; background: var(--color-background-secondary);
-    height: 90px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 9px; color: var(--color-text-tertiary);
-  }
-  .founders__play {
-    position: absolute;
-    width: 30px; height: 30px; border-radius: 50%;
-    background: var(--color-background-primary);
-    border: 0.5px solid var(--color-border-secondary);
+  .founders__name-sep { font-size: 10px; color: var(--color-text-tertiary); padding-top: 1px; }
+
+  /* ─── MANIFESTO VIDEO ──────────────────────────────── */
+  .manifesto { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .manifesto__inner { padding: 16px 14px; }
+  .manifesto__video {
+    width: 100%; aspect-ratio: 16 / 9;
+    background: var(--color-background-secondary);
     display: flex; align-items: center; justify-content: center;
   }
-  .founders__video-meta { padding: 8px 10px; }
-  .founders__video-title { font-size: 10px; font-weight: 500; margin-bottom: 2px; }
-  .founders__video-sub { font-size: 9px; color: var(--color-text-tertiary); }
-  .founders__link { margin-top: 10px; font-size: 10px; font-weight: 500; }
+  .manifesto__caption { font-size: 9px; color: var(--color-text-tertiary); margin-top: 6px; }
+  .manifesto__link { font-size: 10px; font-weight: 500; margin-top: 10px; }
 
   /* ─── REVIEWS ─────────────────────────────────────── */
   .reviews {
@@ -860,15 +850,17 @@
       align-items: start;
     }
     .founders__photo { height: 320px; font-size: 13px; margin-bottom: 0; }
-    .founders__headline { font-size: 28px; }
-    .founders__body { font-size: 15px; }
+    .founders__headline { font-size: 28px; margin-bottom: 16px; }
+    .founders__body { font-size: 15px; margin-bottom: 16px; }
+    .founders__names { margin-bottom: 24px; gap: 16px; }
     .founders__name { font-size: 15px; }
     .founders__role { font-size: 12px; }
-    .founders__video-thumb { height: 200px; font-size: 13px; }
-    .founders__play { width: 48px; height: 48px; }
-    .founders__video-title { font-size: 15px; }
-    .founders__video-sub { font-size: 13px; }
-    .founders__link { font-size: 14px; }
+    .founders__name-sep { font-size: 14px; }
+
+    /* ── MANIFESTO VIDEO ── */
+    .manifesto__inner { padding: 48px; max-width: 800px; margin: 0 auto; }
+    .manifesto__caption { font-size: 12px; margin-top: 10px; }
+    .manifesto__link { font-size: 14px; }
 
     /* ── REVIEWS ── */
     .reviews__summary {
@@ -1284,36 +1276,38 @@
     </section>
 
     <!-- ⑩ WHO WE ARE -->
+    <!-- ⑩a WHO WE ARE — Origin Story -->
     <section class="founders">
-      <div class="section-label">⑩ WHO WE ARE</div>
+      <div class="section-label">⑩a WHO WE ARE</div>
       <div class="founders__inner">
         <div class="founders__photo">[ photo: both founders + dog ]</div>
         <div>
+          <h2 class="founders__headline">Built for [Dog's Name].<br>And every dog like him.</h2>
+          <p class="founders__body">When our [breed] was diagnosed with [condition], we couldn't find a supplement we actually trusted. So we built one — backed by the family lab we'd known our whole lives.</p>
           <div class="founders__names">
             <div class="founders__name-item">
               <div class="founders__name">Founder name</div>
               <div class="founders__role">Co-founder</div>
             </div>
-            <div class="founders__divider"></div>
+            <div class="founders__name-sep">·</div>
             <div class="founders__name-item">
               <div class="founders__name">Founder name</div>
               <div class="founders__role">Co-founder</div>
             </div>
           </div>
-          <h2 class="founders__headline">Built for [Dog's Name].<br>And every dog like him.</h2>
-          <p class="founders__body">When our [breed] was diagnosed with [condition], we couldn't find a supplement we actually trusted. So we built one — backed by the family lab we'd known our whole lives.</p>
-          <div class="founders__video">
-            <div class="founders__video-thumb">
-              <span>[ manifesto video thumbnail ]</span>
-              <div class="founders__play"><svg width="9" height="11" viewBox="0 0 10 12" fill="none"><path d="M1 1l8 5-8 5V1z" fill="currentColor"/></svg></div>
-            </div>
-            <div class="founders__video-meta">
-              <div class="founders__video-title">Meet the family behind the formula</div>
-              <div class="founders__video-sub">Our story · 2 min</div>
-            </div>
-          </div>
-          <div class="founders__link">Read our full story →</div>
         </div>
+      </div>
+    </section>
+
+    <!-- ⑩b MANIFESTO VIDEO -->
+    <section class="manifesto">
+      <div class="section-label">⑩b MANIFESTO VIDEO</div>
+      <div class="manifesto__inner">
+        <div class="manifesto__video">
+          <div class="video-block__play">▶</div>
+        </div>
+        <div class="manifesto__caption">Meet the family behind the formula · Our story · 2 min</div>
+        <div class="manifesto__link">Read our full story →</div>
       </div>
     </section>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -117,29 +117,154 @@
   }
 
   /* ─── BREADCRUMB ──────────────────────────────────── */
+  .breadcrumb-wrapper {
+    position: sticky; top: 44px; z-index: 9;
+    background: var(--color-background-primary);
+  }
   .breadcrumb {
     padding: 6px 10px;
     font-size: 9px;
     color: var(--color-text-tertiary);
     border-bottom: 0.5px solid var(--color-border-tertiary);
     display: flex; gap: 4px; align-items: center;
+    flex-wrap: wrap;
   }
   .breadcrumb__sep { color: var(--color-border-secondary); }
   .breadcrumb__current { color: var(--color-text-secondary); }
 
   /* ─── SKU PICKER (wireframe tool) ────────────────── */
   .sku-picker {
-    display: flex; align-items: center; gap: 8px;
-    padding: 6px 10px;
-    background: var(--color-background-primary);
-    border-bottom: 0.5px solid var(--color-border-primary);
-    font-size: 9px; color: var(--color-text-secondary);
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-left: 2px;
+  }
+  .sku-picker__label {
+    font-size: 9px; color: var(--color-text-tertiary);
   }
   .sku-picker select {
     font-size: 9px; font-family: inherit;
+    color: var(--color-text-secondary);
+    background: transparent; border: none; outline: none; cursor: pointer;
+    padding: 0; appearance: none; -webkit-appearance: none;
+  }
+  .sku-picker__arrow {
+    font-size: 7px; color: var(--color-text-tertiary); pointer-events: none; line-height: 1;
+  }
+
+  /* ─── SUBSCRIPTION VARIANT SWITCHER (wireframe tool) ── */
+  .sub-variant-picker {
+    display: flex; align-items: center; gap: 6px;
+    padding: 3px 7px;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: 6px;
+    font-size: 8px; color: var(--color-text-secondary);
+    align-self: flex-start; margin-bottom: 8px;
+  }
+  .sub-variant-picker select {
+    font-size: 8px; font-family: inherit;
     color: var(--color-text-primary);
     background: transparent; border: none; outline: none; cursor: pointer;
   }
+  .sub-variant { display: block; }
+  .sub-variant[hidden] { display: none; }
+
+  /* shared pill */
+  .sub-pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .sub-pill {
+    padding: 7px 14px; border-radius: 6px; cursor: pointer;
+    font-size: 11px; border: 0.5px solid var(--color-border-secondary);
+    background: var(--color-background-primary); color: var(--color-text-secondary);
+    user-select: none;
+  }
+  .sub-pill.sub-pill--active {
+    border-color: var(--color-border-primary);
+    color: var(--color-text-primary); font-weight: 500;
+    background: var(--color-background-secondary);
+  }
+  .sub-section-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.05em;
+    color: var(--color-text-tertiary); margin-bottom: 4px;
+  }
+
+  /* A – two-step pills */
+  .sub-a { display: flex; flex-direction: column; gap: 14px; }
+
+  /* B – dropdown pair */
+  .sub-b { display: flex; gap: 10px; }
+  .sub-b__group { flex: 1; }
+  .sub-b__select {
+    width: 100%; font-size: 12px; font-family: inherit;
+    padding: 9px 10px; border: 0.5px solid var(--color-border-secondary);
+    border-radius: 6px; background: var(--color-background-primary);
+    color: var(--color-text-primary); outline: none; cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+  }
+
+  /* C – compact grid */
+  .sub-c-grid { border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; }
+  .sub-c-row { display: grid; grid-template-columns: 72px repeat(4, 1fr); }
+  .sub-c-row:not(:last-child) { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .sub-c-cell {
+    padding: 8px 4px; text-align: center;
+    border-right: 0.5px solid var(--color-border-tertiary);
+    color: var(--color-text-secondary); font-size: 10px; line-height: 1.3;
+  }
+  .sub-c-cell:last-child { border-right: none; }
+  .sub-c-cell--head { font-size: 9px; font-weight: 500; color: var(--color-text-tertiary); letter-spacing: 0.03em; }
+  .sub-c-cell--weight { text-align: left; padding-left: 8px; font-weight: 500; color: var(--color-text-primary); }
+  .sub-c-cell--selected { border: 0.5px solid var(--color-border-primary); font-weight: 600; color: var(--color-text-primary); background: var(--color-background-secondary); }
+  .sub-c-cell--dim { color: var(--color-border-secondary); }
+
+  /* D – tab toggle */
+  .sub-d__tabs { display: flex; border: 0.5px solid var(--color-border-secondary); border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+  .sub-d__tab {
+    flex: 1; text-align: center; padding: 10px 6px;
+    font-size: 11px; cursor: pointer; color: var(--color-text-secondary);
+  }
+  .sub-d__tab--active { background: var(--color-text-primary); color: var(--color-background-primary); font-weight: 500; }
+  .sub-d__panel { display: none; }
+  .sub-d__panel--active { display: block; }
+  .sub-d__row { display: flex; gap: 10px; }
+  .sub-d__group { flex: 1; }
+
+  /* E – weight cards */
+  .sub-e-card {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 9px;
+    padding: 13px 14px; margin-bottom: 8px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .sub-e-card:last-child { margin-bottom: 0; }
+  .sub-e-card--active { border-color: var(--color-border-primary); background: var(--color-background-secondary); }
+  .sub-e-card__weight { font-size: 13px; font-weight: 500; }
+  .sub-e-card__freq { font-size: 10px; color: var(--color-text-secondary); margin-top: 3px; }
+  .sub-e-card__price { font-size: 14px; font-weight: 500; }
+
+  /* F – stepper accordion */
+  .sub-f-row {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 12px 0; cursor: pointer;
+  }
+  .sub-f-row:last-of-type { border-bottom: none; }
+  .sub-f-header {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px;
+  }
+  .sub-f-header__step { color: var(--color-text-tertiary); margin-right: 8px; font-size: 10px; }
+  .sub-f-header__value { color: var(--color-text-secondary); font-size: 10px; }
+  .sub-f-header__icon { color: var(--color-text-tertiary); font-size: 14px; }
+  .sub-f-body { padding-top: 10px; display: none; }
+  .sub-f-body--open { display: block; }
+
+  /* G – inline single */
+  .sub-g {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border: 0.5px solid var(--color-border-secondary);
+    border-radius: 9px; gap: 8px;
+  }
+  .sub-g__check { font-size: 14px; color: var(--color-text-primary); flex-shrink: 0; }
+  .sub-g__label { font-size: 12px; font-weight: 500; flex: 1; }
+  .sub-g__value { font-size: 11px; color: var(--color-text-secondary); }
+  .sub-g__edit { font-size: 11px; color: var(--color-text-tertiary); cursor: pointer; flex-shrink: 0; }
 
   /* ─── § ① PRODUCT HERO ────────────────────────────── */
   .pdp-hero {
@@ -600,9 +725,13 @@
     .nav__cart-badge { width: 16px; height: 16px; font-size: 9px; }
 
     /* ── BREADCRUMB ── */
+    .breadcrumb-wrapper { top: 56px; }
     .breadcrumb {
       padding: 8px 48px; max-width: 1280px; margin: 0 auto; width: 100%; font-size: 12px;
     }
+    .sku-picker select { font-size: 12px; }
+    .sku-picker__label { font-size: 11px; }
+    .sku-picker__arrow { font-size: 10px; }
 
     /* ── HERO ── */
     .pdp-hero__inner {
@@ -816,21 +945,23 @@
   </nav>
 
   <!-- BREADCRUMB -->
-  <div class="breadcrumb">
-    <a href="index.html" style="color:inherit;text-decoration:none;">Home</a><span class="breadcrumb__sep">/</span>
-    <span>Daily Foundation</span><span class="breadcrumb__sep">/</span>
-    <span class="breadcrumb__current" id="breadcrumb-product">Essential</span>
-  </div>
-
-  <!-- SKU PICKER (wireframe tool) -->
-  <div class="sku-picker">
-    <span>SKU</span>
-    <select id="skuPicker">
-      <option value="essential">Essential — Daily Foundation</option>
-      <option value="move">Move — Targeted Care</option>
-      <option value="prebiotic">Prebiotic — Targeted Care</option>
-      <option value="calm">Calm — Targeted Care</option>
-    </select>
+  <div class="breadcrumb-wrapper">
+    <div class="breadcrumb">
+      <a href="index.html" style="color:inherit;text-decoration:none;">Home</a><span class="breadcrumb__sep">/</span>
+      <span id="breadcrumb-collection">Daily Foundation</span><span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">
+        <span class="sku-picker">
+          <span class="sku-picker__label">SKU —</span>
+          <select id="skuPicker">
+            <option value="essential">Essential</option>
+            <option value="move">Move</option>
+            <option value="prebiotic">Prebiotic</option>
+            <option value="calm">Calm</option>
+          </select>
+          <span class="sku-picker__arrow">▾</span>
+        </span>
+      </span>
+    </div>
   </div>
 
   <!-- ① PRODUCT HERO -->
@@ -861,39 +992,202 @@
         <div class="section-label" style="padding:0;margin-top:2px;">② PRODUCT THESIS — PULL-QUOTE</div>
         <div class="pdp-hero__pull-quote" id="hero-pull-quote">Designed for the dogs who look perfectly fine.</div>
 
-        <!-- Subscription snippet -->
+        <!-- Subscription block -->
         <div>
           <div class="pdp-hero__sub-label">SUBSCRIBE &amp; SAVE — SELECT WEIGHT + FREQUENCY</div>
-          <div class="pdp-hero__sub-grid">
-            <div class="pdp-hero__sub-row">
-              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header pdp-hero__sub-cell--weight">Weight</div>
-              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header">20 days</div>
-              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header">30 days</div>
-              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header">45 days</div>
-              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header">60 days</div>
+
+          <!-- Variant switcher (wireframe tool) -->
+          <div class="sub-variant-picker">
+            <span>Layout</span>
+            <select id="subVariantPicker">
+              <option value="a">A — Two-step pills</option>
+              <option value="b">B — Dropdown pair</option>
+              <option value="c">C — Grid</option>
+              <option value="d">D — Tab toggle</option>
+              <option value="e">E — Weight cards</option>
+              <option value="f">F — Stepper accordion</option>
+              <option value="g">G — Inline single</option>
+            </select>
+          </div>
+
+          <!-- A: Two-step pill selectors -->
+          <div id="sub-a" class="sub-variant sub-a">
+            <div>
+              <div class="sub-section-label">WEIGHT</div>
+              <div class="sub-pill-row" data-group="a-weight">
+                <div class="sub-pill sub-pill--active" data-val="<10kg">Up to 10 kg</div>
+                <div class="sub-pill" data-val="10-25kg">10–25 kg</div>
+                <div class="sub-pill" data-val="25kg+">25 kg+</div>
+              </div>
             </div>
-            <div class="pdp-hero__sub-row">
-              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--weight">Up to 10 kg</div>
-              <div class="pdp-hero__sub-cell">—</div>
-              <div class="pdp-hero__sub-cell" style="border:0.5px solid var(--color-border-primary); font-weight:500;">$21 / mo</div>
-              <div class="pdp-hero__sub-cell">—</div>
-              <div class="pdp-hero__sub-cell">—</div>
-            </div>
-            <div class="pdp-hero__sub-row">
-              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--weight">10–25 kg</div>
-              <div class="pdp-hero__sub-cell">—</div>
-              <div class="pdp-hero__sub-cell">—</div>
-              <div class="pdp-hero__sub-cell">$26 / mo</div>
-              <div class="pdp-hero__sub-cell">—</div>
-            </div>
-            <div class="pdp-hero__sub-row">
-              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--weight">25 kg +</div>
-              <div class="pdp-hero__sub-cell">$28 / mo</div>
-              <div class="pdp-hero__sub-cell">—</div>
-              <div class="pdp-hero__sub-cell">—</div>
-              <div class="pdp-hero__sub-cell">—</div>
+            <div>
+              <div class="sub-section-label">FREQUENCY</div>
+              <div class="sub-pill-row" data-group="a-freq">
+                <div class="sub-pill sub-pill--active" data-val="30d">Every 30 days</div>
+                <div class="sub-pill" data-val="45d">Every 45 days</div>
+                <div class="sub-pill" data-val="20d">Every 20 days</div>
+                <div class="sub-pill" data-val="60d">Every 60 days</div>
+              </div>
             </div>
           </div>
+
+          <!-- B: Dropdown pair -->
+          <div id="sub-b" class="sub-variant sub-b" hidden>
+            <div class="sub-b__group">
+              <div class="sub-section-label">WEIGHT</div>
+              <select class="sub-b__select">
+                <option>Up to 10 kg</option>
+                <option selected>10–25 kg</option>
+                <option>25 kg+</option>
+              </select>
+            </div>
+            <div class="sub-b__group">
+              <div class="sub-section-label">FREQUENCY</div>
+              <select class="sub-b__select">
+                <option>Every 20 days</option>
+                <option selected>Every 30 days</option>
+                <option>Every 45 days</option>
+                <option>Every 60 days</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- C: Compact grid -->
+          <div id="sub-c" class="sub-variant" hidden>
+            <div class="sub-c-grid">
+              <div class="sub-c-row">
+                <div class="sub-c-cell sub-c-cell--head sub-c-cell--weight">Weight</div>
+                <div class="sub-c-cell sub-c-cell--head">20 d</div>
+                <div class="sub-c-cell sub-c-cell--head">30 d</div>
+                <div class="sub-c-cell sub-c-cell--head">45 d</div>
+                <div class="sub-c-cell sub-c-cell--head">60 d</div>
+              </div>
+              <div class="sub-c-row">
+                <div class="sub-c-cell sub-c-cell--weight">&lt;10 kg</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell sub-c-cell--selected">$21/mo</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+              </div>
+              <div class="sub-c-row">
+                <div class="sub-c-cell sub-c-cell--weight">10–25 kg</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell">$26/mo</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+              </div>
+              <div class="sub-c-row">
+                <div class="sub-c-cell sub-c-cell--weight">25 kg+</div>
+                <div class="sub-c-cell">$28/mo</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell sub-c-cell--dim">—</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- D: Tab toggle -->
+          <div id="sub-d" class="sub-variant" hidden>
+            <div class="sub-d__tabs">
+              <div class="sub-d__tab sub-d__tab--active" onclick="subDTab(this,'sub-d-subscribe')">Subscribe &amp; save</div>
+              <div class="sub-d__tab" onclick="subDTab(this,'sub-d-once')">Buy once</div>
+            </div>
+            <div id="sub-d-subscribe" class="sub-d__panel sub-d__panel--active">
+              <div class="sub-d__row">
+                <div class="sub-d__group">
+                  <div class="sub-section-label">WEIGHT</div>
+                  <select class="sub-b__select">
+                    <option>Up to 10 kg</option>
+                    <option selected>10–25 kg</option>
+                    <option>25 kg+</option>
+                  </select>
+                </div>
+                <div class="sub-d__group">
+                  <div class="sub-section-label">FREQUENCY</div>
+                  <select class="sub-b__select">
+                    <option>Every 20 days</option>
+                    <option selected>Every 30 days</option>
+                    <option>Every 45 days</option>
+                    <option>Every 60 days</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div id="sub-d-once" class="sub-d__panel" style="font-size:9px;color:var(--color-text-secondary);padding-top:4px;">One-time purchase — no commitment.</div>
+          </div>
+
+          <!-- E: Weight cards -->
+          <div id="sub-e" class="sub-variant" hidden>
+            <div class="sub-e-card" onclick="subESelect(this)">
+              <div>
+                <div class="sub-e-card__weight">Up to 10 kg</div>
+                <div class="sub-e-card__freq">Every 30 days</div>
+              </div>
+              <div class="sub-e-card__price">$21 / mo</div>
+            </div>
+            <div class="sub-e-card sub-e-card--active" onclick="subESelect(this)">
+              <div>
+                <div class="sub-e-card__weight">10–25 kg</div>
+                <div class="sub-e-card__freq">Every 45 days</div>
+              </div>
+              <div class="sub-e-card__price">$26 / mo</div>
+            </div>
+            <div class="sub-e-card" onclick="subESelect(this)">
+              <div>
+                <div class="sub-e-card__weight">25 kg+</div>
+                <div class="sub-e-card__freq">Every 20 days</div>
+              </div>
+              <div class="sub-e-card__price">$28 / mo</div>
+            </div>
+          </div>
+
+          <!-- F: Stepper accordion -->
+          <div id="sub-f" class="sub-variant" hidden>
+            <div class="sub-f-row" onclick="subFToggle(this)">
+              <div class="sub-f-header">
+                <span><span class="sub-f-header__step">1</span> Weight</span>
+                <span>
+                  <span class="sub-f-header__value">Up to 10 kg ✓</span>
+                  <span class="sub-f-header__icon">+</span>
+                </span>
+              </div>
+              <div class="sub-f-body">
+                <div class="sub-pill-row" data-group="f-weight">
+                  <div class="sub-pill sub-pill--active" data-val="<10kg">Up to 10 kg</div>
+                  <div class="sub-pill" data-val="10-25kg">10–25 kg</div>
+                  <div class="sub-pill" data-val="25kg+">25 kg+</div>
+                </div>
+              </div>
+            </div>
+            <div class="sub-f-row" onclick="subFToggle(this)">
+              <div class="sub-f-header">
+                <span><span class="sub-f-header__step">2</span> Frequency</span>
+                <span>
+                  <span class="sub-f-header__value">Every 30 days ✓</span>
+                  <span class="sub-f-header__icon">+</span>
+                </span>
+              </div>
+              <div class="sub-f-body">
+                <div class="sub-pill-row" data-group="f-freq">
+                  <div class="sub-pill sub-pill--active" data-val="30d">Every 30 days</div>
+                  <div class="sub-pill" data-val="45d">Every 45 days</div>
+                  <div class="sub-pill" data-val="20d">Every 20 days</div>
+                  <div class="sub-pill" data-val="60d">Every 60 days</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- G: Inline single selector -->
+          <div id="sub-g" class="sub-variant sub-g" hidden>
+            <span class="sub-g__check">✓</span>
+            <div>
+              <div class="sub-g__label">Subscribe &amp; save 20%</div>
+              <div class="sub-g__value">10–25 kg · every 30 days</div>
+            </div>
+            <span class="sub-g__edit">✎ Edit</span>
+          </div>
+
         </div>
 
         <!-- Pricing -->
@@ -1265,6 +1559,42 @@
 </div>
 
 <script>
+  /* ── SUBSCRIPTION VARIANT SWITCHER ── */
+  document.getElementById('subVariantPicker').addEventListener('change', function() {
+    document.querySelectorAll('.sub-variant').forEach(function(el) { el.hidden = true; });
+    document.getElementById('sub-' + this.value).hidden = false;
+  });
+
+  document.addEventListener('click', function(e) {
+    var pill = e.target.closest('.sub-pill');
+    if (!pill) return;
+    var row = pill.closest('.sub-pill-row');
+    if (!row) return;
+    row.querySelectorAll('.sub-pill').forEach(function(p) { p.classList.remove('sub-pill--active'); });
+    pill.classList.add('sub-pill--active');
+  });
+
+  function subDTab(tab, panelId) {
+    var container = tab.closest('#sub-d');
+    container.querySelectorAll('.sub-d__tab').forEach(function(t) { t.classList.remove('sub-d__tab--active'); });
+    container.querySelectorAll('.sub-d__panel').forEach(function(p) { p.classList.remove('sub-d__panel--active'); });
+    tab.classList.add('sub-d__tab--active');
+    document.getElementById(panelId).classList.add('sub-d__panel--active');
+  }
+
+  function subESelect(card) {
+    card.closest('#sub-e').querySelectorAll('.sub-e-card').forEach(function(c) { c.classList.remove('sub-e-card--active'); });
+    card.classList.add('sub-e-card--active');
+  }
+
+  function subFToggle(row) {
+    var body = row.querySelector('.sub-f-body');
+    var icon = row.querySelector('.sub-f-header__icon');
+    var isOpen = body.classList.contains('sub-f-body--open');
+    body.classList.toggle('sub-f-body--open', !isOpen);
+    if (icon) icon.textContent = isOpen ? '+' : '-';
+  }
+
   /* ── FAQ ACCORDION ── */
   function toggleFaq(el) {
     const item = el.closest('.faq-item');
@@ -1354,7 +1684,7 @@
     document.getElementById('hero-atc').textContent = d.atcLabel;
     document.getElementById('sticky-name').textContent = d.name;
     document.getElementById('sticky-btn').textContent = d.atcLabel;
-    document.getElementById('breadcrumb-product').textContent = d.breadcrumb;
+    document.getElementById('breadcrumb-collection').textContent = d.breadcrumbCollection;
     document.getElementById('thesis-headline').textContent = d.thesisHeadline;
     document.getElementById('thesis-body').textContent = d.thesisBody;
     document.getElementById('thesis-chain-label').textContent = d.thesisChainLabel;
