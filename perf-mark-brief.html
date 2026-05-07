@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BROONO - Broono CMO Brief: Traffic Generation And Performance Marketing Discussion</title>
   <style>
@@ -161,6 +162,7 @@
     }
 
     h2 {
+      clear: both;
       margin: 64px 0 18px;
       padding-top: 4px;
       font-family: "Pesto", Georgia, serif;
@@ -181,9 +183,57 @@
     }
 
     h3 {
+      clear: both;
       margin: 34px 0 12px;
       font-size: 21px;
       font-weight: 700;
+    }
+
+    .section-note {
+      float: right;
+      width: 230px;
+      margin: 0 -270px 18px 28px;
+      padding: 10px;
+      background: #fff7d6;
+      border: 1px solid #ead782;
+      border-radius: 6px;
+      color: var(--ink);
+    }
+
+    h2 + .section-note {
+      margin-top: -2px;
+    }
+
+    .section-note__label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .section-note__field {
+      display: block;
+      width: 100%;
+      min-height: 104px;
+      resize: vertical;
+      padding: 9px 10px;
+      border: 1px solid rgba(5, 89, 198, 0.28);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .section-note__field:focus {
+      outline: 2px solid rgba(5, 89, 198, 0.28);
+      outline-offset: 2px;
+      border-color: var(--blue);
+      background: var(--white);
     }
 
     h4 {
@@ -255,6 +305,55 @@
 
     .document > .title-subhead:first-of-type {
       margin-top: -6px;
+    }
+
+    .notes-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 24px 0 34px;
+      padding: 14px;
+      background: #eef5ff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    .notes-toolbar__button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 13px;
+      border: 1px solid var(--blue);
+      border-radius: 4px;
+      background: var(--white);
+      color: var(--blue);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .notes-toolbar__button:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .notes-toolbar__status {
+      min-height: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .notes-toolbar__file {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
     }
 
     @media (max-width: 980px) {
@@ -334,6 +433,12 @@
 
       .page {
         padding: 38px 24px 72px;
+      }
+
+      .section-note {
+        float: none;
+        width: 100%;
+        margin: 0 0 18px;
       }
     }
 
@@ -429,42 +534,49 @@
 Date: 2026-05-07<br />
 Purpose: Align Broono's thinking before an open conversation on Meta and other traffic channels.</p>
 </blockquote>
+<div class="notes-toolbar" aria-label="Notes tools">
+  <button class="notes-toolbar__button" type="button" id="copy-notes">Copy notes</button>
+  <button class="notes-toolbar__button" type="button" id="export-notes">Export notes</button>
+  <button class="notes-toolbar__button" type="button" id="import-notes">Import notes</button>
+  <input class="notes-toolbar__file" type="file" id="notes-import-file" accept="application/json,.json">
+  <span class="notes-toolbar__status" id="notes-status" role="status" aria-live="polite"></span>
+</div>
 <hr />
 <h2 id="1-5-minute-pre-read-summary">1. 5-Minute Pre-Read Summary</h2>
 <h3 id="why-this-meeting-matters">Why This Meeting Matters</h3>
-<p>Broono is close to the point where traffic generation can become useful, but the brand should enter paid growth as a learning system rather than as a blunt spend lever. The goal of this conversation is to pressure-test how Broono should use Meta and adjacent channels to create demand, educate buyers, capture intent, and convert profitably without becoming a generic pet supplement brand.</p>
-<p>This is not an agency evaluation call. The useful output is sharper judgment: what to test first, what budget is needed for meaningful signal, which landing paths must exist, which creative angles are worth producing, and what would make paid acquisition viable or dangerous.</p>
+<p>Broono is close to the point where traffic generation can become useful, but the brand should enter paid growth as a learning system rather than as a blunt spend lever. The goal of this conversation is to pressure-test how Broono should use <a href="#metas-likely-role">Meta</a> and <a href="#topic-2-channel-strategy">adjacent channels</a> to <a href="#demand-creation-versus-demand-capture">create demand, educate buyers, capture intent</a>, and convert profitably without becoming a generic pet supplement brand.</p>
+<p>This is not an agency evaluation call. The useful output is sharper judgment: <a href="#6-recommended-call-structure">what to test first</a>, <a href="#topic-6b-minimum-viable-testing-budget">what budget is needed for meaningful signal</a>, <a href="#the-funnel-question">which landing paths must exist</a>, <a href="#the-creative-question">which creative angles are worth producing</a>, and <a href="#the-economics-question">what would make paid acquisition viable or dangerous</a>.</p>
 <h3 id="broonos-current-starting-point">Broono's Current Starting Point</h3>
 <ul>
-<li><strong>Positioning:</strong> Broono is being built as a modern healthspan house for dogs, centered on prevention, daily ritual, long-term biological support, and calm scientific authority.</li>
-<li><strong>Product:</strong> The product appears viable and is organized around daily-use soft chews, with <strong>Daily Foundation</strong> as the clearest strategic wedge and targeted products as more immediate need-based entry points.</li>
-<li><strong>Website:</strong> The new site is not only a brand surface. It must become part of the acquisition system through education, trust signals, product explanation, quiz/email capture, PDP clarity, and SEO/GEO assets.</li>
-<li><strong>Creative:</strong> Broono has an Instagram calendar and new shoots underway. The key question is how to make those assets useful for both organic authority and paid learning without falling into low-trust UGC or fear-led supplement advertising.</li>
-<li><strong>Growth stage:</strong> Broono is in pre-scale foundation building. The first paid tests should be designed to learn, not to prove a scale story prematurely.</li>
+<li><strong><a href="#brand-and-positioning">Positioning:</a></strong> Broono is being built as a modern healthspan house for dogs, centered on prevention, daily ritual, long-term biological support, and calm scientific authority.</li>
+<li><strong><a href="#product">Product:</a></strong> The product appears viable and is organized around daily-use soft chews, with <strong>Daily Foundation</strong> as the clearest strategic wedge and targeted products as more immediate need-based entry points.</li>
+<li><strong><a href="#website">Website:</a></strong> The new site is not only a brand surface. It must become part of the acquisition system through education, trust signals, product explanation, quiz/email capture, PDP clarity, and SEO/GEO assets.</li>
+<li><strong><a href="#content-and-creative-assets">Creative:</a></strong> Broono has an Instagram calendar and new shoots underway. The key question is how to make those assets useful for both organic authority and paid learning without falling into low-trust UGC or fear-led supplement advertising.</li>
+<li><strong><a href="#growth-readiness">Growth stage:</a></strong> Broono is in pre-scale foundation building. The first paid tests should be designed to learn, not to prove a scale story prematurely.</li>
 </ul>
 <h3 id="ingoing-assumptions-and-hypotheses">Ingoing Assumptions And Hypotheses</h3>
 <p>Broono should enter the call with hypotheses, not fixed conclusions:</p>
 <ul>
-<li><strong>Meta is probably a learning channel before it is a scale channel.</strong> It should reveal which hooks, messages, formats, audiences, and landing paths create qualified intent.</li>
-<li><strong>Broono likely needs both education and conversion paths.</strong> Cold audiences may need a bridge into the healthspan idea, while symptom-aware buyers may be ready for targeted PDPs.</li>
-<li><strong>Creative volume matters, but brand discipline matters more.</strong> Broono needs enough variation to learn quickly, without exaggerated claims, guilt, fake urgency, or generic supplement tropes.</li>
-<li><strong>The website is part of acquisition.</strong> Paid media cannot be judged separately from landing page clarity, education, trust, offer, email capture, and conversion flow.</li>
-<li><strong>Retention determines acquisition aggression.</strong> Strong repeat purchase, subscription, and habit formation would justify higher CAC; uncertain retention argues for controlled testing.</li>
-<li><strong>Broono's durable moat should be authority, not ads alone.</strong> Paid demand creation should compound with SEO/GEO, ingredient education, founder/lab credibility, email education, customer stories, and creator proof.</li>
+<li><strong><a href="#hypothesis-1-meta-is-a-learning-channel-before-it-is-a-scale-channel">Meta is probably a learning channel before it is a scale channel.</a></strong> It should reveal which hooks, messages, formats, audiences, and landing paths create qualified intent.</li>
+<li><strong><a href="#hypothesis-2-broono-needs-both-education-and-conversion-paths">Broono likely needs both education and conversion paths.</a></strong> Cold audiences may need a bridge into the healthspan idea, while symptom-aware buyers may be ready for targeted PDPs.</li>
+<li><strong><a href="#hypothesis-3-creative-volume-matters-but-brand-discipline-matters-more">Creative volume matters, but brand discipline matters more.</a></strong> Broono needs enough variation to learn quickly, without exaggerated claims, guilt, fake urgency, or generic supplement tropes.</li>
+<li><strong><a href="#hypothesis-4-the-website-is-part-of-acquisition-not-only-brand-presentation">The website is part of acquisition.</a></strong> Paid media cannot be judged separately from landing page clarity, education, trust, offer, email capture, and conversion flow.</li>
+<li><strong><a href="#hypothesis-5-retention-determines-how-aggressive-broono-can-be-on-acquisition">Retention determines acquisition aggression.</a></strong> Strong repeat purchase, subscription, and habit formation would justify higher CAC; uncertain retention argues for controlled testing.</li>
+<li><strong><a href="#hypothesis-6-broonos-long-term-moat-is-authority-not-only-ads">Broono's durable moat should be authority, not ads alone.</a></strong> Paid demand creation should compound with SEO/GEO, ingredient education, founder/lab credibility, email education, customer stories, and creator proof.</li>
 </ul>
 <h3 id="what-we-need-to-learn-from-the-expert">What We Need To Learn From The Expert</h3>
 <p>The meeting should make Broono smarter about:</p>
 <ul>
-<li>Whether Meta should start now or wait until specific website and funnel assets are ready.</li>
-<li>What the minimum viable testing budget is for decision-grade signal, not just impressions.</li>
-<li>Which first creative territories to test: healthspan, prevention, daily ritual, ingredient transparency, Italian lab quality, founder story, or specific symptoms.</li>
-<li>Where cold, warm, and high-intent traffic should land: PDP, quiz, advertorial, product-system page, education page, or homepage.</li>
-<li>What CAC, AOV, gross margin, reorder, subscription, and payback assumptions should govern spend.</li>
-<li>Which lessons from Gruns transfer to Broono, and which are category-specific or not relevant.</li>
+<li><a href="#topic-3-meta-and-paid-social">Whether Meta should start now</a> or wait until specific website and funnel assets are ready.</li>
+<li><a href="#topic-6b-minimum-viable-testing-budget">What the minimum viable testing budget is</a> for decision-grade signal, not just impressions.</li>
+<li><a href="#topic-4-creative-and-messaging">Which first creative territories to test:</a> healthspan, prevention, daily ritual, ingredient transparency, Italian lab quality, founder story, or specific symptoms.</li>
+<li><a href="#topic-5-funnel-and-website">Where cold, warm, and high-intent traffic should land:</a> PDP, quiz, advertorial, product-system page, education page, or homepage.</li>
+<li><a href="#topic-6-economics-and-scaling">What CAC, AOV, gross margin, reorder, subscription, and payback assumptions should govern spend.</a></li>
+<li><a href="#topic-7-lessons-from-gruns">Which lessons from Gruns transfer to Broono</a>, and which are category-specific or not relevant.</li>
 </ul>
 <h3 id="recommended-meeting-posture">Recommended Meeting Posture</h3>
-<p>Broono should ask for a practical 90-day learning plan. The strongest answer will connect creative testing, landing page strategy, acquisition economics, retention/habit formation, and trust-building content. If the recommendation is mainly "run more ads," it is probably too shallow.</p>
-<p>The decision standard should be: <strong>What is the smallest disciplined test that helps Broono learn quickly without damaging the brand?</strong></p>
+<p>Broono should ask for a <a href="#6-recommended-call-structure">practical 90-day learning plan</a>. The strongest answer will connect <a href="#the-creative-question">creative testing</a>, <a href="#the-funnel-question">landing page strategy</a>, <a href="#the-economics-question">acquisition economics</a>, retention/habit formation, and trust-building content. If the recommendation is mainly "run more ads," it is probably too shallow.</p>
+<p>The decision standard should be: <strong><a href="#8-decisions-we-want-to-be-smarter-about-after-the-call">What is the smallest disciplined test that helps Broono learn quickly without damaging the brand?</a></strong></p>
 <hr />
 <h2 id="2-the-core-question">2. The Core Question</h2>
 <p>Broono should use the call to explore one central question:</p>
@@ -869,6 +981,210 @@ Purpose: Align Broono's thinking before an open conversation on Meta and other t
         }
       });
     }
+
+    const noteStoragePrefix = "broono-perf-mark-brief-note:";
+    const noteHeadings = document.querySelectorAll(".document h2:not(.title-subhead), .document h3");
+    const noteFields = new Map();
+    const notesStatus = document.querySelector("#notes-status");
+    const copyNotesButton = document.querySelector("#copy-notes");
+    const exportNotesButton = document.querySelector("#export-notes");
+    const importNotesButton = document.querySelector("#import-notes");
+    const importNotesFile = document.querySelector("#notes-import-file");
+
+    const setNotesStatus = (message) => {
+      if (!notesStatus) {
+        return;
+      }
+
+      notesStatus.textContent = message;
+      window.clearTimeout(setNotesStatus.timeoutId);
+      setNotesStatus.timeoutId = window.setTimeout(() => {
+        notesStatus.textContent = "";
+      }, 4200);
+    };
+
+    noteHeadings.forEach((heading) => {
+      if (!heading.id) {
+        return;
+      }
+
+      const note = document.createElement("aside");
+      const label = document.createElement("label");
+      const field = document.createElement("textarea");
+      const storageKey = noteStoragePrefix + heading.id;
+      const fieldId = "note-" + heading.id;
+
+      note.className = "section-note";
+      note.setAttribute("aria-label", "Notes for " + heading.textContent);
+
+      label.className = "section-note__label";
+      label.setAttribute("for", fieldId);
+      label.textContent = "Call notes";
+
+      field.className = "section-note__field";
+      field.id = fieldId;
+      field.placeholder = "Add notes during the call...";
+      field.value = localStorage.getItem(storageKey) || "";
+      field.addEventListener("input", () => {
+        localStorage.setItem(storageKey, field.value);
+      });
+
+      noteFields.set(heading.id, {
+        field,
+        heading,
+        level: heading.tagName.toLowerCase(),
+        title: heading.textContent.trim(),
+        href: "#" + heading.id,
+        storageKey
+      });
+
+      note.append(label, field);
+      heading.insertAdjacentElement("afterend", note);
+    });
+
+    const getNoteRecords = () => Array.from(noteFields, ([sectionId, entry]) => ({
+      sectionId,
+      headingLevel: entry.level,
+      sectionTitle: entry.title,
+      sectionHref: entry.href,
+      note: entry.field.value
+    }));
+
+    const getNotesPayload = () => ({
+      documentTitle: document.title,
+      documentPath: window.location.pathname,
+      exportedAt: new Date().toISOString(),
+      format: "broono-call-notes-v1",
+      notes: getNoteRecords()
+    });
+
+    const getFilledNoteRecords = () => getNoteRecords()
+      .filter((record) => record.note.trim().length > 0);
+
+    const formatNotesAsMarkdown = () => {
+      const records = getFilledNoteRecords();
+      const lines = [
+        "# " + document.title + " - Call Notes",
+        "",
+        "Exported: " + new Date().toISOString(),
+        "Source: " + window.location.href.split("#")[0],
+        ""
+      ];
+
+      if (records.length === 0) {
+        lines.push("_No notes captured._");
+        return lines.join("\n");
+      }
+
+      records.forEach((record) => {
+        const headingMark = record.headingLevel === "h2" ? "##" : "###";
+        lines.push(headingMark + " " + record.sectionTitle);
+        lines.push("");
+        lines.push("Section: " + record.sectionHref);
+        lines.push("");
+        lines.push(record.note.trim());
+        lines.push("");
+      });
+
+      return lines.join("\n");
+    };
+
+    const copyText = async (text) => {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const helper = document.createElement("textarea");
+      helper.value = text;
+      helper.setAttribute("readonly", "");
+      helper.style.position = "fixed";
+      helper.style.left = "-9999px";
+      document.body.append(helper);
+      helper.select();
+      document.execCommand("copy");
+      helper.remove();
+    };
+
+    const downloadNotes = () => {
+      const payload = getNotesPayload();
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const link = document.createElement("a");
+      const date = new Date().toISOString().slice(0, 10);
+
+      link.href = URL.createObjectURL(blob);
+      link.download = "broono-performance-marketing-call-notes-" + date + ".json";
+      document.body.append(link);
+      link.click();
+      URL.revokeObjectURL(link.href);
+      link.remove();
+      setNotesStatus("Notes exported as JSON.");
+    };
+
+    const importNotes = (payload) => {
+      const records = Array.isArray(payload) ? payload : payload.notes;
+
+      if (!Array.isArray(records)) {
+        throw new Error("Import file must contain a notes array.");
+      }
+
+      let importedCount = 0;
+
+      records.forEach((record) => {
+        if (!record || typeof record.sectionId !== "string" || typeof record.note !== "string") {
+          return;
+        }
+
+        const entry = noteFields.get(record.sectionId);
+
+        if (!entry) {
+          return;
+        }
+
+        entry.field.value = record.note;
+        localStorage.setItem(entry.storageKey, record.note);
+        importedCount += 1;
+      });
+
+      setNotesStatus("Imported " + importedCount + " matching notes.");
+    };
+
+    copyNotesButton?.addEventListener("click", async () => {
+      try {
+        await copyText(formatNotesAsMarkdown());
+        setNotesStatus("Notes copied as Markdown.");
+      } catch (error) {
+        setNotesStatus("Could not copy notes.");
+      }
+    });
+
+    exportNotesButton?.addEventListener("click", downloadNotes);
+
+    importNotesButton?.addEventListener("click", () => {
+      importNotesFile?.click();
+    });
+
+    importNotesFile?.addEventListener("change", () => {
+      const file = importNotesFile.files?.[0];
+
+      if (!file) {
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        try {
+          importNotes(JSON.parse(String(reader.result)));
+        } catch (error) {
+          setNotesStatus("Import failed. Use an exported JSON notes file.");
+        } finally {
+          importNotesFile.value = "";
+        }
+      });
+
+      reader.readAsText(file);
+    });
   </script>
 </body>
 </html>
