@@ -362,7 +362,7 @@
     width: 100%;
     max-width: 280px;
   }
-  .video-block__play {
+.video-block__play {
     width: 36px; height: 36px;
     border: 0.5px solid var(--color-border-primary);
     border-radius: 50%;
@@ -409,7 +409,8 @@
     padding: 16px 14px;
     display: flex; flex-direction: column; gap: 14px;
   }
-  .founder-video__inner .video-block { max-width: 100%; }
+  .founder-video__media { display: flex; flex-direction: column; }
+  .founder-video__media .video-block { max-width: 100%; }
   .founder-video__headline { font-size: 14px; font-weight: 500; line-height: 1.3; margin-bottom: 6px; }
   .founder-video__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 8px; }
   .founder-video__link { font-size: 10px; font-weight: 500; }
@@ -806,7 +807,8 @@
       gap: 48px; padding: 48px;
       max-width: 1280px; margin: 0 auto;
     }
-    .founder-video__inner .video-block { max-width: 320px; flex-shrink: 0; }
+    .founder-video__media { flex-shrink: 0; width: 320px; }
+    .founder-video__media .video-block { max-width: 100%; }
     .founder-video__text { flex: 1; display: flex; flex-direction: column; justify-content: center; }
     .founder-video__headline { font-size: 28px; margin-bottom: 16px; }
     .founder-video__body { font-size: 15px; margin-bottom: 16px; }
@@ -1113,8 +1115,11 @@
     <section class="founder-video">
       <div class="section-label">⑤b FOUNDER DAILY ROUTINE</div>
       <div class="founder-video__inner">
-        <div class="video-block">
-          <div class="video-block__play">▶</div>
+        <div class="founder-video__media">
+          <div class="video-block">
+            <div class="video-block__play">▶</div>
+          </div>
+          <div class="quality__video-caption">Founder talking of dog routines</div>
         </div>
         <div class="founder-video__text">
           <h3 class="founder-video__headline">One chew. Same time. Every day.</h3>
