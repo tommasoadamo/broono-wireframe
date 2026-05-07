@@ -352,6 +352,25 @@
   }
   .gap__link { font-size: 10px; font-weight: 500; }
 
+  /* ─── VIDEO BLOCK (shared) ────────────────────────── */
+  .video-block {
+    aspect-ratio: 1 / 1;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 280px;
+  }
+  .video-block__play {
+    width: 36px; height: 36px;
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--color-text-secondary);
+    padding-left: 2px;
+  }
+
   /* ─── QUALITY GUARANTEE ───────────────────────────── */
   .quality {
     border-bottom: 0.5px solid var(--color-border-tertiary);
@@ -378,6 +397,22 @@
     font-size: 9px; font-weight: 500;
   }
   .quality__link { font-size: 10px; font-weight: 500; }
+  .quality__inner { display: flex; flex-direction: column; gap: 14px; }
+  .quality__video .video-block { max-width: 100%; }
+  .quality__video-caption { font-size: 9px; color: var(--color-text-tertiary); margin-top: 6px; }
+
+  /* ─── FOUNDER ROUTINE VIDEO ────────────────────────── */
+  .founder-video {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .founder-video__inner {
+    padding: 16px 14px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .founder-video__inner .video-block { max-width: 100%; }
+  .founder-video__headline { font-size: 14px; font-weight: 500; line-height: 1.3; margin-bottom: 6px; }
+  .founder-video__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 8px; }
+  .founder-video__link { font-size: 10px; font-weight: 500; }
 
   /* ─── INGREDIENTS + ITALY ─────────────────────────── */
   .ingredients {
@@ -759,6 +794,23 @@
     .checkpoint__arrow { font-size: 24px; }
     .badge { font-size: 13px; padding: 8px 16px; }
     .quality__link { font-size: 14px; }
+    .quality__inner { flex-direction: row; align-items: flex-start; gap: 56px; }
+    .quality__video { flex-shrink: 0; width: 340px; }
+    .quality__video .video-block { max-width: 100%; }
+    .quality__video-caption { font-size: 12px; color: var(--color-text-tertiary); margin-top: 8px; }
+    .quality__content { flex: 1; }
+
+    /* ── FOUNDER ROUTINE VIDEO ── */
+    .founder-video__inner {
+      flex-direction: row; align-items: flex-start;
+      gap: 48px; padding: 48px;
+      max-width: 1280px; margin: 0 auto;
+    }
+    .founder-video__inner .video-block { max-width: 320px; flex-shrink: 0; }
+    .founder-video__text { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .founder-video__headline { font-size: 28px; margin-bottom: 16px; }
+    .founder-video__body { font-size: 15px; margin-bottom: 16px; }
+    .founder-video__link { font-size: 14px; }
 
     /* ── INGREDIENTS ── */
     .ingredients__inner {
@@ -1057,6 +1109,21 @@
       </div>
     </section>
 
+    <!-- ⑤b FOUNDER ROUTINE VIDEO -->
+    <section class="founder-video">
+      <div class="section-label">⑤b FOUNDER DAILY ROUTINE</div>
+      <div class="founder-video__inner">
+        <div class="video-block">
+          <div class="video-block__play">▶</div>
+        </div>
+        <div class="founder-video__text">
+          <h3 class="founder-video__headline">One chew. Same time. Every day.</h3>
+          <p class="founder-video__body">The co-founder walks through a morning routine built around prevention — for their dog, and for themselves. What daily care looks like when you take it seriously.</p>
+          <div class="founder-video__link">→ Watch the full routine</div>
+        </div>
+      </div>
+    </section>
+
     <!-- ⑥ BEST SELLERS -->
     <section class="best-sellers">
       <div class="section-label">⑥ BEST SELLERS</div>
@@ -1141,27 +1208,35 @@
     <section class="quality">
       <div class="section-label">⑧ QUALITY GUARANTEE</div>
       <div class="quality__inner">
-        <h2 class="quality__headline">We don't trust the specification sheet. We test it.</h2>
-        <p class="quality__body">Every ingredient tested before it enters production. Every batch tested before it leaves.</p>
-        <div class="quality__checkpoints">
-          <div class="checkpoint">
-            <div class="checkpoint__label">CHECKPOINT 1</div>
-            <div class="checkpoint__title">Incoming ingredients tested</div>
-            <div class="checkpoint__sub">Before production begins</div>
+        <div class="quality__video">
+          <div class="video-block">
+            <div class="video-block__play">▶</div>
           </div>
-          <div class="checkpoint__arrow">→</div>
-          <div class="checkpoint">
-            <div class="checkpoint__label">CHECKPOINT 2</div>
-            <div class="checkpoint__title">Finished batch tested</div>
-            <div class="checkpoint__sub">Before it leaves the lab</div>
+          <div class="quality__video-caption">Lab director on how we test every batch</div>
+        </div>
+        <div class="quality__content">
+          <h2 class="quality__headline">We don't trust the specification sheet. We test it.</h2>
+          <p class="quality__body">Every ingredient tested before it enters production. Every batch tested before it leaves.</p>
+          <div class="quality__checkpoints">
+            <div class="checkpoint">
+              <div class="checkpoint__label">CHECKPOINT 1</div>
+              <div class="checkpoint__title">Incoming ingredients tested</div>
+              <div class="checkpoint__sub">Before production begins</div>
+            </div>
+            <div class="checkpoint__arrow">→</div>
+            <div class="checkpoint">
+              <div class="checkpoint__label">CHECKPOINT 2</div>
+              <div class="checkpoint__title">Finished batch tested</div>
+              <div class="checkpoint__sub">Before it leaves the lab</div>
+            </div>
           </div>
+          <div class="quality__badges">
+            <div class="badge">ISO 22000</div>
+            <div class="badge">Pharmaceutical-grade</div>
+            <div class="badge">End-to-end</div>
+          </div>
+          <div class="quality__link">→ Our quality standards</div>
         </div>
-        <div class="quality__badges">
-          <div class="badge">ISO 22000</div>
-          <div class="badge">Pharmaceutical-grade</div>
-          <div class="badge">End-to-end</div>
-        </div>
-        <div class="quality__link">→ Our quality standards</div>
       </div>
     </section>
 
