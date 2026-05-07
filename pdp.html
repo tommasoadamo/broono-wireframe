@@ -273,7 +273,7 @@
   .sub-h__section { border: 0.5px solid var(--color-border-tertiary); border-radius: 10px; padding: 12px 14px; }
   .sub-h__section-label { font-size: 13px; font-weight: 600; margin-bottom: 10px; }
   .sub-h__pill-grid { display: flex; flex-wrap: wrap; gap: 7px; }
-  .sub-h__pill { padding: 8px 14px; border-radius: 20px; font-size: 11px; border: 1px solid var(--color-border-secondary); cursor: pointer; background: var(--color-background-primary); color: var(--color-text-primary); user-select: none; }
+  .sub-h__pill { flex: 1; text-align: center; padding: 8px 14px; border-radius: 20px; font-size: 11px; border: 1px solid var(--color-border-secondary); cursor: pointer; background: var(--color-background-primary); color: var(--color-text-primary); user-select: none; }
   .sub-h__pill--active { background: var(--color-text-primary); color: var(--color-background-primary); border-color: var(--color-text-primary); font-weight: 500; }
   .sub-h__freq-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
   .sub-h__ship-badge { font-size: 9px; color: var(--color-text-secondary); display: flex; align-items: center; gap: 4px; }
@@ -1691,7 +1691,7 @@
     document.getElementById('price-total').textContent = fmt(p.disc);
     document.getElementById('price-full').textContent  = fmt(p.full);
     document.getElementById('price-save').textContent  = 'Save ' + p.pct + '%';
-    document.getElementById('hero-buyonce').textContent = 'Buy once — ' + fmt(p.full / p.jars);
+    document.getElementById('hero-buyonce').textContent = 'Buy once — ' + fmt(p.full);
   }
 
   /* ── SUBSCRIPTION VARIANT SWITCHER ── */
