@@ -635,11 +635,44 @@ The product page is the most important page on the site. It must educate, build 
 
 ##### Subscription snippet
 
-|             | Delivery every 20 days | Delivery every 30 days | Delivery every 45 days | Delivery every 60 days |
-| ----------- | ---------------------- | ---------------------- | ----------------------- | ---------------------- |
-| Up to 10 kg |                        |                        |                         |                        |
-| 10-25 kg    |                        |                        |                         |                        |
-| 25 kg +     |                        |                        |                         |                        |
+Different delivery frequency depending on dog size. Number of jars to sell / ship by dog weight and shipping frequency.
+
+|             | 20 days | 30 days | 40 days | 60 days | 90 days | 120 days | 180 days |
+| ----------- | ------- | ------- | ------- | ------- | -------- | -------- | -------- |
+| Up to 10 kg | n.a.    | n.a.    | n.a     | 1       | n.a      | 2        | 3        |
+| 10-25 kg    | n.a     | 1       | n.a     | 2       | 3        | n.a      | n.a      |
+| 25 kg +     | 1       | n.a     | 2       | 3       | n.a      | n.a      | n.a      |
+
+The three valid options per weight band (reading left to right, ignoring n.a.) represent frequency **option 1**, **option 2**, and **option 3** respectively.
+
+##### Subscription pricing logic
+
+- **Jar price:** £22.90
+- **Discount tiers:** option 1 = **10% off**, option 2 = **15% off**, option 3 = **20% off**
+- **Discounted total** = number of jars × £22.90 × (1 − discount%)
+- **Full price** (displayed struck-through, muted) = number of jars × £22.90
+- **Price per day** = discounted total ÷ delivery interval in days
+- **Barred price per day** (struck-through) = full price ÷ delivery interval in days
+- **Currency:** GBP (£)
+
+**Display rules:**
+- Show discounted total prominently as the primary price
+- Show full price struck-through and muted to the right of the discounted total
+- Within each frequency option cell, show price per day as a secondary line with the barred price per day beside it
+
+**Computed pricing table:**
+
+| Weight | Option | Interval | Jars | Disc. total | Full total | £/day | ~~£/day~~ |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Up to 10 kg | 1 (−10%) | 60 days | 1 | £20.61 | ~~£22.90~~ | £0.34 | ~~£0.38~~ |
+| Up to 10 kg | 2 (−15%) | 120 days | 2 | £38.93 | ~~£45.80~~ | £0.32 | ~~£0.38~~ |
+| Up to 10 kg | 3 (−20%) | 180 days | 3 | £55.08 | ~~£68.70~~ | £0.31 | ~~£0.38~~ |
+| 10–25 kg | 1 (−10%) | 30 days | 1 | £20.61 | ~~£22.90~~ | £0.69 | ~~£0.76~~ |
+| 10–25 kg | 2 (−15%) | 60 days | 2 | £38.93 | ~~£45.80~~ | £0.65 | ~~£0.76~~ |
+| 10–25 kg | 3 (−20%) | 90 days | 3 | £55.08 | ~~£68.70~~ | £0.61 | ~~£0.76~~ |
+| 25 kg+ | 1 (−10%) | 20 days | 1 | £20.61 | ~~£22.90~~ | £1.03 | ~~£1.15~~ |
+| 25 kg+ | 2 (−15%) | 40 days | 2 | £38.93 | ~~£45.80~~ | £0.97 | ~~£1.15~~ |
+| 25 kg+ | 3 (−20%) | 60 days | 3 | £55.08 | ~~£68.70~~ | £0.92 | ~~£1.15~~ |
 
 #### Section 2 — Benefit Summary Strip
 

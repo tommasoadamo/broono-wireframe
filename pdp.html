@@ -202,7 +202,7 @@
 
   /* C – compact grid */
   .sub-c-grid { border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; }
-  .sub-c-row { display: grid; grid-template-columns: 72px repeat(4, 1fr); }
+  .sub-c-row { display: grid; grid-template-columns: 68px repeat(3, 1fr); }
   .sub-c-row:not(:last-child) { border-bottom: 0.5px solid var(--color-border-tertiary); }
   .sub-c-cell {
     padding: 8px 4px; text-align: center;
@@ -214,6 +214,8 @@
   .sub-c-cell--weight { text-align: left; padding-left: 8px; font-weight: 500; color: var(--color-text-primary); }
   .sub-c-cell--selected { border: 0.5px solid var(--color-border-primary); font-weight: 600; color: var(--color-text-primary); background: var(--color-background-secondary); }
   .sub-c-cell--dim { color: var(--color-border-secondary); }
+  .sub-c-bar { text-decoration: line-through; color: var(--color-text-tertiary); font-size: 7px; }
+  .sub-c-interval { color: var(--color-text-tertiary); font-size: 7px; }
 
   /* D – tab toggle */
   .sub-d__tabs { display: flex; border: 0.5px solid var(--color-border-secondary); border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
@@ -265,6 +267,29 @@
   .sub-g__label { font-size: 12px; font-weight: 500; flex: 1; }
   .sub-g__value { font-size: 11px; color: var(--color-text-secondary); }
   .sub-g__edit { font-size: 11px; color: var(--color-text-tertiary); cursor: pointer; flex-shrink: 0; }
+
+  /* H – two-section cards */
+  .sub-h { display: flex; flex-direction: column; gap: 10px; }
+  .sub-h__section { border: 0.5px solid var(--color-border-tertiary); border-radius: 10px; padding: 12px 14px; }
+  .sub-h__section-label { font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+  .sub-h__pill-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+  .sub-h__pill { padding: 8px 14px; border-radius: 20px; font-size: 11px; border: 1px solid var(--color-border-secondary); cursor: pointer; background: var(--color-background-primary); color: var(--color-text-primary); user-select: none; }
+  .sub-h__pill--active { background: var(--color-text-primary); color: var(--color-background-primary); border-color: var(--color-text-primary); font-weight: 500; }
+  .sub-h__freq-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .sub-h__ship-badge { font-size: 9px; color: var(--color-text-secondary); display: flex; align-items: center; gap: 4px; }
+  .sub-h__freq-card { border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; padding: 11px 12px; margin-bottom: 7px; cursor: pointer; display: flex; align-items: flex-start; gap: 10px; }
+  .sub-h__freq-card:last-child { margin-bottom: 0; }
+  .sub-h__freq-card--active { border-color: var(--color-border-primary); border-width: 1.5px; }
+  .sub-h__radio { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--color-border-secondary); flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
+  .sub-h__radio--active { border-color: var(--color-border-primary); background: var(--color-border-primary); }
+  .sub-h__radio--active::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: white; }
+  .sub-h__freq-body { flex: 1; }
+  .sub-h__freq-name { font-size: 12px; font-weight: 600; }
+  .sub-h__freq-interval { font-size: 10px; color: var(--color-text-secondary); margin-top: 1px; }
+  .sub-h__freq-badge { display: inline-block; margin-top: 5px; font-size: 9px; border: 0.5px solid var(--color-border-secondary); border-radius: 4px; padding: 2px 6px; color: var(--color-text-secondary); }
+  .sub-h__freq-price { text-align: right; flex-shrink: 0; }
+  .sub-h__freq-price-day { font-size: 12px; font-weight: 600; }
+  .sub-h__freq-price-orig { font-size: 10px; color: var(--color-text-tertiary); text-decoration: line-through; margin-top: 2px; }
 
   /* ─── § ① PRODUCT HERO ────────────────────────────── */
   .pdp-hero {
@@ -1000,6 +1025,7 @@
           <div class="sub-variant-picker">
             <span>Layout</span>
             <select id="subVariantPicker">
+              <option value="h" selected>H — Size + frequency cards</option>
               <option value="a">A — Two-step pills</option>
               <option value="b">B — Dropdown pair</option>
               <option value="c">C — Grid</option>
@@ -1011,22 +1037,21 @@
           </div>
 
           <!-- A: Two-step pill selectors -->
-          <div id="sub-a" class="sub-variant sub-a">
+          <div id="sub-a" class="sub-variant sub-a" hidden>
             <div>
               <div class="sub-section-label">WEIGHT</div>
-              <div class="sub-pill-row" data-group="a-weight">
-                <div class="sub-pill sub-pill--active" data-val="<10kg">Up to 10 kg</div>
-                <div class="sub-pill" data-val="10-25kg">10–25 kg</div>
-                <div class="sub-pill" data-val="25kg+">25 kg+</div>
+              <div class="sub-pill-row" data-group="a-weight" id="a-weight">
+                <div class="sub-pill sub-pill--active" data-weight="lt10">Up to 10 kg</div>
+                <div class="sub-pill" data-weight="10-25">10–25 kg</div>
+                <div class="sub-pill" data-weight="25plus">25 kg+</div>
               </div>
             </div>
             <div>
               <div class="sub-section-label">FREQUENCY</div>
-              <div class="sub-pill-row" data-group="a-freq">
-                <div class="sub-pill sub-pill--active" data-val="30d">Every 30 days</div>
-                <div class="sub-pill" data-val="45d">Every 45 days</div>
-                <div class="sub-pill" data-val="20d">Every 20 days</div>
-                <div class="sub-pill" data-val="60d">Every 60 days</div>
+              <div class="sub-pill-row" data-group="a-freq" id="a-freq">
+                <div class="sub-pill sub-pill--active" data-freq="1">Every 60 days · −10%</div>
+                <div class="sub-pill" data-freq="2">Every 120 days · −15%</div>
+                <div class="sub-pill" data-freq="3">Every 180 days · −20%</div>
               </div>
             </div>
           </div>
@@ -1035,19 +1060,18 @@
           <div id="sub-b" class="sub-variant sub-b" hidden>
             <div class="sub-b__group">
               <div class="sub-section-label">WEIGHT</div>
-              <select class="sub-b__select">
-                <option>Up to 10 kg</option>
-                <option selected>10–25 kg</option>
-                <option>25 kg+</option>
+              <select class="sub-b__select" id="b-weight" onchange="updatePrice()">
+                <option value="lt10" selected>Up to 10 kg</option>
+                <option value="10-25">10–25 kg</option>
+                <option value="25plus">25 kg+</option>
               </select>
             </div>
             <div class="sub-b__group">
               <div class="sub-section-label">FREQUENCY</div>
-              <select class="sub-b__select">
-                <option>Every 20 days</option>
-                <option selected>Every 30 days</option>
-                <option>Every 45 days</option>
-                <option>Every 60 days</option>
+              <select class="sub-b__select" id="b-freq" onchange="updatePrice()">
+                <option value="1" selected>Every 60 days · −10%</option>
+                <option value="2">Every 120 days · −15%</option>
+                <option value="3">Every 180 days · −20%</option>
               </select>
             </div>
           </div>
@@ -1057,31 +1081,27 @@
             <div class="sub-c-grid">
               <div class="sub-c-row">
                 <div class="sub-c-cell sub-c-cell--head sub-c-cell--weight">Weight</div>
-                <div class="sub-c-cell sub-c-cell--head">20 d</div>
-                <div class="sub-c-cell sub-c-cell--head">30 d</div>
-                <div class="sub-c-cell sub-c-cell--head">45 d</div>
-                <div class="sub-c-cell sub-c-cell--head">60 d</div>
+                <div class="sub-c-cell sub-c-cell--head">−10%</div>
+                <div class="sub-c-cell sub-c-cell--head">−15%</div>
+                <div class="sub-c-cell sub-c-cell--head">−20%</div>
               </div>
               <div class="sub-c-row">
                 <div class="sub-c-cell sub-c-cell--weight">&lt;10 kg</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
-                <div class="sub-c-cell sub-c-cell--selected">$21/mo</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell sub-c-cell--selected" data-weight="lt10" data-freq="1" onclick="subCSelect(this)">£0.34/d<br><span class="sub-c-bar">£0.38/d</span><br><span class="sub-c-interval">60 d · 1 jar</span></div>
+                <div class="sub-c-cell" data-weight="lt10" data-freq="2" onclick="subCSelect(this)">£0.32/d<br><span class="sub-c-bar">£0.38/d</span><br><span class="sub-c-interval">120 d · 2 jars</span></div>
+                <div class="sub-c-cell" data-weight="lt10" data-freq="3" onclick="subCSelect(this)">£0.31/d<br><span class="sub-c-bar">£0.38/d</span><br><span class="sub-c-interval">180 d · 3 jars</span></div>
               </div>
               <div class="sub-c-row">
                 <div class="sub-c-cell sub-c-cell--weight">10–25 kg</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
-                <div class="sub-c-cell">$26/mo</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell" data-weight="10-25" data-freq="1" onclick="subCSelect(this)">£0.69/d<br><span class="sub-c-bar">£0.76/d</span><br><span class="sub-c-interval">30 d · 1 jar</span></div>
+                <div class="sub-c-cell" data-weight="10-25" data-freq="2" onclick="subCSelect(this)">£0.65/d<br><span class="sub-c-bar">£0.76/d</span><br><span class="sub-c-interval">60 d · 2 jars</span></div>
+                <div class="sub-c-cell" data-weight="10-25" data-freq="3" onclick="subCSelect(this)">£0.61/d<br><span class="sub-c-bar">£0.76/d</span><br><span class="sub-c-interval">90 d · 3 jars</span></div>
               </div>
               <div class="sub-c-row">
                 <div class="sub-c-cell sub-c-cell--weight">25 kg+</div>
-                <div class="sub-c-cell">$28/mo</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
-                <div class="sub-c-cell sub-c-cell--dim">—</div>
+                <div class="sub-c-cell" data-weight="25plus" data-freq="1" onclick="subCSelect(this)">£1.03/d<br><span class="sub-c-bar">£1.15/d</span><br><span class="sub-c-interval">20 d · 1 jar</span></div>
+                <div class="sub-c-cell" data-weight="25plus" data-freq="2" onclick="subCSelect(this)">£0.97/d<br><span class="sub-c-bar">£1.15/d</span><br><span class="sub-c-interval">40 d · 2 jars</span></div>
+                <div class="sub-c-cell" data-weight="25plus" data-freq="3" onclick="subCSelect(this)">£0.92/d<br><span class="sub-c-bar">£1.15/d</span><br><span class="sub-c-interval">60 d · 3 jars</span></div>
               </div>
             </div>
           </div>
@@ -1096,19 +1116,18 @@
               <div class="sub-d__row">
                 <div class="sub-d__group">
                   <div class="sub-section-label">WEIGHT</div>
-                  <select class="sub-b__select">
-                    <option>Up to 10 kg</option>
-                    <option selected>10–25 kg</option>
-                    <option>25 kg+</option>
+                  <select class="sub-b__select" id="d-weight" onchange="updatePrice()">
+                    <option value="lt10" selected>Up to 10 kg</option>
+                    <option value="10-25">10–25 kg</option>
+                    <option value="25plus">25 kg+</option>
                   </select>
                 </div>
                 <div class="sub-d__group">
                   <div class="sub-section-label">FREQUENCY</div>
-                  <select class="sub-b__select">
-                    <option>Every 20 days</option>
-                    <option selected>Every 30 days</option>
-                    <option>Every 45 days</option>
-                    <option>Every 60 days</option>
+                  <select class="sub-b__select" id="d-freq" onchange="updatePrice()">
+                    <option value="1" selected>Every 60 days · −10%</option>
+                    <option value="2">Every 120 days · −15%</option>
+                    <option value="3">Every 180 days · −20%</option>
                   </select>
                 </div>
               </div>
@@ -1118,26 +1137,26 @@
 
           <!-- E: Weight cards -->
           <div id="sub-e" class="sub-variant" hidden>
-            <div class="sub-e-card" onclick="subESelect(this)">
+            <div class="sub-e-card sub-e-card--active" data-weight="lt10" data-freq="1" onclick="subESelect(this)">
               <div>
                 <div class="sub-e-card__weight">Up to 10 kg</div>
-                <div class="sub-e-card__freq">Every 30 days</div>
+                <div class="sub-e-card__freq">Every 60 days · 1 jar · −10%</div>
               </div>
-              <div class="sub-e-card__price">$21 / mo</div>
+              <div class="sub-e-card__price">£0.34/day<br><s style="font-size:9px;font-weight:400;color:var(--color-text-tertiary);">£0.38/day</s></div>
             </div>
-            <div class="sub-e-card sub-e-card--active" onclick="subESelect(this)">
+            <div class="sub-e-card" data-weight="10-25" data-freq="1" onclick="subESelect(this)">
               <div>
                 <div class="sub-e-card__weight">10–25 kg</div>
-                <div class="sub-e-card__freq">Every 45 days</div>
+                <div class="sub-e-card__freq">Every 30 days · 1 jar · −10%</div>
               </div>
-              <div class="sub-e-card__price">$26 / mo</div>
+              <div class="sub-e-card__price">£0.69/day<br><s style="font-size:9px;font-weight:400;color:var(--color-text-tertiary);">£0.76/day</s></div>
             </div>
-            <div class="sub-e-card" onclick="subESelect(this)">
+            <div class="sub-e-card" data-weight="25plus" data-freq="1" onclick="subESelect(this)">
               <div>
                 <div class="sub-e-card__weight">25 kg+</div>
-                <div class="sub-e-card__freq">Every 20 days</div>
+                <div class="sub-e-card__freq">Every 20 days · 1 jar · −10%</div>
               </div>
-              <div class="sub-e-card__price">$28 / mo</div>
+              <div class="sub-e-card__price">£1.03/day<br><s style="font-size:9px;font-weight:400;color:var(--color-text-tertiary);">£1.15/day</s></div>
             </div>
           </div>
 
@@ -1152,10 +1171,10 @@
                 </span>
               </div>
               <div class="sub-f-body">
-                <div class="sub-pill-row" data-group="f-weight">
-                  <div class="sub-pill sub-pill--active" data-val="<10kg">Up to 10 kg</div>
-                  <div class="sub-pill" data-val="10-25kg">10–25 kg</div>
-                  <div class="sub-pill" data-val="25kg+">25 kg+</div>
+                <div class="sub-pill-row" data-group="f-weight" id="f-weight">
+                  <div class="sub-pill sub-pill--active" data-weight="lt10">Up to 10 kg</div>
+                  <div class="sub-pill" data-weight="10-25">10–25 kg</div>
+                  <div class="sub-pill" data-weight="25plus">25 kg+</div>
                 </div>
               </div>
             </div>
@@ -1168,11 +1187,10 @@
                 </span>
               </div>
               <div class="sub-f-body">
-                <div class="sub-pill-row" data-group="f-freq">
-                  <div class="sub-pill sub-pill--active" data-val="30d">Every 30 days</div>
-                  <div class="sub-pill" data-val="45d">Every 45 days</div>
-                  <div class="sub-pill" data-val="20d">Every 20 days</div>
-                  <div class="sub-pill" data-val="60d">Every 60 days</div>
+                <div class="sub-pill-row" data-group="f-freq" id="f-freq">
+                  <div class="sub-pill sub-pill--active" data-freq="1">Every 60 days · −10%</div>
+                  <div class="sub-pill" data-freq="2">Every 120 days · −15%</div>
+                  <div class="sub-pill" data-freq="3">Every 180 days · −20%</div>
                 </div>
               </div>
             </div>
@@ -1182,25 +1200,81 @@
           <div id="sub-g" class="sub-variant sub-g" hidden>
             <span class="sub-g__check">✓</span>
             <div>
-              <div class="sub-g__label">Subscribe &amp; save 20%</div>
-              <div class="sub-g__value">10–25 kg · every 30 days</div>
+              <div class="sub-g__label">Subscribe &amp; save 10% · £20.61</div>
+              <div class="sub-g__value">Up to 10 kg · every 60 days · £0.34/day</div>
             </div>
             <span class="sub-g__edit">✎ Edit</span>
           </div>
 
+          <!-- H: Two-section cards (dog size + frequency) -->
+          <div id="sub-h" class="sub-variant sub-h">
+            <!-- Section 1: Dog size -->
+            <div class="sub-h__section">
+              <div class="sub-h__section-label">Dog size:</div>
+              <div class="sub-h__pill-grid">
+                <div class="sub-h__pill sub-h__pill--active" data-weight="lt10" onclick="subHSize(this)">Up to 10 kg</div>
+                <div class="sub-h__pill" data-weight="10-25" onclick="subHSize(this)">10–25 kg</div>
+                <div class="sub-h__pill" data-weight="25plus" onclick="subHSize(this)">25 kg+</div>
+              </div>
+            </div>
+            <!-- Section 2: Frequency -->
+            <div class="sub-h__section">
+              <div class="sub-h__freq-header">
+                <div class="sub-h__section-label" style="margin-bottom:0;">Frequency:</div>
+                <div class="sub-h__ship-badge">🚚 Shipped in 24 h</div>
+              </div>
+              <div class="sub-h__freq-card sub-h__freq-card--active" data-weight="lt10" data-freq="1" onclick="subHFreq(this)">
+                <div class="sub-h__radio sub-h__radio--active"></div>
+                <div class="sub-h__freq-body">
+                  <div class="sub-h__freq-name">60-day supply · 1 jar</div>
+                  <div class="sub-h__freq-interval">Delivered every 60 days</div>
+                  <div class="sub-h__freq-badge">Save 10%</div>
+                </div>
+                <div class="sub-h__freq-price">
+                  <div class="sub-h__freq-price-day">£0.34/day</div>
+                  <div class="sub-h__freq-price-orig"><s>£0.38/day</s></div>
+                </div>
+              </div>
+              <div class="sub-h__freq-card" data-weight="lt10" data-freq="2" onclick="subHFreq(this)">
+                <div class="sub-h__radio"></div>
+                <div class="sub-h__freq-body">
+                  <div class="sub-h__freq-name">120-day supply · 2 jars</div>
+                  <div class="sub-h__freq-interval">Delivered every 120 days</div>
+                  <div class="sub-h__freq-badge">Save 15%</div>
+                </div>
+                <div class="sub-h__freq-price">
+                  <div class="sub-h__freq-price-day">£0.32/day</div>
+                  <div class="sub-h__freq-price-orig"><s>£0.38/day</s></div>
+                </div>
+              </div>
+              <div class="sub-h__freq-card" data-weight="lt10" data-freq="3" onclick="subHFreq(this)">
+                <div class="sub-h__radio"></div>
+                <div class="sub-h__freq-body">
+                  <div class="sub-h__freq-name">180-day supply · 3 jars</div>
+                  <div class="sub-h__freq-interval">Delivered every 180 days</div>
+                  <div class="sub-h__freq-badge">Save 20%</div>
+                </div>
+                <div class="sub-h__freq-price">
+                  <div class="sub-h__freq-price-day">£0.31/day</div>
+                  <div class="sub-h__freq-price-orig"><s>£0.38/day</s></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Pricing -->
+        <!-- Pricing summary (updates with selection) -->
         <div class="pdp-hero__pricing">
-          <span class="pdp-hero__price-subscribe">$21.00 / mo</span>
-          <span class="pdp-hero__price-once">$27.99</span>
-          <span class="pdp-hero__price-save">Save 20%</span>
+          <span class="pdp-hero__price-subscribe" id="price-total">£20.61</span>
+          <span class="pdp-hero__price-once" id="price-full">£22.90</span>
+          <span class="pdp-hero__price-save" id="price-save">Save 10%</span>
         </div>
 
         <!-- CTAs -->
         <div class="pdp-hero__ctas">
           <div class="btn-primary" id="hero-atc">Start the habit</div>
-          <div class="btn-secondary">Buy once — $27.99</div>
+          <div class="btn-secondary" id="hero-buyonce">Buy once — £22.90</div>
         </div>
 
         <!-- Trust badges -->
@@ -1559,10 +1633,72 @@
 </div>
 
 <script>
+  /* ── PRICING DATA ── */
+  var JAR = 22.90;
+  // PRICES[weight][freq] = { disc, full, days, jars, discount }
+  var PRICES = {
+    'lt10':  { '1': { jars:1, days:60,  disc:20.61, full:22.90, pct:10 },
+               '2': { jars:2, days:120, disc:38.93, full:45.80, pct:15 },
+               '3': { jars:3, days:180, disc:55.08, full:68.70, pct:20 } },
+    '10-25': { '1': { jars:1, days:30,  disc:20.61, full:22.90, pct:10 },
+               '2': { jars:2, days:60,  disc:38.93, full:45.80, pct:15 },
+               '3': { jars:3, days:90,  disc:55.08, full:68.70, pct:20 } },
+    '25plus':{ '1': { jars:1, days:20,  disc:20.61, full:22.90, pct:10 },
+               '2': { jars:2, days:40,  disc:38.93, full:45.80, pct:15 },
+               '3': { jars:3, days:60,  disc:55.08, full:68.70, pct:20 } }
+  };
+
+  function fmt(n) { return '£' + n.toFixed(2); }
+
+  function updatePrice() {
+    var variant = document.getElementById('subVariantPicker').value;
+    var w, f;
+    if (variant === 'a') {
+      var wa = document.querySelector('#a-weight .sub-pill--active');
+      var fa = document.querySelector('#a-freq .sub-pill--active');
+      w = wa ? wa.dataset.weight : 'lt10';
+      f = fa ? fa.dataset.freq   : '1';
+    } else if (variant === 'b') {
+      w = document.getElementById('b-weight').value;
+      f = document.getElementById('b-freq').value;
+    } else if (variant === 'c') {
+      var cc = document.querySelector('#sub-c .sub-c-cell--selected');
+      w = cc ? cc.dataset.weight : 'lt10';
+      f = cc ? cc.dataset.freq   : '1';
+    } else if (variant === 'd') {
+      w = document.getElementById('d-weight').value;
+      f = document.getElementById('d-freq').value;
+    } else if (variant === 'e') {
+      var ec = document.querySelector('#sub-e .sub-e-card--active');
+      w = ec ? ec.dataset.weight : 'lt10';
+      f = ec ? ec.dataset.freq   : '1';
+    } else if (variant === 'f') {
+      var fw = document.querySelector('#f-weight .sub-pill--active');
+      var ff = document.querySelector('#f-freq .sub-pill--active');
+      w = fw ? fw.dataset.weight : 'lt10';
+      f = ff ? ff.dataset.freq   : '1';
+    } else if (variant === 'g') {
+      w = 'lt10'; f = '1';
+    } else if (variant === 'h') {
+      var hw = document.querySelector('#sub-h .sub-h__pill--active');
+      var hf = document.querySelector('#sub-h .sub-h__freq-card--active');
+      w = hw ? hw.dataset.weight : 'lt10';
+      f = hf ? hf.dataset.freq   : '1';
+    } else {
+      w = 'lt10'; f = '1';
+    }
+    var p = (PRICES[w] || PRICES['lt10'])[f] || PRICES['lt10']['1'];
+    document.getElementById('price-total').textContent = fmt(p.disc);
+    document.getElementById('price-full').textContent  = fmt(p.full);
+    document.getElementById('price-save').textContent  = 'Save ' + p.pct + '%';
+    document.getElementById('hero-buyonce').textContent = 'Buy once — ' + fmt(p.full / p.jars);
+  }
+
   /* ── SUBSCRIPTION VARIANT SWITCHER ── */
   document.getElementById('subVariantPicker').addEventListener('change', function() {
     document.querySelectorAll('.sub-variant').forEach(function(el) { el.hidden = true; });
     document.getElementById('sub-' + this.value).hidden = false;
+    updatePrice();
   });
 
   document.addEventListener('click', function(e) {
@@ -1572,7 +1708,14 @@
     if (!row) return;
     row.querySelectorAll('.sub-pill').forEach(function(p) { p.classList.remove('sub-pill--active'); });
     pill.classList.add('sub-pill--active');
+    updatePrice();
   });
+
+  function subCSelect(cell) {
+    cell.closest('.sub-c-grid').querySelectorAll('.sub-c-cell--selected').forEach(function(c) { c.classList.remove('sub-c-cell--selected'); });
+    cell.classList.add('sub-c-cell--selected');
+    updatePrice();
+  }
 
   function subDTab(tab, panelId) {
     var container = tab.closest('#sub-d');
@@ -1585,6 +1728,41 @@
   function subESelect(card) {
     card.closest('#sub-e').querySelectorAll('.sub-e-card').forEach(function(c) { c.classList.remove('sub-e-card--active'); });
     card.classList.add('sub-e-card--active');
+    updatePrice();
+  }
+
+  var H_SUPPLY_DAYS = { 'lt10': [60,120,180], '10-25': [30,60,90], '25plus': [20,40,60] };
+  var H_SUPPLY_JARS = [1, 2, 3];
+  var H_PCTS = [10, 15, 20];
+
+  function subHSize(el) {
+    el.closest('.sub-h__pill-grid').querySelectorAll('.sub-h__pill').forEach(function(p) { p.classList.remove('sub-h__pill--active'); });
+    el.classList.add('sub-h__pill--active');
+    var w = el.dataset.weight;
+    var days = H_SUPPLY_DAYS[w];
+    var cards = document.querySelectorAll('#sub-h .sub-h__freq-card');
+    cards.forEach(function(card, i) {
+      var p = PRICES[w][String(i + 1)];
+      card.dataset.weight = w;
+      card.dataset.freq = String(i + 1);
+      card.querySelector('.sub-h__freq-name').textContent = days[i] + '-day supply · ' + H_SUPPLY_JARS[i] + (i === 0 ? ' jar' : ' jars');
+      card.querySelector('.sub-h__freq-interval').textContent = 'Delivered every ' + days[i] + ' days';
+      card.querySelector('.sub-h__freq-price-day').textContent = fmt(p.disc / p.days) + '/day';
+      card.querySelector('.sub-h__freq-price-orig').innerHTML = '<s>' + fmt(p.full / p.days) + '/day</s>';
+      // reset selection to first card
+      card.classList.toggle('sub-h__freq-card--active', i === 0);
+      card.querySelector('.sub-h__radio').classList.toggle('sub-h__radio--active', i === 0);
+    });
+    updatePrice();
+  }
+  function subHFreq(el) {
+    el.closest('.sub-h__section').querySelectorAll('.sub-h__freq-card').forEach(function(c) {
+      c.classList.remove('sub-h__freq-card--active');
+      c.querySelector('.sub-h__radio').classList.remove('sub-h__radio--active');
+    });
+    el.classList.add('sub-h__freq-card--active');
+    el.querySelector('.sub-h__radio').classList.add('sub-h__radio--active');
+    updatePrice();
   }
 
   function subFToggle(row) {
