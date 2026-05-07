@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="assets/logo-favicon-blue.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broono - Blog Listing Wireframe</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --color-background-primary: #F5F0E8;
+    --color-background-secondary: #EDE8DF;
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #5A5550;
+    --color-text-tertiary: #9A9590;
+    --color-border-primary: #1A1A1A;
+    --color-border-secondary: #C8C3BA;
+    --color-border-tertiary: #D8D3CA;
+  }
+
+  body {
+    background: #E8E3DB;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    color: var(--color-text-primary);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 12px;
+  }
+
+  .phone-frame {
+    width: 340px;
+    overflow: hidden;
+    background: var(--color-background-primary);
+    position: relative;
+  }
+
+  .section-label {
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+    padding: 5px 10px 3px;
+    letter-spacing: 0.06em;
+  }
+
+  .nav-drawer {
+    display: none;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 30;
+    background: var(--color-background-primary);
+  }
+  .nav-drawer__inner { padding: 14px 16px; }
+  .nav-drawer__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 4px;
+  }
+  .nav-drawer__close {
+    background: none; border: none; cursor: pointer;
+    font-size: 22px; line-height: 1;
+    color: var(--color-text-primary); padding: 0;
+  }
+  .nav-drawer__group-label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    padding: 10px 0 4px; letter-spacing: 0.07em;
+  }
+  .nav-drawer__links { font-size: 13px; }
+  .nav-drawer__link {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .nav-drawer__link:last-child { border-bottom: none; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+  }
+  .nav__hamburger {
+    background: none; border: none; cursor: pointer;
+    padding: 4px; color: var(--color-text-primary);
+  }
+  .nav__desktop-links { display: none; }
+  .nav__desktop-link { color: var(--color-text-secondary); cursor: pointer; }
+  .nav__cart { position: relative; cursor: pointer; padding: 4px; }
+  .nav__cart-badge {
+    position: absolute; top: 0; right: 0;
+    background: var(--color-text-primary);
+    color: var(--color-background-primary);
+    border-radius: 50%; width: 13px; height: 13px;
+    font-size: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 500;
+  }
+
+  .blog-hero {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .blog-hero__inner { padding: 22px 14px 18px; }
+  .blog-hero__eyebrow {
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .blog-hero__title {
+    font-size: 28px;
+    line-height: 1.12;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .blog-hero__body {
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  .featured {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .featured__inner { padding: 14px; }
+  .featured__label {
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+  }
+  .featured-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-background-primary);
+  }
+  .featured-card__photo {
+    min-height: 170px;
+    background: var(--color-background-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-tertiary);
+    font-size: 10px;
+    padding: 18px;
+  }
+  .featured-card__body { padding: 14px; }
+  .card-eyebrow {
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .featured-card__title {
+    font-size: 19px;
+    line-height: 1.25;
+    font-weight: 500;
+    margin-bottom: 7px;
+  }
+  .featured-card__excerpt {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+  }
+  .article-card__meta,
+  .featured-card__meta {
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    margin-bottom: 12px;
+  }
+  .featured-card__button {
+    display: inline-block;
+    background: var(--color-text-primary);
+    color: var(--color-background-primary);
+    border-radius: 6px;
+    padding: 9px 14px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .topics {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .topics__inner { padding: 12px 14px; }
+  .topics__label {
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .topic-pills {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+  .topic-pill {
+    flex-shrink: 0;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-family: inherit;
+    font-size: 10px;
+    padding: 7px 11px;
+    cursor: pointer;
+  }
+  .topic-pill--active {
+    background: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+    color: var(--color-background-primary);
+  }
+
+  .article-list {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .article-list__header {
+    padding: 14px 14px 8px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .article-list__title {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .article-list__count {
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+  }
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 0 14px 14px;
+  }
+  .article-card {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-background-primary);
+  }
+  .article-card__photo {
+    min-height: 112px;
+    background: var(--color-background-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-tertiary);
+    font-size: 9px;
+    padding: 14px;
+  }
+  .article-card__body { padding: 11px; }
+  .article-card__title {
+    font-size: 14px;
+    line-height: 1.35;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .article-card__excerpt {
+    font-size: 10px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    margin-bottom: 9px;
+  }
+  .load-more {
+    padding: 0 14px 18px;
+  }
+  .load-more__button {
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 11px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .blog-newsletter {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-secondary);
+  }
+  .blog-newsletter__inner { padding: 18px 14px; }
+  .blog-newsletter__label {
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .blog-newsletter__headline {
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .blog-newsletter__body {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+  }
+  .blog-newsletter__form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .blog-newsletter__input {
+    border: 0.5px solid var(--color-border-secondary);
+    background: var(--color-background-primary);
+    color: var(--color-text-tertiary);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .blog-newsletter__button {
+    background: var(--color-text-primary);
+    color: var(--color-background-primary);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .footer { border-top: 0.5px solid var(--color-border-tertiary); }
+  .footer__inner { padding: 12px 10px 24px; }
+  .footer__logo { font-size: 11px; font-weight: 500; margin-bottom: 4px; letter-spacing: 0.07em; }
+  .footer__origin { font-size: 9px; color: var(--color-text-tertiary); margin-bottom: 12px; }
+  .footer__cols {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 12px; margin-bottom: 12px;
+  }
+  .footer__col-label {
+    font-size: 8px; font-weight: 500; color: var(--color-text-tertiary);
+    margin-bottom: 6px; letter-spacing: 0.06em;
+  }
+  .footer__col-links { font-size: 10px; color: var(--color-text-secondary); line-height: 2; }
+  .footer__legal { font-size: 8px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (min-width: 768px) {
+    body { padding: 0; }
+    .page-wrapper { padding: 0; align-items: stretch; }
+    .phone-frame { width: 100%; max-width: 100%; overflow: visible; }
+    .section-label { display: none; }
+
+    .nav {
+      height: 56px;
+      padding: 0 48px;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .nav-wrapper {
+      background: var(--color-background-primary);
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav__hamburger { display: none; }
+    .nav__desktop-links {
+      display: flex; gap: 28px; align-items: center; font-size: 13px;
+    }
+    .nav__desktop-link:hover { color: var(--color-text-primary); }
+    .nav__cart-badge { width: 16px; height: 16px; font-size: 9px; }
+
+    .blog-hero__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 64px 48px 42px;
+    }
+    .blog-hero__eyebrow { font-size: 11px; margin-bottom: 12px; }
+    .blog-hero__title { font-size: 58px; max-width: 820px; margin-bottom: 18px; }
+    .blog-hero__body { font-size: 18px; max-width: 650px; }
+
+    .featured__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 36px 48px 48px;
+    }
+    .featured__label { font-size: 11px; margin-bottom: 14px; }
+    .featured-card {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: stretch;
+    }
+    .featured-card__photo { min-height: 430px; font-size: 13px; }
+    .featured-card__body {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .card-eyebrow { font-size: 11px; margin-bottom: 8px; }
+    .featured-card__title { font-size: 36px; max-width: 540px; }
+    .featured-card__excerpt { font-size: 16px; max-width: 520px; }
+    .featured-card__meta { font-size: 13px; }
+    .featured-card__button { font-size: 14px; padding: 12px 20px; }
+
+    .topics__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 22px 48px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .topics__label { font-size: 11px; margin-bottom: 0; }
+    .topic-pills { flex-wrap: wrap; overflow: visible; }
+    .topic-pill { font-size: 13px; padding: 8px 14px; }
+
+    .article-list__header {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 48px 48px 16px;
+    }
+    .article-list__title { font-size: 24px; }
+    .article-list__count { font-size: 13px; }
+    .article-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      padding: 0 48px 24px;
+    }
+    .article-card__photo { min-height: 190px; font-size: 12px; }
+    .article-card__body { padding: 14px; }
+    .article-card__title { font-size: 18px; }
+    .article-card__excerpt { font-size: 14px; }
+    .article-card__meta { font-size: 12px; }
+    .load-more {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 56px;
+    }
+    .load-more__button {
+      max-width: 220px;
+      font-size: 14px;
+      padding: 13px 20px;
+    }
+
+    .blog-newsletter__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+      gap: 48px;
+      align-items: end;
+    }
+    .blog-newsletter__label { font-size: 11px; }
+    .blog-newsletter__headline { font-size: 32px; max-width: 520px; }
+    .blog-newsletter__body { font-size: 16px; max-width: 560px; margin-bottom: 0; }
+    .blog-newsletter__form {
+      flex-direction: row;
+      gap: 10px;
+    }
+    .blog-newsletter__input {
+      flex: 1;
+      font-size: 14px;
+      padding: 13px 14px;
+    }
+    .blog-newsletter__button {
+      font-size: 14px;
+      padding: 13px 22px;
+      white-space: nowrap;
+    }
+
+    .footer__inner { padding: 48px; max-width: 1280px; margin: 0 auto; }
+    .footer__logo { font-size: 16px; margin-bottom: 6px; }
+    .footer__origin { font-size: 13px; margin-bottom: 32px; }
+    .footer__cols { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    .footer__col-label { font-size: 11px; }
+    .footer__col-links { font-size: 14px; }
+    .footer__legal { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Blog listing wireframe - Broono dog supplements</h2>
+
+<div class="page-wrapper">
+<div class="phone-frame">
+
+  <div id="nav-drawer" class="nav-drawer">
+    <div class="nav-drawer__inner">
+      <div class="nav-drawer__header">
+        <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" style="height:18px;width:auto;"></a>
+        <button class="nav-drawer__close" onclick="document.getElementById('nav-drawer').style.display='none'" aria-label="Close menu">x</button>
+      </div>
+      <div class="nav-drawer__group-label">COLLECTIONS</div>
+      <div class="nav-drawer__links">
+        <a class="nav-drawer__link" href="pdp.html">Daily Foundation</a>
+        <a class="nav-drawer__link" href="pdp.html">Targeted Care</a>
+      </div>
+      <div class="nav-drawer__group-label">MORE</div>
+      <div class="nav-drawer__links">
+        <a class="nav-drawer__link" href="index.html">Our story</a>
+        <a class="nav-drawer__link" href="blog.html" style="border-bottom:none;">Articles</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <button class="nav__hamburger" onclick="document.getElementById('nav-drawer').style.display='block'" aria-label="Open menu">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><rect width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="6" width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="12" width="18" height="1.5" rx="0.75" fill="currentColor"/></svg>
+      </button>
+      <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" style="height:16px;width:auto;"></a>
+      <nav class="nav__desktop-links" aria-label="Main navigation">
+        <a href="pdp.html"><span class="nav__desktop-link">Daily Foundation</span></a>
+        <a href="pdp.html"><span class="nav__desktop-link">Targeted Care</span></a>
+        <a href="index.html"><span class="nav__desktop-link">Our story</span></a>
+        <a href="blog.html"><span class="nav__desktop-link">Articles</span></a>
+      </nav>
+      <div class="nav__cart" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav__cart-badge">0</span>
+      </div>
+    </nav>
+  </div>
+
+  <header class="blog-hero">
+    <div class="section-label">BLOG HEADER</div>
+    <div class="blog-hero__inner">
+      <div class="blog-hero__eyebrow">Broono Journal</div>
+      <h1 class="blog-hero__title">Read before anything looks wrong.</h1>
+      <p class="blog-hero__body">Canine longevity, ingredient transparency, routines, and product science for dog owners who prefer prevention to guesswork.</p>
+    </div>
+  </header>
+
+  <section class="featured">
+    <div class="section-label">FEATURED ARTICLE</div>
+    <div class="featured__inner">
+      <div class="featured__label">Featured</div>
+      <a class="featured-card" href="article.html" id="featured-card"></a>
+    </div>
+  </section>
+
+  <section class="topics">
+    <div class="section-label">TOPIC FILTERS</div>
+    <div class="topics__inner">
+      <div class="topics__label">Browse by topic</div>
+      <div class="topic-pills" id="topic-pills"></div>
+    </div>
+  </section>
+
+  <section class="article-list">
+    <div class="section-label">ARTICLE GRID</div>
+    <div class="article-list__header">
+      <div class="article-list__title" id="article-list-title">Latest articles</div>
+      <div class="article-list__count" id="article-list-count">6 articles</div>
+    </div>
+    <div class="article-grid" id="article-grid"></div>
+    <div class="load-more">
+      <div class="load-more__button">Load more articles</div>
+    </div>
+  </section>
+
+  <section class="blog-newsletter">
+    <div class="section-label">BLOG NEWSLETTER</div>
+    <div class="blog-newsletter__inner">
+      <div>
+        <div class="blog-newsletter__label">Editorial notes</div>
+        <div class="blog-newsletter__headline">Get canine longevity notes in your inbox.</div>
+        <div class="blog-newsletter__body">Ingredient deep-dives, canine longevity notes, and practical routines for modern dog owners.</div>
+      </div>
+      <div class="blog-newsletter__form" aria-label="Newsletter signup">
+        <div class="blog-newsletter__input">Email address</div>
+        <div class="blog-newsletter__button">Subscribe</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="section-label">FOOTER</div>
+    <div class="footer__inner">
+      <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" class="footer__logo" style="height:20px;width:auto;"></a>
+      <div class="footer__origin">Made in Italy - Est. 1960s</div>
+      <div class="footer__cols">
+        <div>
+          <div class="footer__col-label">SHOP</div>
+          <div class="footer__col-links"><a href="pdp.html">Daily Foundation</a><br><a href="pdp.html">Targeted Care</a><br><a href="pdp.html">Shop all</a></div>
+        </div>
+        <div>
+          <div class="footer__col-label">HELP</div>
+          <div class="footer__col-links"><a href="index.html">Our story</a><br><a href="blog.html">Articles</a></div>
+        </div>
+      </div>
+      <div class="footer__legal">&copy; 2026 Broono - Privacy - Returns - Terms</div>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+  const topics = ['All', 'Longevity', 'Ingredients', 'Routine', 'Science', 'Product', 'Founder notes'];
+
+  const articles = [
+    {
+      title: 'What daily prevention actually means for a healthy dog',
+      category: 'Longevity',
+      excerpt: 'A practical guide to nutrition, movement, recovery, and the quiet work that happens before anything looks wrong.',
+      author: 'Broono Research',
+      meta: 'May 7, 2026 - 7 min read',
+      image: '[ Shopify article image: morning routine ]',
+      featured: true
+    },
+    {
+      title: 'Why ingredient transparency should feel boring',
+      category: 'Ingredients',
+      excerpt: 'Declared doses, named mechanisms, and sourced rationale should be the baseline, not a special feature.',
+      author: 'Broono Lab Team',
+      meta: 'May 7, 2026 - 6 min read',
+      image: '[ Shopify article image: ingredient bench ]'
+    },
+    {
+      title: 'The morning habit that makes care easier',
+      category: 'Routine',
+      excerpt: 'The routines that last are the ones that fit into a normal weekday without asking for attention.',
+      author: 'Broono Editorial',
+      meta: 'May 7, 2026 - 4 min read',
+      image: '[ Shopify article image: daily bowl ]'
+    },
+    {
+      title: 'The systems that shape a dog\'s healthspan',
+      category: 'Science',
+      excerpt: 'Immune readiness, gut balance, mobility, metabolism, and recovery all compound over time.',
+      author: 'Broono Research',
+      meta: 'May 7, 2026 - 8 min read',
+      image: '[ Shopify article image: systems diagram ]'
+    },
+    {
+      title: 'How Essential fits the morning',
+      category: 'Product',
+      excerpt: 'A product note on where the daily foundation belongs in a simple routine.',
+      author: 'Broono Product',
+      meta: 'May 7, 2026 - 4 min read',
+      image: '[ Shopify article image: Essential jar ]'
+    },
+    {
+      title: 'Founder note on prevention',
+      category: 'Founder notes',
+      excerpt: 'Why we built around the healthy years, not the emergency years.',
+      author: 'Broono Founders',
+      meta: 'May 7, 2026 - 3 min read',
+      image: '[ Shopify article image: founder note ]'
+    }
+  ];
+
+  function renderTopics(activeTopic) {
+    document.getElementById('topic-pills').innerHTML = topics.map(topic =>
+      '<button class="topic-pill ' + (topic === activeTopic ? 'topic-pill--active' : '') + '" type="button" data-topic="' + topic + '">' + topic + '</button>'
+    ).join('');
+
+    document.querySelectorAll('.topic-pill').forEach(button => {
+      button.addEventListener('click', function(event) {
+        renderBlog(event.currentTarget.dataset.topic);
+      });
+    });
+  }
+
+  function renderFeatured() {
+    const article = articles.find(item => item.featured) || articles[0];
+    document.getElementById('featured-card').innerHTML =
+      '<div class="featured-card__photo">' + article.image + '</div>' +
+      '<div class="featured-card__body">' +
+      '<div class="card-eyebrow">' + article.category + '</div>' +
+      '<div class="featured-card__title">' + article.title + '</div>' +
+      '<div class="featured-card__excerpt">' + article.excerpt + '</div>' +
+      '<div class="featured-card__meta">' + article.author + ' - ' + article.meta + '</div>' +
+      '<div class="featured-card__button">Read article</div>' +
+      '</div>';
+  }
+
+  function renderGrid(activeTopic) {
+    const filtered = activeTopic === 'All' ? articles : articles.filter(article => article.category === activeTopic);
+    document.getElementById('article-list-title').textContent = activeTopic === 'All' ? 'Latest articles' : activeTopic;
+    document.getElementById('article-list-count').textContent = filtered.length + (filtered.length === 1 ? ' article' : ' articles');
+    document.getElementById('article-grid').innerHTML = filtered.map(article =>
+      '<a class="article-card" href="article.html">' +
+      '<div class="article-card__photo">' + article.image + '</div>' +
+      '<div class="article-card__body">' +
+      '<div class="card-eyebrow">' + article.category + '</div>' +
+      '<div class="article-card__title">' + article.title + '</div>' +
+      '<div class="article-card__excerpt">' + article.excerpt + '</div>' +
+      '<div class="article-card__meta">' + article.author + ' - ' + article.meta + '</div>' +
+      '</div>' +
+      '</a>'
+    ).join('');
+  }
+
+  function renderBlog(activeTopic) {
+    renderTopics(activeTopic);
+    renderFeatured();
+    renderGrid(activeTopic);
+  }
+
+  renderBlog('All');
+</script>
+
+</body>
+</html>
