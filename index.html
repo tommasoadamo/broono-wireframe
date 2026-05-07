@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broono — Homepage Wireframe v3 (Responsive)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --color-background-primary: #F5F0E8;
+    --color-background-secondary: #EDE8DF;
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #5A5550;
+    --color-text-tertiary: #9A9590;
+    --color-border-primary: #1A1A1A;
+    --color-border-secondary: #C8C3BA;
+    --color-border-tertiary: #D8D3CA;
+  }
+
+  body {
+    background: #E8E3DB;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    color: var(--color-text-primary);
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ─── WRAPPER ─────────────────────────────────────── */
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 12px;
+  }
+
+  /* Mobile: phone-frame look */
+  .phone-frame {
+    width: 340px;
+    overflow: hidden;
+    background: var(--color-background-primary);
+    position: relative;
+  }
+
+  /* Section label (wireframe annotation) */
+  .section-label {
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+    padding: 5px 10px 3px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── NAV DRAWER ──────────────────────────────────── */
+  .nav-drawer {
+    display: none;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 30;
+    background: var(--color-background-primary);
+  }
+  .nav-drawer__inner { padding: 14px 16px; }
+  .nav-drawer__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 4px;
+  }
+  .nav-drawer__logo { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; }
+  .nav-drawer__close {
+    background: none; border: none; cursor: pointer;
+    font-size: 22px; line-height: 1;
+    color: var(--color-text-primary); padding: 0;
+  }
+  .nav-drawer__group-label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    padding: 10px 0 4px; letter-spacing: 0.07em;
+  }
+  .nav-drawer__links { font-size: 13px; }
+  .nav-drawer__link {
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .nav-drawer__link:last-child { border-bottom: none; }
+
+  /* ─── STICKY NAV (mobile) ─────────────────────────── */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+  }
+  .nav__hamburger {
+    background: none; border: none; cursor: pointer;
+    padding: 4px; color: var(--color-text-primary);
+  }
+  .nav__logo { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; }
+  .nav__desktop-links { display: none; } /* hidden on mobile */
+  .nav__cart { position: relative; cursor: pointer; padding: 4px; }
+  .nav__cart-badge {
+    position: absolute; top: 0; right: 0;
+    background: var(--color-text-primary);
+    color: var(--color-background-primary);
+    border-radius: 50%; width: 13px; height: 13px;
+    font-size: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 500;
+  }
+
+  /* ─── HERO ────────────────────────────────────────── */
+  .hero {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .hero__inner {
+    background: var(--color-background-secondary);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+    position: relative;
+  }
+  .hero__media-placeholder {
+    position: absolute; top: 30%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 9px; color: var(--color-text-tertiary);
+    text-align: center;
+  }
+  .hero__headline {
+    font-size: 17px; font-weight: 500; line-height: 1.3; margin-bottom: 8px;
+  }
+  .hero__body {
+    font-size: 10px; color: var(--color-text-secondary);
+    line-height: 1.6; margin-bottom: 6px;
+  }
+  .hero__body--italic { font-style: italic; margin-bottom: 12px; }
+  .hero__ctas { display: flex; gap: 8px; }
+  .btn-primary {
+    background: var(--color-text-primary); color: var(--color-background-primary);
+    padding: 9px 14px; border-radius: 6px;
+    font-size: 11px; font-weight: 500; display: inline-block; cursor: pointer;
+  }
+  .btn-secondary {
+    border: 0.5px solid var(--color-border-primary);
+    padding: 9px 14px; border-radius: 6px;
+    font-size: 11px; display: inline-block; cursor: pointer;
+  }
+
+  /* ─── BRAND STATEMENT ────────────────────────────── */
+  .brand-statement {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .brand-statement__inner {
+    padding: 16px 14px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .brand-statement__line {
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.7;
+  }
+  .brand-statement__line--bold {
+    font-size: 12px; font-weight: 500; color: var(--color-text-primary);
+  }
+
+  /* ─── EDITORIAL BEAT ──────────────────────────────── */
+  .editorial {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 16px 14px;
+  }
+  .editorial__headline {
+    font-size: 13px; font-weight: 500; line-height: 1.6;
+  }
+  .editorial__sub {
+    font-size: 13px; line-height: 1.6;
+    color: var(--color-text-secondary); margin-top: 2px;
+  }
+
+  /* ─── OUTCOME STRIP ───────────────────────────────── */
+  .outcomes {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .outcomes__strip {
+    display: flex; overflow-x: auto;
+    padding: 8px 10px 14px; gap: 8px;
+  }
+  .outcomes__pill {
+    flex-shrink: 0;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 20px; padding: 7px 12px; text-align: center;
+  }
+  .outcomes__pill-title { font-size: 9px; font-weight: 500; white-space: nowrap; }
+  .outcomes__pill-sub { font-size: 8px; color: var(--color-text-tertiary); white-space: nowrap; }
+
+  /* ─── TWO-DOOR SYSTEM ─────────────────────────────── */
+  .two-door {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .two-door__inner {
+    padding: 6px 10px 14px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .two-door__intro {
+    font-size: 10px; color: var(--color-text-secondary);
+    line-height: 1.6; padding: 0 0 4px;
+  }
+  .two-door__tagline {
+    font-size: 11px; font-weight: 500; padding-bottom: 6px;
+  }
+  .two-door__cards { display: flex; flex-direction: column; gap: 8px; }
+  .card--foundation {
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: 10px; overflow: hidden;
+  }
+  .card--targeted {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 10px; overflow: hidden;
+  }
+  .card__photo {
+    background: var(--color-background-secondary); height: 100px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: var(--color-text-tertiary);
+  }
+  .card__body { padding: 10px 12px 12px; }
+  .card__eyebrow {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.07em;
+    color: var(--color-text-tertiary); margin-bottom: 2px;
+  }
+  .card__sub { font-size: 8px; color: var(--color-text-tertiary); margin-bottom: 6px; }
+  .card__headline { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
+  .card__desc { font-size: 10px; color: var(--color-text-secondary); margin-bottom: 10px; }
+  .two-door__quiz {
+    text-align: center; padding-top: 4px;
+    font-size: 10px; color: var(--color-text-secondary);
+  }
+  .two-door__quiz strong { font-weight: 500; color: var(--color-text-primary); }
+
+  /* ─── BODY SYSTEMS ────────────────────────────────── */
+  .systems {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .systems__header { padding: 5px 10px 4px; }
+  .systems__title { font-size: 13px; font-weight: 500; }
+  .systems__sub { font-size: 10px; color: var(--color-text-secondary); margin-top: 3px; }
+  .systems__strip {
+    display: flex; gap: 8px;
+    padding: 10px 10px 14px; overflow-x: auto;
+  }
+  .system-card {
+    flex-shrink: 0; width: 180px;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; padding: 12px;
+  }
+  .system-card__icon {
+    width: 32px; height: 32px; border-radius: 6px;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .system-card__title { font-size: 10px; font-weight: 500; margin-bottom: 1px; }
+  .system-card__cat { font-size: 8px; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .system-card__desc { font-size: 9px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 6px; }
+  .system-card__result { font-size: 9px; font-weight: 500; }
+
+  /* ─── BEST SELLERS ────────────────────────────────── */
+  .best-sellers {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .best-sellers__header {
+    padding: 5px 10px 8px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .best-sellers__title { font-size: 13px; font-weight: 500; }
+  .best-sellers__showall { font-size: 10px; color: var(--color-text-secondary); }
+  .product-grid {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 8px; padding: 0 10px 14px;
+  }
+  .product-card {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; overflow: hidden;
+  }
+  .product-card__photo {
+    background: var(--color-background-secondary); height: 80px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: var(--color-text-tertiary);
+  }
+  .product-card__body { padding: 7px; }
+  .product-card__eyebrow {
+    font-size: 7px; font-weight: 500; letter-spacing: 0.05em;
+    color: var(--color-text-tertiary); margin-bottom: 2px;
+  }
+  .product-card__name { font-size: 10px; font-weight: 500; margin-bottom: 2px; }
+  .product-card__stars { font-size: 8px; color: var(--color-text-secondary); }
+  .product-card__pricing {
+    margin-top: 5px; padding-top: 5px;
+    border-top: 0.5px solid var(--color-border-tertiary);
+  }
+  .product-card__original {
+    font-size: 9px; color: var(--color-text-tertiary);
+    text-decoration: line-through;
+  }
+  .product-card__price { font-size: 10px; font-weight: 500; }
+
+  /* ─── NUTRITION GAP ───────────────────────────────── */
+  .gap {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .gap__inner { padding: 6px 10px 14px; }
+  .gap__headline { font-size: 14px; font-weight: 500; line-height: 1.35; margin-bottom: 8px; }
+  .gap__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px; }
+  .gap__quote {
+    border-left: 2px solid var(--color-border-secondary);
+    padding: 8px 10px; margin-bottom: 10px;
+    background: var(--color-background-secondary);
+    border-radius: 0 6px 6px 0;
+    font-size: 10px; color: var(--color-text-secondary);
+    line-height: 1.7; font-style: italic;
+  }
+  .gap__cta { font-size: 11px; font-weight: 500; margin-bottom: 14px; }
+  .gap__beat2 {
+    border-top: 0.5px solid var(--color-border-tertiary); padding-top: 12px;
+  }
+  .gap__beat2-title { font-size: 12px; font-weight: 500; margin-bottom: 6px; }
+  .gap__beat2-body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 6px; }
+  .gap__pending {
+    font-size: 9px; color: var(--color-text-tertiary);
+    border: 0.5px dashed var(--color-border-tertiary);
+    border-radius: 6px; padding: 6px 8px; margin-bottom: 8px;
+  }
+  .gap__link { font-size: 10px; font-weight: 500; }
+
+  /* ─── QUALITY GUARANTEE ───────────────────────────── */
+  .quality {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .quality__inner { padding: 6px 10px 14px; }
+  .quality__headline { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .quality__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 12px; }
+  .quality__checkpoints { display: flex; align-items: center; gap: 0; margin-bottom: 12px; }
+  .checkpoint {
+    flex: 1; border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; padding: 10px; text-align: center;
+  }
+  .checkpoint__label {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--color-text-tertiary); margin-bottom: 4px;
+  }
+  .checkpoint__title { font-size: 10px; font-weight: 500; margin-bottom: 2px; }
+  .checkpoint__sub { font-size: 9px; color: var(--color-text-secondary); }
+  .checkpoint__arrow { padding: 0 6px; font-size: 14px; color: var(--color-text-tertiary); }
+  .quality__badges { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .badge {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 6px; padding: 6px 10px;
+    font-size: 9px; font-weight: 500;
+  }
+  .quality__link { font-size: 10px; font-weight: 500; }
+
+  /* ─── INGREDIENTS + ITALY ─────────────────────────── */
+  .ingredients {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .ingredients__inner { padding: 6px 10px 14px; }
+  .ingredients__headline { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .ingredients__photo {
+    background: var(--color-background-secondary); height: 100px;
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: var(--color-text-tertiary);
+  }
+  .ingredients__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 10px; }
+  .ingredients__italy {
+    border-top: 0.5px solid var(--color-border-tertiary);
+    padding-top: 10px;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .ingredients__flag { font-size: 16px; line-height: 1; }
+  .ingredients__italy-text { font-size: 10px; color: var(--color-text-secondary); line-height: 1.6; }
+  .ingredients__link { margin-top: 10px; font-size: 10px; font-weight: 500; }
+
+  /* ─── DOG AGING PROJECT ───────────────────────────── */
+  .dag {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .dag__inner { padding: 6px 10px 14px; }
+  .dag__headline { font-size: 14px; font-weight: 500; line-height: 1.35; margin-bottom: 8px; }
+  .dag__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px; }
+  .dag__finding {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; padding: 12px; margin-bottom: 10px;
+  }
+  .dag__finding-label {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.07em;
+    color: var(--color-text-tertiary); margin-bottom: 6px;
+  }
+  .dag__finding-quote { font-size: 11px; font-weight: 500; line-height: 1.5; margin-bottom: 4px; }
+  .dag__finding-source { font-size: 9px; color: var(--color-text-tertiary); }
+  .dag__footer { font-size: 10px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  /* ─── WHO WE ARE ──────────────────────────────────── */
+  .founders {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .founders__inner { padding: 8px 10px 16px; }
+  .founders__photo {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; height: 130px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    font-size: 9px; color: var(--color-text-tertiary); text-align: center;
+  }
+  .founders__names {
+    display: flex; justify-content: center;
+    gap: 24px; margin-bottom: 12px;
+  }
+  .founders__name-item { text-align: center; }
+  .founders__name { font-size: 10px; font-weight: 500; }
+  .founders__role { font-size: 8px; color: var(--color-text-tertiary); }
+  .founders__divider { width: 0.5px; background: var(--color-border-tertiary); }
+  .founders__headline { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .founders__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 12px; }
+  .founders__video {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden;
+  }
+  .founders__video-thumb {
+    position: relative; background: var(--color-background-secondary);
+    height: 90px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: var(--color-text-tertiary);
+  }
+  .founders__play {
+    position: absolute;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-secondary);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .founders__video-meta { padding: 8px 10px; }
+  .founders__video-title { font-size: 10px; font-weight: 500; margin-bottom: 2px; }
+  .founders__video-sub { font-size: 9px; color: var(--color-text-tertiary); }
+  .founders__link { margin-top: 10px; font-size: 10px; font-weight: 500; }
+
+  /* ─── REVIEWS ─────────────────────────────────────── */
+  .reviews {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .reviews__summary {
+    margin: 6px 10px 10px; padding: 12px;
+    background: var(--color-background-secondary);
+    border-radius: 8px; border: 0.5px solid var(--color-border-tertiary);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .reviews__rating { font-size: 18px; font-weight: 500; line-height: 1; }
+  .reviews__rating-sub { font-size: 9px; color: var(--color-text-secondary); }
+  .reviews__recommend { font-size: 18px; font-weight: 500; line-height: 1; }
+  .reviews__recommend-sub { font-size: 9px; color: var(--color-text-secondary); }
+  .reviews__strip {
+    display: flex; gap: 8px; padding: 0 10px 14px; overflow-x: auto;
+  }
+  .review-card {
+    flex-shrink: 0; width: 200px;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; padding: 10px;
+  }
+  .review-card__header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .review-card__avatar {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: var(--color-text-tertiary);
+  }
+  .review-card__name { font-size: 9px; font-weight: 500; }
+  .review-card__dog { font-size: 8px; color: var(--color-text-tertiary); }
+  .review-card__title { font-size: 10px; font-weight: 500; margin-bottom: 3px; }
+  .review-card__body { font-size: 9px; color: var(--color-text-secondary); }
+
+  /* ─── EMAIL CAPTURE ───────────────────────────────── */
+  .email-capture {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .email-capture__inner {
+    padding: 8px 10px 16px; text-align: center;
+  }
+  .email-capture__headline { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+  .email-capture__body { font-size: 10px; color: var(--color-text-secondary); margin-bottom: 2px; }
+  .email-capture__offer { font-size: 9px; color: var(--color-text-tertiary); margin-bottom: 10px; }
+  .email-capture__form { display: flex; flex-direction: column; gap: 8px; }
+  .email-capture__input {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 6px;
+    padding: 9px 12px; text-align: left;
+    font-size: 10px; color: var(--color-text-tertiary);
+  }
+  .email-capture__btn {
+    background: var(--color-text-primary); color: var(--color-background-primary);
+    padding: 10px; border-radius: 6px;
+    font-size: 11px; font-weight: 500; cursor: pointer;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────── */
+  .footer { border-top: 0.5px solid var(--color-border-tertiary); }
+  .footer__inner { padding: 12px 10px 24px; }
+  .footer__logo { font-size: 11px; font-weight: 500; margin-bottom: 4px; letter-spacing: 0.07em; }
+  .footer__origin { font-size: 9px; color: var(--color-text-tertiary); margin-bottom: 12px; }
+  .footer__cols {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 12px; margin-bottom: 12px;
+  }
+  .footer__col-label {
+    font-size: 8px; font-weight: 500; color: var(--color-text-tertiary);
+    margin-bottom: 6px; letter-spacing: 0.06em;
+  }
+  .footer__col-links { font-size: 10px; color: var(--color-text-secondary); line-height: 2; }
+  .footer__legal { font-size: 8px; color: var(--color-text-tertiary); text-align: center; }
+
+  /* ═══════════════════════════════════════════════════
+     DESKTOP BREAKPOINT  ≥ 768px
+  ═══════════════════════════════════════════════════ */
+  @media (min-width: 768px) {
+
+    body { padding: 0; }
+
+    .page-wrapper {
+      padding: 0;
+      align-items: stretch;
+    }
+
+    /* Full-width container on desktop */
+    .phone-frame {
+      width: 100%;
+      max-width: 100%;
+      overflow: visible;
+    }
+
+    /* Section label hidden on desktop to reduce clutter */
+    .section-label { display: none; }
+
+    /* ── NAV ── */
+    .nav {
+      height: 56px;
+      padding: 0 48px;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      position: sticky;
+    }
+    /* Wrap nav in a full-width bar */
+    .nav-wrapper {
+      background: var(--color-background-primary);
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav__hamburger { display: none; }
+    .nav__logo { font-size: 14px; }
+    .nav__desktop-links {
+      display: flex; gap: 28px; align-items: center;
+      font-size: 13px;
+    }
+    .nav__desktop-link { color: var(--color-text-secondary); cursor: pointer; }
+    .nav__desktop-link:hover { color: var(--color-text-primary); }
+    .nav__cart-badge { width: 16px; height: 16px; font-size: 9px; }
+
+    /* ── HERO ── */
+    .hero__inner {
+      flex-direction: row;
+      align-items: stretch;
+      min-height: 520px;
+      padding: 0;
+    }
+    .hero__content {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 48px 56px;
+      max-width: 50%;
+    }
+    .hero__media {
+      flex: 1;
+      background: var(--color-background-secondary);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero__media-placeholder {
+      position: static; transform: none;
+      font-size: 12px;
+    }
+    .hero__headline { font-size: 42px; margin-bottom: 16px; }
+    .hero__body { font-size: 15px; margin-bottom: 12px; }
+    .hero__body--italic { margin-bottom: 24px; }
+    .btn-primary { font-size: 14px; padding: 14px 24px; }
+    .btn-secondary { font-size: 14px; padding: 14px 24px; }
+    .hero__ctas { gap: 12px; }
+
+    /* ── BRAND STATEMENT ── */
+    .brand-statement__inner {
+      padding: 48px;
+      max-width: 860px;
+      margin: 0 auto;
+      gap: 16px;
+    }
+    .brand-statement__line--bold { font-size: 20px; }
+    .brand-statement__line { font-size: 16px; }
+
+    /* ── EDITORIAL ── */
+    .editorial {
+      padding: 48px;
+      text-align: center;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .editorial__headline { font-size: 32px; }
+    .editorial__sub { font-size: 28px; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { padding: 32px 0; }
+    .outcomes .section-label { display: none; }
+    .outcomes__strip {
+      overflow-x: visible;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 48px 0;
+      max-width: 1280px;
+      margin: 0 auto;
+      gap: 12px;
+    }
+    .outcomes__pill { flex-shrink: 1; }
+    .outcomes__pill-title { font-size: 14px; }
+    .outcomes__pill-sub { font-size: 12px; }
+
+    /* ── TWO-DOOR ── */
+    .two-door__inner {
+      padding: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .two-door__intro { font-size: 16px; }
+    .two-door__tagline { font-size: 20px; }
+    .two-door__cards { flex-direction: row; gap: 24px; }
+    .card--foundation, .card--targeted { flex: 1; }
+    .card__photo { height: 240px; font-size: 13px; }
+    .card__eyebrow { font-size: 11px; }
+    .card__sub { font-size: 12px; }
+    .card__headline { font-size: 20px; }
+    .card__desc { font-size: 15px; margin-bottom: 16px; }
+    .btn-primary, .btn-secondary { font-size: 13px; }
+    .two-door__quiz { font-size: 15px; padding-top: 16px; }
+
+    /* ── BODY SYSTEMS ── */
+    .systems__header {
+      padding: 0 48px 16px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .systems__title { font-size: 24px; }
+    .systems__sub { font-size: 15px; margin-top: 6px; }
+    .systems__strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible;
+      padding: 0 48px 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+    .system-card {
+      width: auto; flex-shrink: 1;
+    }
+    .system-card__icon { width: 48px; height: 48px; }
+    .system-card__title { font-size: 16px; }
+    .system-card__cat { font-size: 12px; }
+    .system-card__desc { font-size: 14px; }
+    .system-card__result { font-size: 14px; }
+
+    /* ── BEST SELLERS ── */
+    .best-sellers__header {
+      padding: 48px 48px 16px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .best-sellers__title { font-size: 24px; }
+    .best-sellers__showall { font-size: 14px; }
+    .product-grid {
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 16px;
+      padding: 0 48px 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .product-card__photo { height: 180px; font-size: 11px; }
+    .product-card__body { padding: 12px; }
+    .product-card__eyebrow { font-size: 10px; }
+    .product-card__name { font-size: 16px; }
+    .product-card__stars { font-size: 12px; }
+    .product-card__original { font-size: 13px; }
+    .product-card__price { font-size: 16px; }
+
+    /* ── NUTRITION GAP ── */
+    .gap__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .gap__headline { font-size: 28px; }
+    .gap__body { font-size: 15px; }
+    .gap__quote { font-size: 15px; }
+    .gap__cta { font-size: 16px; }
+    .gap__beat2-title { font-size: 20px; }
+    .gap__beat2-body { font-size: 15px; }
+    .gap__link { font-size: 14px; }
+    /* Keep beat2 spanning both columns as a sub-section */
+    .gap__beat2 { grid-column: 1 / -1; }
+
+    /* ── QUALITY ── */
+    .quality__inner {
+      padding: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .quality__headline { font-size: 24px; }
+    .quality__body { font-size: 15px; }
+    .quality__checkpoints { gap: 24px; }
+    .checkpoint__label { font-size: 11px; }
+    .checkpoint__title { font-size: 16px; }
+    .checkpoint__sub { font-size: 14px; }
+    .checkpoint__arrow { font-size: 24px; }
+    .badge { font-size: 13px; padding: 8px 16px; }
+    .quality__link { font-size: 14px; }
+
+    /* ── INGREDIENTS ── */
+    .ingredients__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .ingredients__photo { height: 280px; font-size: 13px; margin-bottom: 0; grid-row: 1 / 3; }
+    .ingredients__headline { font-size: 24px; }
+    .ingredients__body { font-size: 15px; }
+    .ingredients__italy-text { font-size: 15px; }
+    .ingredients__link { font-size: 14px; }
+    .ingredients__flag { font-size: 24px; }
+
+    /* ── DOG AGING PROJECT ── */
+    .dag__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .dag__headline { font-size: 28px; }
+    .dag__body { font-size: 15px; }
+    .dag__finding-label { font-size: 11px; }
+    .dag__finding-quote { font-size: 16px; }
+    .dag__finding-source { font-size: 13px; }
+    .dag__footer { font-size: 15px; }
+
+    /* ── WHO WE ARE ── */
+    .founders__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .founders__photo { height: 320px; font-size: 13px; margin-bottom: 0; }
+    .founders__headline { font-size: 28px; }
+    .founders__body { font-size: 15px; }
+    .founders__name { font-size: 15px; }
+    .founders__role { font-size: 12px; }
+    .founders__video-thumb { height: 200px; font-size: 13px; }
+    .founders__play { width: 48px; height: 48px; }
+    .founders__video-title { font-size: 15px; }
+    .founders__video-sub { font-size: 13px; }
+    .founders__link { font-size: 14px; }
+
+    /* ── REVIEWS ── */
+    .reviews__summary {
+      margin: 16px 48px 24px;
+      padding: 20px 28px;
+      max-width: 1280px;
+    }
+    .reviews__rating { font-size: 36px; }
+    .reviews__rating-sub { font-size: 14px; }
+    .reviews__recommend { font-size: 36px; }
+    .reviews__recommend-sub { font-size: 14px; }
+    .reviews__strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible;
+      gap: 20px;
+      padding: 0 48px 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .review-card { width: auto; flex-shrink: 1; }
+    .review-card__name { font-size: 14px; }
+    .review-card__dog { font-size: 12px; }
+    .review-card__title { font-size: 16px; }
+    .review-card__body { font-size: 14px; }
+    .review-card__avatar { width: 40px; height: 40px; font-size: 10px; }
+
+    /* ── EMAIL CAPTURE ── */
+    .email-capture__inner {
+      padding: 64px 48px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .email-capture__headline { font-size: 36px; margin-bottom: 12px; }
+    .email-capture__body { font-size: 16px; margin-bottom: 6px; }
+    .email-capture__offer { font-size: 14px; margin-bottom: 24px; }
+    .email-capture__form {
+      flex-direction: row; gap: 12px; align-items: stretch;
+    }
+    .email-capture__input { flex: 1; font-size: 15px; padding: 12px 16px; }
+    .email-capture__btn { white-space: nowrap; font-size: 15px; padding: 12px 24px; }
+
+    /* ── FOOTER ── */
+    .footer__inner {
+      padding: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer__logo { font-size: 16px; margin-bottom: 6px; }
+    .footer__origin { font-size: 13px; margin-bottom: 32px; }
+    .footer__cols {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px; margin-bottom: 32px;
+    }
+    .footer__col-label { font-size: 11px; }
+    .footer__col-links { font-size: 14px; }
+    .footer__legal { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Homepage wireframe v3 — Responsive — Broono dog supplements</h2>
+
+<div class="page-wrapper">
+  <div class="phone-frame">
+
+    <!-- NAV DRAWER (mobile only) -->
+    <div id="nav-drawer" class="nav-drawer">
+      <div class="nav-drawer__inner">
+        <div class="nav-drawer__header">
+          <span class="nav-drawer__logo">BRAND LOGO</span>
+          <button class="nav-drawer__close" onclick="document.getElementById('nav-drawer').style.display='none'">×</button>
+        </div>
+        <div class="nav-drawer__group-label">COLLECTIONS</div>
+        <div class="nav-drawer__links">
+          <div class="nav-drawer__link">Daily Foundation</div>
+          <div class="nav-drawer__link">Targeted Care</div>
+        </div>
+        <div class="nav-drawer__group-label">MORE</div>
+        <div class="nav-drawer__links">
+          <div class="nav-drawer__link">Our story</div>
+          <div class="nav-drawer__link">The science</div>
+          <div class="nav-drawer__link" style="border-bottom:none;">FAQ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STICKY NAV -->
+    <nav class="nav">
+      <button class="nav__hamburger" onclick="document.getElementById('nav-drawer').style.display='block'" aria-label="Open menu">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><rect width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="6" width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="12" width="18" height="1.5" rx="0.75" fill="currentColor"/></svg>
+      </button>
+      <span class="nav__logo">BRAND LOGO</span>
+      <nav class="nav__desktop-links" aria-label="Main navigation">
+        <span class="nav__desktop-link">Daily Foundation</span>
+        <span class="nav__desktop-link">Targeted Care</span>
+        <span class="nav__desktop-link">Our story</span>
+        <span class="nav__desktop-link">The science</span>
+        <span class="nav__desktop-link">FAQ</span>
+      </nav>
+      <div class="nav__cart" aria-label="Cart, 2 items">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav__cart-badge">2</span>
+      </div>
+    </nav>
+
+    <!-- ① HERO -->
+    <section class="hero">
+      <div class="section-label">① HERO — Candidate B: Fluent</div>
+      <div class="hero__inner">
+        <!-- Mobile: content stacks at bottom of full-bleed bg -->
+        <!-- Desktop: content column left, media right -->
+        <div class="hero__content">
+          <div class="hero__media-placeholder" style="display:none;" aria-hidden="true">[ full-bleed photo / video ]</div>
+          <h1 class="hero__headline">This is the vocabulary you were missing.</h1>
+          <p class="hero__body">You can tell when they're off before the vet can. You know their gait well enough to notice the millimetre change. You've learned, over years, to read a species that can't tell you what's wrong.</p>
+          <div class="hero__ctas">
+            <div class="btn-primary">Shop all</div>
+            <div class="btn-secondary">Take the quiz</div>
+          </div>
+        </div>
+        <div class="hero__media">
+          <span class="hero__media-placeholder">[ full-bleed photo / video ]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② BRAND STATEMENT -->
+    <section class="brand-statement">
+      <div class="section-label">② BRAND STATEMENT</div>
+      <div class="brand-statement__inner">
+        
+        <p class="brand-statement__line">Knowing your dog is one thing. Knowing what to do with what you know is another. We translated forty years of canine longevity research into a daily routine that addresses the five systems most responsible for how a dog ages.</p>
+      </div>
+    </section>
+
+    <!-- ③ EDITORIAL BEAT -->
+    <section class="editorial">
+      <div class="section-label">② EDITORIAL BEAT</div>
+      <div class="editorial__headline">The dogs who thrive aren't luckier.</div>
+      <div class="editorial__sub">Their owners just started earlier.</div>
+    </section>
+
+    <!-- ③ OUTCOME STRIP -->
+    <section class="outcomes">
+      <div class="section-label">③ OUTCOME STRIP</div>
+      <div class="outcomes__strip">
+        <div class="outcomes__pill"><div class="outcomes__pill-title">Run longer</div><div class="outcomes__pill-sub">Musculoskeletal</div></div>
+        <div class="outcomes__pill"><div class="outcomes__pill-title">Absorb better</div><div class="outcomes__pill-sub">Gut microbiome</div></div>
+        <div class="outcomes__pill"><div class="outcomes__pill-title">Look well</div><div class="outcomes__pill-sub">Skin &amp; Coat</div></div>
+        <div class="outcomes__pill"><div class="outcomes__pill-title">Think clearly</div><div class="outcomes__pill-sub">Nervous system</div></div>
+        <div class="outcomes__pill"><div class="outcomes__pill-title">Stay ready</div><div class="outcomes__pill-sub">Immune system</div></div>
+      </div>
+    </section>
+
+    <!-- ④ TWO-DOOR SYSTEM -->
+    <section class="two-door">
+      <div class="section-label">④ THE SYSTEM — TWO ENTRY POINTS</div>
+      <div class="two-door__inner">
+        <p class="two-door__intro">Watching closely means noticing before it becomes obvious. Stiffness after rest. A slight change in how they climb stairs. We built four supplements around the five systems that decide how a dog ages.</p>
+        <div class="two-door__tagline">Foundation first. Then targeted care.</div>
+        <div class="two-door__cards">
+          <div class="card--foundation">
+            <div class="card__photo">[ daily foundation product photo ]</div>
+            <div class="card__body">
+              <div class="card__eyebrow">DAILY FOUNDATION</div>
+              <div class="card__sub">Essential</div>
+              <div class="card__headline">Designed for the dogs who look perfectly fine.</div>
+              <div class="card__desc">Daily nutrition that builds health before it needs defending. For dogs of all ages — especially the ones who seem just fine.</div>
+              <div class="btn-primary">Shop Daily Foundation</div>
+            </div>
+          </div>
+          <div class="card--targeted">
+            <div class="card__photo">[ targeted care product photo ]</div>
+            <div class="card__body">
+              <div class="card__eyebrow">TARGETED CARE</div>
+              <div class="card__sub">Move · Prebiotic · Calm</div>
+              <div class="card__headline">The time to support your dog is before they ask for help.</div>
+              <div class="card__desc">Precise support for joints, gut, skin, and calm — for dogs showing signs, or owners who don't want to wait.</div>
+              <div class="btn-secondary">Shop Targeted Care</div>
+            </div>
+          </div>
+        </div>
+        <div class="two-door__quiz">Not sure? <strong>Find my supplement →</strong></div>
+      </div>
+    </section>
+
+    <!-- ⑤ BODY SYSTEMS -->
+    <section class="systems">
+      <div class="section-label">⑤ BODY SYSTEMS — THE HOW</div>
+      <div class="systems__header">
+        <div class="systems__title">Three systems. One morning routine.</div>
+        <div class="systems__sub">Every product targets the systems that matter most. Here's how the science works.</div>
+      </div>
+      <div class="systems__strip">
+        <div class="system-card">
+          <div class="system-card__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9 9z"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <div class="system-card__title">Joints &amp; Bones</div>
+          <div class="system-card__cat">Musculoskeletal</div>
+          <div class="system-card__desc">Cartilage, mobility, and bone density maintained from the inside.</div>
+          <div class="system-card__result">Result: Run longer →</div>
+        </div>
+        <div class="system-card">
+          <div class="system-card__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M8 15c1-2 5-2 8 0"/><path d="M9 9h.01M15 9h.01"/></svg>
+          </div>
+          <div class="system-card__title">Gut microbiome</div>
+          <div class="system-card__cat">Digestive</div>
+          <div class="system-card__desc">Absorption, immunity, and energy metabolism start here.</div>
+          <div class="system-card__result">Result: Absorb better →</div>
+        </div>
+        <div class="system-card">
+          <div class="system-card__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div class="system-card__title">Skin &amp; Coat</div>
+          <div class="system-card__cat">Integumentary</div>
+          <div class="system-card__desc">The visible layer of what's working underneath.</div>
+          <div class="system-card__result">Result: Look well →</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ BEST SELLERS -->
+    <section class="best-sellers">
+      <div class="section-label">⑥ BEST SELLERS</div>
+      <div class="best-sellers__header">
+        <span class="best-sellers__title">Best sellers</span>
+        <span class="best-sellers__showall">Shop all →</span>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-card__photo">product photo</div>
+          <div class="product-card__body">
+            <div class="product-card__eyebrow">FOUNDATION</div>
+            <div class="product-card__name">Essential</div>
+            <div class="product-card__stars">★★★★★ (234)</div>
+            <div class="product-card__pricing">
+              <div class="product-card__original">$34.99</div>
+              <div class="product-card__price">$27.99 / mo</div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-card__photo">product photo</div>
+          <div class="product-card__body">
+            <div class="product-card__eyebrow">TARGETED</div>
+            <div class="product-card__name">Move</div>
+            <div class="product-card__stars">★★★★★ (142)</div>
+            <div class="product-card__pricing">
+              <div class="product-card__original">$32.99</div>
+              <div class="product-card__price">$25.99 / mo</div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-card__photo">product photo</div>
+          <div class="product-card__body">
+            <div class="product-card__eyebrow">TARGETED</div>
+            <div class="product-card__name">Prebiotic</div>
+            <div class="product-card__stars">★★★★★ (187)</div>
+            <div class="product-card__pricing">
+              <div class="product-card__original">$29.99</div>
+              <div class="product-card__price">$23.99 / mo</div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-card__photo">product photo</div>
+          <div class="product-card__body">
+            <div class="product-card__eyebrow">TARGETED</div>
+            <div class="product-card__name">Calm</div>
+            <div class="product-card__stars">★★★★★ (98)</div>
+            <div class="product-card__pricing">
+              <div class="product-card__original">$27.99</div>
+              <div class="product-card__price">$21.99 / mo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ NUTRITION GAP -->
+    <section class="gap">
+      <div class="section-label">⑦ THE GAP / NUTRITION GAP</div>
+      <div class="gap__inner">
+        <div class="gap__col-left">
+          <h2 class="gap__headline">The vibrant years don't happen by themselves.</h2>
+          <p class="gap__body">Healthspan — the years a dog spends genuinely thriving — is determined largely by daily inputs made years before anything goes wrong. Not genetics. Not luck. What goes in the bowl, every morning, before the day starts.</p>
+          <blockquote class="gap__quote">"Healthspan is the number of years your dog spends in good health — moving freely, thinking clearly, fully present. Distinct from lifespan. And unlike lifespan, it's something you can actively shape, starting today, before there's any reason to worry."</blockquote>
+          <div class="gap__cta">Broono exists here. Not the crisis. The Tuesday.</div>
+        </div>
+        <div class="gap__col-right">
+          <div class="gap__beat2">
+            <div class="gap__beat2-title">Most food fills. This one builds.</div>
+            <p class="gap__beat2-body">Most premium dog foods meet minimum requirements. Minimum is not optimal.</p>
+            <div class="gap__pending">[anchor statistic pending — section locked until sourced]</div>
+            <div class="gap__link">→ Ingredient glossary</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ QUALITY GUARANTEE -->
+    <section class="quality">
+      <div class="section-label">⑧ QUALITY GUARANTEE</div>
+      <div class="quality__inner">
+        <h2 class="quality__headline">We don't trust the specification sheet. We test it.</h2>
+        <p class="quality__body">Every ingredient tested before it enters production. Every batch tested before it leaves.</p>
+        <div class="quality__checkpoints">
+          <div class="checkpoint">
+            <div class="checkpoint__label">CHECKPOINT 1</div>
+            <div class="checkpoint__title">Incoming ingredients tested</div>
+            <div class="checkpoint__sub">Before production begins</div>
+          </div>
+          <div class="checkpoint__arrow">→</div>
+          <div class="checkpoint">
+            <div class="checkpoint__label">CHECKPOINT 2</div>
+            <div class="checkpoint__title">Finished batch tested</div>
+            <div class="checkpoint__sub">Before it leaves the lab</div>
+          </div>
+        </div>
+        <div class="quality__badges">
+          <div class="badge">ISO 22000</div>
+          <div class="badge">Pharmaceutical-grade</div>
+          <div class="badge">End-to-end</div>
+        </div>
+        <div class="quality__link">→ Our quality standards</div>
+      </div>
+    </section>
+
+    <!-- ⑨ INGREDIENTS + ITALY -->
+    <section class="ingredients">
+      <div class="section-label">⑨ INGREDIENTS + ITALY</div>
+      <div class="ingredients__inner">
+        <div class="ingredients__photo">[ ingredient callout graphic — levitating photography style ]</div>
+        <div>
+          <h2 class="ingredients__headline">Every ingredient named. Every dose declared.</h2>
+          <p class="ingredients__body">Every mechanism sourced. Because the people who choose Broono already know how to read a label.</p>
+          <div class="ingredients__italy">
+            <span class="ingredients__flag">🇮🇹</span>
+            <div class="ingredients__italy-text"><strong>A family laboratory, doing animal functional nutrition since the 1960s</strong> — before pet supplements existed as a category. Made in Italy, to pharmaceutical grade.</div>
+          </div>
+          <div class="ingredients__link">Explore all ingredients →</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑨b DOG AGING PROJECT -->
+    <section class="dag">
+      <div class="section-label">⑨b DOG AGING PROJECT</div>
+      <div class="dag__inner">
+        <div>
+          <h2 class="dag__headline">50,000 dogs are teaching scientists how to age well. We read every paper.</h2>
+          <p class="dag__body">The Dog Aging Project is the largest open-science study of ageing ever conducted on companion animals. What it's finding is changing how veterinary nutritionists think about daily care — which five systems determine how well a dog ages, which daily inputs move those systems, and how much of a dog's healthspan is within an owner's control. We built Broono around those findings.</p>
+        </div>
+        <div>
+          <div class="dag__finding">
+            <div class="dag__finding-label">KEY FINDING — PURINA LIFESPAN STUDY</div>
+            <div class="dag__finding-quote">"Lean-fed Labradors lived a median 1.8 years longer and had significantly delayed onset of chronic disease."</div>
+            <div class="dag__finding-source">14-year longitudinal study · n=48</div>
+          </div>
+          <p class="dag__footer">No proprietary blends. No vague claims. Every ingredient listed, every dose declared, every mechanism sourced.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑩ WHO WE ARE -->
+    <section class="founders">
+      <div class="section-label">⑩ WHO WE ARE</div>
+      <div class="founders__inner">
+        <div class="founders__photo">[ photo: both founders + dog ]</div>
+        <div>
+          <div class="founders__names">
+            <div class="founders__name-item">
+              <div class="founders__name">Founder name</div>
+              <div class="founders__role">Co-founder</div>
+            </div>
+            <div class="founders__divider"></div>
+            <div class="founders__name-item">
+              <div class="founders__name">Founder name</div>
+              <div class="founders__role">Co-founder</div>
+            </div>
+          </div>
+          <h2 class="founders__headline">Built for [Dog's Name].<br>And every dog like him.</h2>
+          <p class="founders__body">When our [breed] was diagnosed with [condition], we couldn't find a supplement we actually trusted. So we built one — backed by the family lab we'd known our whole lives.</p>
+          <div class="founders__video">
+            <div class="founders__video-thumb">
+              <span>[ manifesto video thumbnail ]</span>
+              <div class="founders__play"><svg width="9" height="11" viewBox="0 0 10 12" fill="none"><path d="M1 1l8 5-8 5V1z" fill="currentColor"/></svg></div>
+            </div>
+            <div class="founders__video-meta">
+              <div class="founders__video-title">Meet the family behind the formula</div>
+              <div class="founders__video-sub">Our story · 2 min</div>
+            </div>
+          </div>
+          <div class="founders__link">Read our full story →</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑪ REVIEWS -->
+    <section class="reviews">
+      <div class="section-label">⑪ REVIEWS</div>
+      <div class="reviews__summary">
+        <div>
+          <div class="reviews__rating">4.8 / 5</div>
+          <div class="reviews__rating-sub">★★★★★ · 1,200+ reviews</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="reviews__recommend">94%</div>
+          <div class="reviews__recommend-sub">would recommend</div>
+        </div>
+      </div>
+      <div class="reviews__strip">
+        <div class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">photo</div>
+            <div>
+              <div class="review-card__name">Sarah M.</div>
+              <div class="review-card__dog">Labrador · ★★★★★</div>
+            </div>
+          </div>
+          <div class="review-card__title">"Running like a puppy again"</div>
+          <div class="review-card__body">She's 9 years old. Difference in 3 weeks.</div>
+        </div>
+        <div class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">photo</div>
+            <div>
+              <div class="review-card__name">James K.</div>
+              <div class="review-card__dog">Golden · ★★★★★</div>
+            </div>
+          </div>
+          <div class="review-card__title">"Finally a brand I trust"</div>
+          <div class="review-card__body">Ingredient list is totally transparent.</div>
+        </div>
+        <div class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">photo</div>
+            <div>
+              <div class="review-card__name">Priya R.</div>
+              <div class="review-card__dog">Poodle mix · ★★★★★</div>
+            </div>
+          </div>
+          <div class="review-card__title">"Coat is so shiny now"</div>
+          <div class="review-card__body">People keep asking what we're doing differently.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑫ EMAIL CAPTURE -->
+    <section class="email-capture">
+      <div class="section-label">⑫ EMAIL CAPTURE</div>
+      <div class="email-capture__inner">
+        <div class="email-capture__headline">Stay curious.</div>
+        <div class="email-capture__body">Wellness research, ingredient deep-dives, and honest advice for modern pet parents. No noise.</div>
+        <div class="email-capture__offer">+ Get 15% off your first order</div>
+        <div class="email-capture__form">
+          <div class="email-capture__input">Email address</div>
+          <div class="email-capture__btn">Subscribe</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑬ FOOTER -->
+    <footer class="footer">
+      <div class="section-label">⑬ FOOTER</div>
+      <div class="footer__inner">
+        <div class="footer__logo">BRAND LOGO</div>
+        <div class="footer__origin">🇮🇹 Made in Italy · Est. 1960s</div>
+        <div class="footer__cols">
+          <div>
+            <div class="footer__col-label">SHOP</div>
+            <div class="footer__col-links">Daily Foundation<br>Targeted Care<br>Shop all</div>
+          </div>
+          <div>
+            <div class="footer__col-label">HELP</div>
+            <div class="footer__col-links">Our story<br>The science<br>FAQ</div>
+          </div>
+        </div>
+        <div class="footer__legal">© 2026 Broono · Privacy · Returns · Terms</div>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+  /* On desktop, fix the hero layout: show content in left col, media in right col */
+  function applyHeroLayout() {
+    const heroContent = document.querySelector('.hero__content');
+    const heroMediaPlaceholder = heroContent && heroContent.querySelector('.hero__media-placeholder');
+    const heroMediaRight = document.querySelector('.hero__media .hero__media-placeholder');
+    if (!heroContent) return;
+    if (window.innerWidth >= 768) {
+      /* Desktop: hide the placeholder that was inside .hero__inner for mobile stacking */
+      if (heroMediaPlaceholder) heroMediaPlaceholder.style.display = 'none';
+      if (heroMediaRight) heroMediaRight.style.display = 'block';
+      heroContent.style.position = 'relative';
+    } else {
+      /* Mobile: stack content over the bg, show placeholder in middle */
+      if (heroMediaPlaceholder) heroMediaPlaceholder.style.display = 'block';
+      if (heroMediaRight) heroMediaRight.style.display = 'none';
+    }
+  }
+  applyHeroLayout();
+  window.addEventListener('resize', applyHeroLayout);
+</script>
+
+</body>
+</html>
