@@ -877,7 +877,7 @@ Directions explored and set aside from the primary homepage and landing page arc
 - Canine diet deficiency section (§⑦) needs a specific anchoring statistic — candidate areas: omega-3 deficiency rates in dry food, suboptimal vitamin D in kibble, insufficient joint precursors in young dogs. Research required before section can be written.
 - Which lab engineer / director appears on video?
 - Final brand name and logo direction
-- Subscription discount percentage (currently placeholder: ~20% off)
+- ~~Subscription discount percentage (currently placeholder: ~20% off)~~ **Resolved:** Three-tier system — 10% (shortest frequency), 15% (mid), 20% (longest frequency). Displayed as "Save X%" in each frequency card.
 - Email capture offer — is 15% off correct?
 - Hero A/B test setup: when does this run, and what is the primary success metric (conversion rate, add-to-cart, scroll depth)?
 - Dog Aging Project section (§⑨b): confirm as standalone section or absorb into §⑨ Ingredients + Italy?
@@ -1005,11 +1005,38 @@ The PDP visitor has intent. They arrived from a product card, collection page, o
 3. Short descriptor — benefit statement, one sentence, plain language (see per-SKU table)
 4. Star rating + review count
 5. Pull-quote — § ② (see below)
-6. Subscription snippet — weight × frequency grid, default to subscribe
+6. Subscription snippet — weight × frequency grid, default to subscribe (see Layout H below)
 7. Price — subscribe price bold, one-time strikethrough, "subscribe & save X%"
 8. Variant selector — if applicable
 9. ATC — "Start the habit" (Foundation) / "Add to routine" (Targeted Care)
 10. Trust badges — Science-backed · Natural ingredients · Made in Italy
+
+**Subscription snippet — Layout H (confirmed wireframe default):**
+
+The subscription widget uses a two-section card pattern (wireframe Layout H):
+
+- **Section 1 — Dog size:** Three pill selectors (Up to 10 kg / 10–25 kg / 25 kg+). Active pill filled dark. Selection drives the frequency options below.
+- **Section 2 — Frequency:** Three stacked selectable cards, radio-button style, black border on active. Content updates dynamically per weight band:
+
+| Weight band | Freq 1 | Freq 2 | Freq 3 |
+|---|---|---|---|
+| Up to 10 kg | 1 jar · every 60 days | 2 jars · every 120 days | 3 jars · every 180 days |
+| 10–25 kg | 1 jar · every 30 days | 2 jars · every 60 days | 3 jars · every 90 days |
+| 25 kg+ | 1 jar · every 20 days | 2 jars · every 40 days | 3 jars · every 60 days |
+
+Each frequency card shows: supply name + interval · Save X% badge · **£X.XX/day** + ~~barred £X.XX/day~~.
+
+Total shipment price (discounted) + struck-through full price shown above the CTA, not inside cells.
+
+**Subscription pricing logic:**
+
+- Jar price: **£22.90**
+- Discount tiers: Freq 1 = **10% off**, Freq 2 = **15% off**, Freq 3 = **20% off**
+- Discounted total = jars × £22.90 × (1 − discount%)
+- Full price (struck-through, muted) = jars × £22.90
+- Price per day = discounted total ÷ delivery interval in days
+- Barred price per day (struck-through) = full price ÷ delivery interval in days
+- Currency: GBP (£)
 
 **Status:** Decided — descriptors placeholder pending final SKU brief
 
