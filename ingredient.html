@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="assets/logo-favicon-blue.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broono - Ingredient Detail Wireframe</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --color-background-primary: #F5F0E8;
+    --color-background-secondary: #EDE8DF;
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #5A5550;
+    --color-text-tertiary: #9A9590;
+    --color-border-primary: #1A1A1A;
+    --color-border-secondary: #C8C3BA;
+    --color-border-tertiary: #D8D3CA;
+  }
+  body {
+    background: #E8E3DB;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    color: var(--color-text-primary);
+  }
+  a { color: inherit; text-decoration: none; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .page-wrapper { display: flex; flex-direction: column; align-items: center; padding: 20px 12px; }
+  .phone-frame { width: 340px; overflow: hidden; background: var(--color-background-primary); position: relative; }
+  .section-label {
+    font-size: 8px; color: var(--color-text-tertiary);
+    padding: 5px 10px 3px; letter-spacing: 0.06em;
+  }
+
+  .nav-drawer {
+    display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 30; background: var(--color-background-primary);
+  }
+  .nav-drawer__inner { padding: 14px 16px; }
+  .nav-drawer__header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 12px; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 4px;
+  }
+  .nav-drawer__close {
+    background: none; border: none; cursor: pointer; font-size: 22px; line-height: 1;
+    color: var(--color-text-primary); padding: 0;
+  }
+  .nav-drawer__group-label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    padding: 10px 0 4px; letter-spacing: 0.07em;
+  }
+  .nav-drawer__links { font-size: 13px; }
+  .nav-drawer__link { display: block; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .nav-drawer__link:last-child { border-bottom: none; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 0 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 44px;
+  }
+  .nav__hamburger { background: none; border: none; cursor: pointer; padding: 4px; color: var(--color-text-primary); }
+  .nav__desktop-links { display: none; }
+  .nav__desktop-link { color: var(--color-text-secondary); cursor: pointer; }
+  .nav__cart { position: relative; cursor: pointer; padding: 4px; }
+  .nav__cart-badge {
+    position: absolute; top: 0; right: 0;
+    background: var(--color-text-primary); color: var(--color-background-primary);
+    border-radius: 50%; width: 13px; height: 13px;
+    font-size: 8px; display: flex; align-items: center; justify-content: center; font-weight: 500;
+  }
+
+  .ingredient-picker {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-primary);
+    font-size: 9px; color: var(--color-text-secondary);
+  }
+  .ingredient-picker select {
+    font-size: 9px; font-family: inherit; color: var(--color-text-primary);
+    background: transparent; border: none; outline: none; cursor: pointer; max-width: 230px;
+  }
+
+  .ingredient-hero { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .ingredient-hero__inner { padding: 18px 14px 16px; }
+  .ingredient-hero__back { display: inline-block; font-size: 10px; color: var(--color-text-secondary); margin-bottom: 18px; }
+  .ingredient-hero__eyebrow {
+    font-size: 9px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .ingredient-hero__title { font-size: 29px; line-height: 1.12; font-weight: 500; margin-bottom: 10px; }
+  .ingredient-hero__dek { font-size: 12px; line-height: 1.65; color: var(--color-text-secondary); margin-bottom: 14px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 20px;
+    padding: 5px 8px; font-size: 9px; color: var(--color-text-secondary);
+  }
+  .ingredient-hero__media {
+    min-height: 190px; background: var(--color-background-secondary);
+    border-top: 0.5px solid var(--color-border-tertiary);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-size: 10px; color: var(--color-text-tertiary); padding: 20px;
+  }
+
+  .ingredient-layout { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .ingredient-layout__inner { padding: 0 14px 18px; }
+  .toc {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 12px 0; margin-bottom: 18px;
+  }
+  .toc__label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .toc__link { display: block; font-size: 11px; color: var(--color-text-secondary); line-height: 1.8; }
+
+  .content-section { margin-bottom: 28px; }
+  .content-section h2 { font-size: 18px; line-height: 1.28; font-weight: 500; margin-bottom: 10px; }
+  .content-section p { font-size: 13px; line-height: 1.72; color: var(--color-text-secondary); margin-bottom: 12px; }
+  .answer-card {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px;
+    background: var(--color-background-secondary); padding: 12px; margin-bottom: 10px;
+  }
+  .answer-card__label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 5px;
+  }
+  .answer-card__body { font-size: 12px; line-height: 1.6; color: var(--color-text-secondary); }
+
+  .product-use {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden;
+  }
+  .product-use__row {
+    padding: 11px; border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .product-use__row:last-child { border-bottom: none; }
+  .product-use__product { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+  .product-use__dose { font-size: 9px; color: var(--color-text-tertiary); margin-bottom: 5px; }
+  .product-use__why { font-size: 11px; line-height: 1.6; color: var(--color-text-secondary); }
+
+  .mechanism-list { border-top: 0.5px solid var(--color-border-tertiary); }
+  .mechanism-item {
+    display: flex; gap: 10px; padding: 12px 0; border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .mechanism-item__number {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--color-text-primary); color: var(--color-background-primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; flex-shrink: 0;
+  }
+  .mechanism-item__title { font-size: 12px; font-weight: 500; margin-bottom: 3px; }
+  .mechanism-item__body { font-size: 11px; line-height: 1.6; color: var(--color-text-secondary); }
+
+  .evidence-block {
+    border-top: 0.5px solid var(--color-border-tertiary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 14px 0;
+  }
+  .evidence-item { margin-bottom: 12px; }
+  .evidence-item:last-child { margin-bottom: 0; }
+  .evidence-item__title { font-size: 12px; font-weight: 500; margin-bottom: 3px; }
+  .evidence-item__meta { font-size: 10px; color: var(--color-text-tertiary); line-height: 1.5; }
+
+  .faq-item {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 11px 0;
+  }
+  .faq-item:first-child { border-top: 0.5px solid var(--color-border-tertiary); }
+  .faq-item__q { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
+  .faq-item__a { font-size: 11px; line-height: 1.6; color: var(--color-text-secondary); }
+
+  .ingredient-cta {
+    border: 0.5px solid var(--color-border-primary); border-radius: 8px;
+    padding: 14px; margin-top: 28px;
+  }
+  .ingredient-cta__label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .ingredient-cta__title { font-size: 16px; line-height: 1.35; font-weight: 500; margin-bottom: 6px; }
+  .ingredient-cta__body { font-size: 11px; line-height: 1.6; color: var(--color-text-secondary); margin-bottom: 12px; }
+  .ingredient-cta__button {
+    display: inline-block; background: var(--color-text-primary); color: var(--color-background-primary);
+    padding: 9px 14px; border-radius: 6px; font-size: 11px; font-weight: 500;
+  }
+
+  .related { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .related__header { padding: 14px 14px 8px; display: flex; justify-content: space-between; align-items: center; }
+  .related__title { font-size: 14px; font-weight: 500; }
+  .related__showall { font-size: 10px; color: var(--color-text-secondary); }
+  .related__grid { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 0 14px 18px; }
+  .related-card {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden;
+    background: var(--color-background-primary);
+  }
+  .related-card__photo {
+    min-height: 90px; background: var(--color-background-secondary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: var(--color-text-tertiary);
+  }
+  .related-card__body { padding: 10px; }
+  .related-card__name { font-size: 13px; line-height: 1.35; font-weight: 500; margin-bottom: 4px; }
+  .related-card__meta { font-size: 9px; color: var(--color-text-tertiary); }
+
+  .footer { border-top: 0.5px solid var(--color-border-tertiary); }
+  .footer__inner { padding: 12px 10px 24px; }
+  .footer__logo { font-size: 11px; font-weight: 500; margin-bottom: 4px; letter-spacing: 0.07em; }
+  .footer__origin { font-size: 9px; color: var(--color-text-tertiary); margin-bottom: 12px; }
+  .footer__cols { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; margin-bottom: 12px; }
+  .footer__col-label {
+    font-size: 8px; font-weight: 500; color: var(--color-text-tertiary);
+    margin-bottom: 6px; letter-spacing: 0.06em;
+  }
+  .footer__col-links { font-size: 10px; color: var(--color-text-secondary); line-height: 2; }
+  .footer__legal { font-size: 8px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (min-width: 768px) {
+    body { padding: 0; }
+    .page-wrapper { padding: 0; align-items: stretch; }
+    .phone-frame { width: 100%; max-width: 100%; overflow: visible; }
+    .section-label { display: none; }
+    .nav { height: 56px; padding: 0 48px; max-width: 1280px; width: 100%; margin: 0 auto; }
+    .nav-wrapper {
+      background: var(--color-background-primary); border-bottom: 0.5px solid var(--color-border-tertiary);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav__hamburger { display: none; }
+    .nav__desktop-links { display: flex; gap: 28px; align-items: center; font-size: 13px; }
+    .nav__desktop-link:hover { color: var(--color-text-primary); }
+    .nav__cart-badge { width: 16px; height: 16px; font-size: 9px; }
+
+    .ingredient-picker { justify-content: center; font-size: 12px; padding: 8px 48px; }
+    .ingredient-picker select { font-size: 12px; max-width: none; }
+    .ingredient-hero__inner { max-width: 920px; margin: 0 auto; padding: 48px 48px 34px; }
+    .ingredient-hero__back { font-size: 13px; margin-bottom: 34px; }
+    .ingredient-hero__eyebrow { font-size: 11px; margin-bottom: 12px; }
+    .ingredient-hero__title { font-size: 58px; max-width: 820px; margin-bottom: 18px; }
+    .ingredient-hero__dek { font-size: 18px; max-width: 690px; margin-bottom: 22px; }
+    .tag { font-size: 12px; padding: 6px 10px; }
+    .ingredient-hero__media { min-height: 430px; font-size: 13px; }
+
+    .ingredient-layout__inner {
+      max-width: 1120px; margin: 0 auto; padding: 48px;
+      display: grid; grid-template-columns: 240px minmax(0, 680px); gap: 72px; align-items: start;
+    }
+    .toc {
+      position: sticky; top: 88px; border-bottom: none; border-right: 0.5px solid var(--color-border-tertiary);
+      padding: 0 22px 0 0; margin: 0;
+    }
+    .toc__label { font-size: 11px; margin-bottom: 10px; }
+    .toc__link { font-size: 13px; line-height: 2; }
+    .content-section { margin-bottom: 44px; }
+    .content-section h2 { font-size: 30px; margin-bottom: 14px; }
+    .content-section p { font-size: 17px; }
+    .answer-card { padding: 18px; }
+    .answer-card__label { font-size: 11px; }
+    .answer-card__body { font-size: 15px; }
+    .product-use__row { padding: 16px; }
+    .product-use__product { font-size: 17px; }
+    .product-use__dose { font-size: 12px; }
+    .product-use__why { font-size: 14px; }
+    .mechanism-item { gap: 14px; padding: 18px 0; }
+    .mechanism-item__number { width: 32px; height: 32px; font-size: 13px; }
+    .mechanism-item__title { font-size: 16px; }
+    .mechanism-item__body { font-size: 14px; }
+    .evidence-block { padding: 20px 0; }
+    .evidence-item__title { font-size: 16px; }
+    .evidence-item__meta { font-size: 13px; }
+    .faq-item { padding: 16px 0; }
+    .faq-item__q { font-size: 16px; }
+    .faq-item__a { font-size: 14px; }
+    .ingredient-cta { padding: 24px; margin-top: 42px; }
+    .ingredient-cta__label { font-size: 11px; }
+    .ingredient-cta__title { font-size: 24px; }
+    .ingredient-cta__body { font-size: 15px; max-width: 540px; }
+    .ingredient-cta__button { font-size: 14px; padding: 12px 20px; }
+
+    .related__header { max-width: 1280px; margin: 0 auto; padding: 48px 48px 16px; }
+    .related__title { font-size: 24px; }
+    .related__showall { font-size: 14px; }
+    .related__grid {
+      max-width: 1280px; margin: 0 auto; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px; padding: 0 48px 56px;
+    }
+    .related-card__photo { min-height: 150px; font-size: 12px; }
+    .related-card__body { padding: 14px; }
+    .related-card__name { font-size: 17px; }
+    .related-card__meta { font-size: 12px; }
+
+    .footer__inner { padding: 48px; max-width: 1280px; margin: 0 auto; }
+    .footer__logo { font-size: 16px; margin-bottom: 6px; }
+    .footer__origin { font-size: 13px; margin-bottom: 32px; }
+    .footer__cols { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    .footer__col-label { font-size: 11px; }
+    .footer__col-links { font-size: 14px; }
+    .footer__legal { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Ingredient detail wireframe - Broono dog supplements</h2>
+
+<div class="page-wrapper">
+<div class="phone-frame">
+
+  <div id="nav-drawer" class="nav-drawer">
+    <div class="nav-drawer__inner">
+      <div class="nav-drawer__header">
+        <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" style="height:18px;width:auto;"></a>
+        <button class="nav-drawer__close" onclick="document.getElementById('nav-drawer').style.display='none'" aria-label="Close menu">x</button>
+      </div>
+      <div class="nav-drawer__group-label">COLLECTIONS</div>
+      <div class="nav-drawer__links">
+        <a class="nav-drawer__link" href="pdp.html">Daily Foundation</a>
+        <a class="nav-drawer__link" href="pdp.html">Targeted Care</a>
+      </div>
+      <div class="nav-drawer__group-label">MORE</div>
+      <div class="nav-drawer__links">
+        <a class="nav-drawer__link" href="ingredients.html">Ingredients</a>
+        <a class="nav-drawer__link" href="index.html">Our story</a>
+        <a class="nav-drawer__link" href="blog.html" style="border-bottom:none;">Articles</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <button class="nav__hamburger" onclick="document.getElementById('nav-drawer').style.display='block'" aria-label="Open menu">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><rect width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="6" width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="12" width="18" height="1.5" rx="0.75" fill="currentColor"/></svg>
+      </button>
+      <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" style="height:16px;width:auto;"></a>
+      <nav class="nav__desktop-links" aria-label="Main navigation">
+        <a href="pdp.html"><span class="nav__desktop-link">Daily Foundation</span></a>
+        <a href="pdp.html"><span class="nav__desktop-link">Targeted Care</span></a>
+        <a href="ingredients.html"><span class="nav__desktop-link">Ingredients</span></a>
+        <a href="index.html"><span class="nav__desktop-link">Our story</span></a>
+        <a href="blog.html"><span class="nav__desktop-link">Articles</span></a>
+      </nav>
+      <div class="nav__cart" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav__cart-badge">0</span>
+      </div>
+    </nav>
+  </div>
+
+  <div class="ingredient-picker">
+    <span>Mock ingredient:</span>
+    <select id="ingredientPicker" aria-label="Select mock ingredient">
+      <option value="astaxanthin">Astaxanthin</option>
+      <option value="betaGlucan">Beta-glucan</option>
+      <option value="omega3">Omega-3 EPA + DHA</option>
+    </select>
+  </div>
+
+  <article>
+    <header class="ingredient-hero">
+      <div class="section-label">INGREDIENT HEADER</div>
+      <div class="ingredient-hero__inner">
+        <a class="ingredient-hero__back" href="ingredients.html">Back to glossary</a>
+        <div class="ingredient-hero__eyebrow" id="ingredient-type">Antioxidant carotenoid</div>
+        <h1 class="ingredient-hero__title" id="ingredient-name">Astaxanthin for dogs</h1>
+        <p class="ingredient-hero__dek" id="ingredient-summary">A broad-spectrum antioxidant selected for cellular defence against oxidative stress, skin barrier support, and healthy ageing.</p>
+        <div class="tag-row" id="ingredient-tags"></div>
+      </div>
+      <div class="ingredient-hero__media" id="ingredient-media">[ Shopify ingredient image ]</div>
+    </header>
+
+    <section class="ingredient-layout">
+      <div class="section-label">INGREDIENT BODY + TOC</div>
+      <div class="ingredient-layout__inner">
+        <aside class="toc" aria-label="Ingredient contents">
+          <div class="toc__label">On this page</div>
+          <a class="toc__link" href="#quick-answer">Quick answer</a>
+          <a class="toc__link" href="#products">Products containing it</a>
+          <a class="toc__link" href="#why">Why Broono uses it</a>
+          <a class="toc__link" href="#mechanism">Mechanism</a>
+          <a class="toc__link" href="#evidence">Evidence</a>
+          <a class="toc__link" href="#faq">FAQ</a>
+        </aside>
+        <div>
+          <section class="content-section" id="quick-answer">
+            <h2>Quick answer</h2>
+            <div class="answer-card">
+              <div class="answer-card__label">Definition</div>
+              <div class="answer-card__body" id="ingredient-definition"></div>
+            </div>
+            <div class="answer-card">
+              <div class="answer-card__label">Dog-specific relevance</div>
+              <div class="answer-card__body" id="ingredient-relevance"></div>
+            </div>
+          </section>
+
+          <section class="content-section" id="products">
+            <h2>Products containing it</h2>
+            <div class="product-use" id="product-use"></div>
+          </section>
+
+          <section class="content-section" id="why">
+            <h2>Why Broono uses it</h2>
+            <p id="ingredient-why"></p>
+          </section>
+
+          <section class="content-section" id="mechanism">
+            <h2>How it works</h2>
+            <div class="mechanism-list" id="mechanism-list"></div>
+          </section>
+
+          <section class="content-section" id="evidence">
+            <h2>Evidence and review status</h2>
+            <div class="evidence-block" id="evidence-block"></div>
+          </section>
+
+          <section class="content-section" id="faq">
+            <h2>Common questions</h2>
+            <div id="faq-list"></div>
+          </section>
+
+          <aside class="ingredient-cta">
+            <div class="ingredient-cta__label">Relevant product</div>
+            <div class="ingredient-cta__title" id="ingredient-cta-title">Find it in Essential.</div>
+            <div class="ingredient-cta__body" id="ingredient-cta-body">Essential is Broono's daily foundation supplement for dogs who look perfectly fine.</div>
+            <a class="ingredient-cta__button" href="pdp.html" id="ingredient-cta-link">Shop product</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <section class="related">
+    <div class="section-label">RELATED INGREDIENTS</div>
+    <div class="related__header">
+      <span class="related__title">Related ingredients</span>
+      <a class="related__showall" href="ingredients.html">View glossary</a>
+    </div>
+    <div class="related__grid" id="related-grid"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="section-label">FOOTER</div>
+    <div class="footer__inner">
+      <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" class="footer__logo" style="height:20px;width:auto;"></a>
+      <div class="footer__origin">Made in Italy - Est. 1960s</div>
+      <div class="footer__cols">
+        <div>
+          <div class="footer__col-label">SHOP</div>
+          <div class="footer__col-links"><a href="pdp.html">Daily Foundation</a><br><a href="pdp.html">Targeted Care</a><br><a href="pdp.html">Shop all</a></div>
+        </div>
+        <div>
+          <div class="footer__col-label">HELP</div>
+          <div class="footer__col-links"><a href="ingredients.html">Ingredients</a><br><a href="index.html">Our story</a><br><a href="blog.html">Articles</a></div>
+        </div>
+      </div>
+      <div class="footer__legal">&copy; 2026 Broono - Privacy - Returns - Terms</div>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+  const ingredientData = {
+    astaxanthin: {
+      type: 'Antioxidant carotenoid',
+      name: 'Astaxanthin for dogs',
+      summary: 'A broad-spectrum antioxidant selected for cellular defence against oxidative stress, skin barrier support, and healthy ageing.',
+      media: '[ Shopify ingredient image: astaxanthin ]',
+      tags: ['Essential', 'Antioxidant', 'Skin & coat'],
+      definition: 'Astaxanthin is a red-orange carotenoid antioxidant. In a dog supplement context, it is used to support cellular defence against oxidative stress.',
+      relevance: 'Oxidative stress is one of the biological pressures associated with ageing. Antioxidant support is one part of a broader longevity routine.',
+      products: [
+        ['Essential', '2 mg per chew', 'Included as part of the daily antioxidant defence system.']
+      ],
+      why: 'Broono uses astaxanthin because the daily foundation formula is designed to support systems that compound over time: antioxidant defence, skin barrier function, and cellular resilience.',
+      mechanism: [
+        ['Cellular defence', 'Helps support the body\'s normal defence against oxidative stress.'],
+        ['Skin and coat pathway', 'Antioxidant support can sit upstream of visible coat and skin quality signals.'],
+        ['Longevity context', 'Included as one part of a multi-system daily routine, not as a standalone cure-all.']
+      ],
+      evidence: [
+        ['Placeholder antioxidant review', 'Source field for veterinary or nutrition literature. Last reviewed May 7, 2026.'],
+        ['Placeholder canine nutrition reference', 'Used to document dog-specific relevance before publication.']
+      ],
+      faq: [
+        ['Is astaxanthin safe for dogs?', 'This wireframe reserves space for safety copy, dose context, and veterinary caveats.'],
+        ['Is astaxanthin only for senior dogs?', 'The editorial angle should explain preventative support before visible ageing signs.']
+      ],
+      related: [['Coenzyme Q10', 'Energy + antioxidant'], ['Omega-3 EPA + DHA', 'Skin, coat, joints'], ['Beta-1,3/1,6-glucan', 'Immune readiness']],
+      ctaTitle: 'Find astaxanthin in Essential.',
+      ctaBody: 'Essential is Broono\'s daily foundation supplement for whole-system support.'
+    },
+    betaGlucan: {
+      type: 'Functional compound',
+      name: 'Beta-1,3/1,6-glucan for dogs',
+      summary: 'A yeast-derived beta-glucan used to support immune readiness and trained immune response.',
+      media: '[ Shopify ingredient image: beta-glucan ]',
+      tags: ['Essential', 'Immune'],
+      definition: 'Beta-1,3/1,6-glucan is a structural compound found in yeast cell walls and used in nutrition for immune support.',
+      relevance: 'For dogs, the ingredient story is about supporting immune readiness before there is a reason to worry.',
+      products: [
+        ['Essential', '65 mg per chew', 'Included to support the immune-readiness pillar of the daily foundation.']
+      ],
+      why: 'Broono uses beta-glucan because immune function is one of the systems that shapes how well a dog responds to ordinary biological stress over time.',
+      mechanism: [
+        ['Immune recognition', 'Beta-glucans interact with immune recognition pathways.'],
+        ['Readiness over reaction', 'The formulation goal is baseline support, not emergency response.'],
+        ['Daily consistency', 'Repeated daily use fits the broader preventative routine.']
+      ],
+      evidence: [
+        ['Placeholder beta-glucan review', 'Source field for immune-support literature. Last reviewed May 7, 2026.'],
+        ['Placeholder veterinary nutrition reference', 'Used to document dose and species relevance before publication.']
+      ],
+      faq: [
+        ['Is beta-glucan a probiotic?', 'No. This page should explain the difference between beta-glucans, probiotics, and prebiotics.'],
+        ['Why is it in a daily supplement?', 'Because immune readiness is a baseline system, not only a crisis response.']
+      ],
+      related: [['Astaxanthin', 'Antioxidant defence'], ['Coenzyme Q10', 'Energy metabolism'], ['Inulin', 'Gut support']],
+      ctaTitle: 'Find beta-glucan in Essential.',
+      ctaBody: 'Essential includes immune-readiness support as part of the daily foundation.'
+    },
+    omega3: {
+      type: 'Marine lipid',
+      name: 'Omega-3 EPA + DHA for dogs',
+      summary: 'Marine-sourced fatty acids used for joint comfort, skin barrier function, and neurological health.',
+      media: '[ Shopify ingredient image: omega-3 ]',
+      tags: ['Essential', 'Move', 'Joints', 'Skin & coat'],
+      definition: 'EPA and DHA are omega-3 fatty acids commonly sourced from marine oils and used to support inflammatory balance, joints, skin, and brain health.',
+      relevance: 'Dog diets can be omega-6 heavy. Omega-3 support helps explain why the fat profile matters, not just total fat content.',
+      products: [
+        ['Essential', '300 mg per chew', 'Included for whole-system daily support across skin, coat, joints, and neurological health.'],
+        ['Move', 'Dose varies by formula', 'Used in the targeted joint-support routine.']
+      ],
+      why: 'Broono uses omega-3 EPA and DHA because mobility, skin quality, and nervous-system health are all long-term signals of biological resilience.',
+      mechanism: [
+        ['Inflammatory balance', 'EPA and DHA support normal inflammatory signalling.'],
+        ['Barrier support', 'Fatty acids contribute to skin and coat condition.'],
+        ['Mobility support', 'Joint comfort is part of healthspan, not only senior care.']
+      ],
+      evidence: [
+        ['Placeholder omega-3 review', 'Source field for EPA/DHA literature. Last reviewed May 7, 2026.'],
+        ['Placeholder canine mobility reference', 'Used to document joint and skin relevance before publication.']
+      ],
+      faq: [
+        ['Why not just add fish to the bowl?', 'This answer should explain dose, consistency, and quality controls.'],
+        ['Is omega-3 only for joints?', 'No. This page should cover skin, coat, neurological, and mobility relevance.']
+      ],
+      related: [['Astaxanthin', 'Antioxidant defence'], ['Glucosamine', 'Joint support'], ['Coenzyme Q10', 'Energy metabolism']],
+      ctaTitle: 'Find omega-3 in Essential and Move.',
+      ctaBody: 'Omega-3 sits in both daily foundation and targeted mobility support.'
+    }
+  };
+
+  function renderIngredient(key) {
+    const ingredient = ingredientData[key] || ingredientData.astaxanthin;
+    document.getElementById('ingredient-type').textContent = ingredient.type;
+    document.getElementById('ingredient-name').textContent = ingredient.name;
+    document.getElementById('ingredient-summary').textContent = ingredient.summary;
+    document.getElementById('ingredient-media').textContent = ingredient.media;
+    document.getElementById('ingredient-tags').innerHTML = ingredient.tags.map(tag => '<span class="tag">' + tag + '</span>').join('');
+    document.getElementById('ingredient-definition').textContent = ingredient.definition;
+    document.getElementById('ingredient-relevance').textContent = ingredient.relevance;
+    document.getElementById('product-use').innerHTML = ingredient.products.map(product =>
+      '<div class="product-use__row"><div class="product-use__product">' + product[0] + '</div><div class="product-use__dose">' + product[1] + '</div><div class="product-use__why">' + product[2] + '</div></div>'
+    ).join('');
+    document.getElementById('ingredient-why').textContent = ingredient.why;
+    document.getElementById('mechanism-list').innerHTML = ingredient.mechanism.map((item, index) =>
+      '<div class="mechanism-item"><div class="mechanism-item__number">' + (index + 1) + '</div><div><div class="mechanism-item__title">' + item[0] + '</div><div class="mechanism-item__body">' + item[1] + '</div></div></div>'
+    ).join('');
+    document.getElementById('evidence-block').innerHTML = ingredient.evidence.map(item =>
+      '<div class="evidence-item"><div class="evidence-item__title">' + item[0] + '</div><div class="evidence-item__meta">' + item[1] + '</div></div>'
+    ).join('');
+    document.getElementById('faq-list').innerHTML = ingredient.faq.map(item =>
+      '<div class="faq-item"><div class="faq-item__q">' + item[0] + '</div><div class="faq-item__a">' + item[1] + '</div></div>'
+    ).join('');
+    document.getElementById('related-grid').innerHTML = ingredient.related.map(item =>
+      '<a class="related-card" href="ingredient.html"><div class="related-card__photo">[ ingredient image ]</div><div class="related-card__body"><div class="related-card__name">' + item[0] + '</div><div class="related-card__meta">' + item[1] + '</div></div></a>'
+    ).join('');
+    document.getElementById('ingredient-cta-title').textContent = ingredient.ctaTitle;
+    document.getElementById('ingredient-cta-body').textContent = ingredient.ctaBody;
+  }
+
+  document.getElementById('ingredientPicker').addEventListener('change', function(event) {
+    renderIngredient(event.target.value);
+  });
+
+  renderIngredient('astaxanthin');
+</script>
+
+</body>
+</html>

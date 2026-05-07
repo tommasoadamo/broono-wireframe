@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="assets/logo-favicon-blue.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broono - Ingredient Glossary Wireframe</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --color-background-primary: #F5F0E8;
+    --color-background-secondary: #EDE8DF;
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #5A5550;
+    --color-text-tertiary: #9A9590;
+    --color-border-primary: #1A1A1A;
+    --color-border-secondary: #C8C3BA;
+    --color-border-tertiary: #D8D3CA;
+  }
+  body {
+    background: #E8E3DB;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    color: var(--color-text-primary);
+  }
+  a { color: inherit; text-decoration: none; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .page-wrapper { display: flex; flex-direction: column; align-items: center; padding: 20px 12px; }
+  .phone-frame { width: 340px; overflow: hidden; background: var(--color-background-primary); position: relative; }
+  .section-label {
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+    padding: 5px 10px 3px;
+    letter-spacing: 0.06em;
+  }
+
+  .nav-drawer {
+    display: none;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 30;
+    background: var(--color-background-primary);
+  }
+  .nav-drawer__inner { padding: 14px 16px; }
+  .nav-drawer__header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 12px; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 4px;
+  }
+  .nav-drawer__close {
+    background: none; border: none; cursor: pointer;
+    font-size: 22px; line-height: 1; color: var(--color-text-primary); padding: 0;
+  }
+  .nav-drawer__group-label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    padding: 10px 0 4px; letter-spacing: 0.07em;
+  }
+  .nav-drawer__links { font-size: 13px; }
+  .nav-drawer__link { display: block; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .nav-drawer__link:last-child { border-bottom: none; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 0 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 44px;
+  }
+  .nav__hamburger { background: none; border: none; cursor: pointer; padding: 4px; color: var(--color-text-primary); }
+  .nav__desktop-links { display: none; }
+  .nav__desktop-link { color: var(--color-text-secondary); cursor: pointer; }
+  .nav__cart { position: relative; cursor: pointer; padding: 4px; }
+  .nav__cart-badge {
+    position: absolute; top: 0; right: 0;
+    background: var(--color-text-primary); color: var(--color-background-primary);
+    border-radius: 50%; width: 13px; height: 13px;
+    font-size: 8px; display: flex; align-items: center; justify-content: center; font-weight: 500;
+  }
+
+  .glossary-hero { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .glossary-hero__inner { padding: 22px 14px 18px; }
+  .glossary-hero__eyebrow {
+    font-size: 9px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .glossary-hero__title { font-size: 29px; line-height: 1.12; font-weight: 500; margin-bottom: 10px; }
+  .glossary-hero__body { font-size: 12px; line-height: 1.65; color: var(--color-text-secondary); margin-bottom: 14px; }
+  .glossary-hero__proof {
+    display: grid; grid-template-columns: 1fr; gap: 8px;
+    border-top: 0.5px solid var(--color-border-tertiary); padding-top: 12px;
+  }
+  .proof-point {
+    font-size: 10px; line-height: 1.45; color: var(--color-text-secondary);
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; padding: 10px;
+  }
+  .proof-point strong { display: block; color: var(--color-text-primary); font-weight: 500; margin-bottom: 2px; }
+
+  .seo-intent { border-bottom: 0.5px solid var(--color-border-tertiary); background: var(--color-background-secondary); }
+  .seo-intent__inner { padding: 14px; }
+  .seo-intent__label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .seo-intent__headline { font-size: 16px; line-height: 1.35; font-weight: 500; margin-bottom: 8px; }
+  .seo-intent__body { font-size: 11px; line-height: 1.65; color: var(--color-text-secondary); }
+
+  .controls { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .controls__inner { padding: 12px 14px; }
+  .controls__label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .filter-group { margin-bottom: 10px; }
+  .filter-group:last-child { margin-bottom: 0; }
+  .filter-group__name { font-size: 10px; color: var(--color-text-secondary); margin-bottom: 7px; }
+  .filter-pills { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 2px; }
+  .filter-pill {
+    flex-shrink: 0;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 20px; background: transparent; color: var(--color-text-secondary);
+    font-family: inherit; font-size: 10px; padding: 7px 11px; cursor: pointer;
+  }
+  .filter-pill--active {
+    background: var(--color-text-primary); border-color: var(--color-text-primary); color: var(--color-background-primary);
+  }
+
+  .ingredient-list { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .ingredient-list__header {
+    padding: 14px 14px 8px;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  }
+  .ingredient-list__title { font-size: 15px; font-weight: 500; }
+  .ingredient-list__count { font-size: 9px; color: var(--color-text-tertiary); white-space: nowrap; }
+  .ingredient-grid {
+    display: grid; grid-template-columns: 1fr; gap: 10px; padding: 0 14px 16px;
+  }
+  .ingredient-card {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden;
+    background: var(--color-background-primary);
+  }
+  .ingredient-card__photo {
+    min-height: 112px; background: var(--color-background-secondary);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-size: 9px; color: var(--color-text-tertiary); padding: 14px;
+  }
+  .ingredient-card__body { padding: 11px; }
+  .ingredient-card__type {
+    font-size: 8px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .ingredient-card__name { font-size: 15px; line-height: 1.3; font-weight: 500; margin-bottom: 5px; }
+  .ingredient-card__desc { font-size: 10px; line-height: 1.55; color: var(--color-text-secondary); margin-bottom: 9px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .badge {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 20px;
+    padding: 4px 7px; font-size: 8px; color: var(--color-text-secondary);
+  }
+  .ingredient-card__link { font-size: 10px; font-weight: 500; }
+
+  .authority-block { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .authority-block__inner { padding: 18px 14px; }
+  .authority-block__label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 7px;
+  }
+  .authority-block__headline { font-size: 18px; line-height: 1.3; font-weight: 500; margin-bottom: 9px; }
+  .authority-block__body { font-size: 11px; line-height: 1.65; color: var(--color-text-secondary); margin-bottom: 12px; }
+  .authority-card {
+    border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; padding: 12px; margin-bottom: 8px;
+  }
+  .authority-card:last-child { margin-bottom: 0; }
+  .authority-card__label { font-size: 8px; color: var(--color-text-tertiary); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 4px; }
+  .authority-card__body { font-size: 11px; line-height: 1.55; color: var(--color-text-secondary); }
+
+  .footer { border-top: 0.5px solid var(--color-border-tertiary); }
+  .footer__inner { padding: 12px 10px 24px; }
+  .footer__logo { font-size: 11px; font-weight: 500; margin-bottom: 4px; letter-spacing: 0.07em; }
+  .footer__origin { font-size: 9px; color: var(--color-text-tertiary); margin-bottom: 12px; }
+  .footer__cols { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; margin-bottom: 12px; }
+  .footer__col-label {
+    font-size: 8px; font-weight: 500; color: var(--color-text-tertiary);
+    margin-bottom: 6px; letter-spacing: 0.06em;
+  }
+  .footer__col-links { font-size: 10px; color: var(--color-text-secondary); line-height: 2; }
+  .footer__legal { font-size: 8px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (min-width: 768px) {
+    body { padding: 0; }
+    .page-wrapper { padding: 0; align-items: stretch; }
+    .phone-frame { width: 100%; max-width: 100%; overflow: visible; }
+    .section-label { display: none; }
+    .nav { height: 56px; padding: 0 48px; max-width: 1280px; width: 100%; margin: 0 auto; }
+    .nav-wrapper {
+      background: var(--color-background-primary); border-bottom: 0.5px solid var(--color-border-tertiary);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav__hamburger { display: none; }
+    .nav__desktop-links { display: flex; gap: 28px; align-items: center; font-size: 13px; }
+    .nav__desktop-link:hover { color: var(--color-text-primary); }
+    .nav__cart-badge { width: 16px; height: 16px; font-size: 9px; }
+
+    .glossary-hero__inner { max-width: 1280px; margin: 0 auto; padding: 64px 48px 44px; }
+    .glossary-hero__eyebrow { font-size: 11px; margin-bottom: 12px; }
+    .glossary-hero__title { font-size: 58px; max-width: 860px; margin-bottom: 18px; }
+    .glossary-hero__body { font-size: 18px; max-width: 700px; margin-bottom: 28px; }
+    .glossary-hero__proof { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding-top: 22px; }
+    .proof-point { font-size: 14px; padding: 16px; }
+
+    .seo-intent__inner {
+      max-width: 1280px; margin: 0 auto; padding: 38px 48px;
+      display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 56px;
+    }
+    .seo-intent__label { font-size: 11px; }
+    .seo-intent__headline { font-size: 28px; }
+    .seo-intent__body { font-size: 16px; }
+
+    .controls__inner { max-width: 1280px; margin: 0 auto; padding: 24px 48px; }
+    .controls__label { font-size: 11px; }
+    .filter-group { display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: center; gap: 18px; margin-bottom: 14px; }
+    .filter-group__name { font-size: 13px; margin-bottom: 0; }
+    .filter-pills { flex-wrap: wrap; overflow: visible; }
+    .filter-pill { font-size: 13px; padding: 8px 14px; }
+
+    .ingredient-list__header { max-width: 1280px; margin: 0 auto; padding: 48px 48px 16px; }
+    .ingredient-list__title { font-size: 24px; }
+    .ingredient-list__count { font-size: 13px; }
+    .ingredient-grid {
+      max-width: 1280px; margin: 0 auto; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px; padding: 0 48px 56px;
+    }
+    .ingredient-card__photo { min-height: 180px; font-size: 12px; }
+    .ingredient-card__body { padding: 14px; }
+    .ingredient-card__type { font-size: 10px; }
+    .ingredient-card__name { font-size: 20px; }
+    .ingredient-card__desc { font-size: 14px; }
+    .badge { font-size: 11px; padding: 5px 9px; }
+    .ingredient-card__link { font-size: 14px; }
+
+    .authority-block__inner {
+      max-width: 1280px; margin: 0 auto; padding: 54px 48px;
+      display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px;
+    }
+    .authority-block__label { font-size: 11px; }
+    .authority-block__headline { font-size: 32px; max-width: 560px; }
+    .authority-block__body { font-size: 16px; max-width: 560px; }
+    .authority-card { padding: 18px; }
+    .authority-card__label { font-size: 11px; }
+    .authority-card__body { font-size: 15px; }
+
+    .footer__inner { padding: 48px; max-width: 1280px; margin: 0 auto; }
+    .footer__logo { font-size: 16px; margin-bottom: 6px; }
+    .footer__origin { font-size: 13px; margin-bottom: 32px; }
+    .footer__cols { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    .footer__col-label { font-size: 11px; }
+    .footer__col-links { font-size: 14px; }
+    .footer__legal { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Ingredient glossary wireframe - Broono dog supplements</h2>
+
+<div class="page-wrapper">
+<div class="phone-frame">
+
+  <div id="nav-drawer" class="nav-drawer">
+    <div class="nav-drawer__inner">
+      <div class="nav-drawer__header">
+        <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" style="height:18px;width:auto;"></a>
+        <button class="nav-drawer__close" onclick="document.getElementById('nav-drawer').style.display='none'" aria-label="Close menu">x</button>
+      </div>
+      <div class="nav-drawer__group-label">COLLECTIONS</div>
+      <div class="nav-drawer__links">
+        <a class="nav-drawer__link" href="pdp.html">Daily Foundation</a>
+        <a class="nav-drawer__link" href="pdp.html">Targeted Care</a>
+      </div>
+      <div class="nav-drawer__group-label">MORE</div>
+      <div class="nav-drawer__links">
+        <a class="nav-drawer__link" href="ingredients.html">Ingredients</a>
+        <a class="nav-drawer__link" href="index.html">Our story</a>
+        <a class="nav-drawer__link" href="blog.html" style="border-bottom:none;">Articles</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <button class="nav__hamburger" onclick="document.getElementById('nav-drawer').style.display='block'" aria-label="Open menu">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><rect width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="6" width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="12" width="18" height="1.5" rx="0.75" fill="currentColor"/></svg>
+      </button>
+      <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" style="height:16px;width:auto;"></a>
+      <nav class="nav__desktop-links" aria-label="Main navigation">
+        <a href="pdp.html"><span class="nav__desktop-link">Daily Foundation</span></a>
+        <a href="pdp.html"><span class="nav__desktop-link">Targeted Care</span></a>
+        <a href="ingredients.html"><span class="nav__desktop-link">Ingredients</span></a>
+        <a href="index.html"><span class="nav__desktop-link">Our story</span></a>
+        <a href="blog.html"><span class="nav__desktop-link">Articles</span></a>
+      </nav>
+      <div class="nav__cart" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav__cart-badge">0</span>
+      </div>
+    </nav>
+  </div>
+
+  <header class="glossary-hero">
+    <div class="section-label">INGREDIENT GLOSSARY HEADER</div>
+    <div class="glossary-hero__inner">
+      <div class="glossary-hero__eyebrow">Ingredient glossary</div>
+      <h1 class="glossary-hero__title">Every ingredient named. Every dose declared.</h1>
+      <p class="glossary-hero__body">A plain-English library for the nutrients, botanicals, functional compounds, and biological systems behind Broono dog supplements.</p>
+      <div class="glossary-hero__proof">
+        <div class="proof-point"><strong>No proprietary blends</strong> Each active ingredient is listed by name and purpose.</div>
+        <div class="proof-point"><strong>Product-specific context</strong> See which products contain each ingredient and why.</div>
+        <div class="proof-point"><strong>Evidence-ready structure</strong> Built for mechanisms, sources, review dates, and expert authorship.</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="seo-intent">
+    <div class="section-label">SEO / GEO AUTHORITY INTRO</div>
+    <div class="seo-intent__inner">
+      <div>
+        <div class="seo-intent__label">Expert library</div>
+        <div class="seo-intent__headline">Built to answer ingredient questions directly.</div>
+      </div>
+      <p class="seo-intent__body">This section is structured for search and generative engines: ingredient definitions, dog-specific relevance, products containing the ingredient, mechanism of action, dosage context, evidence placeholders, and related ingredient links. The goal is to make Broono a cited reference for dog nutrition and longevity questions, not just a product catalogue.</p>
+    </div>
+  </section>
+
+  <section class="controls">
+    <div class="section-label">FILTERS</div>
+    <div class="controls__inner">
+      <div class="controls__label">Find an ingredient</div>
+      <div class="filter-group">
+        <div class="filter-group__name">Product</div>
+        <div class="filter-pills" id="product-filters"></div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-group__name">System</div>
+        <div class="filter-pills" id="system-filters"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ingredient-list">
+    <div class="section-label">INGREDIENT INDEX</div>
+    <div class="ingredient-list__header">
+      <div class="ingredient-list__title" id="ingredient-list-title">All ingredients</div>
+      <div class="ingredient-list__count" id="ingredient-list-count">8 ingredients</div>
+    </div>
+    <div class="ingredient-grid" id="ingredient-grid"></div>
+  </section>
+
+  <section class="authority-block">
+    <div class="section-label">SEARCH AUTHORITY BLOCK</div>
+    <div class="authority-block__inner">
+      <div>
+        <div class="authority-block__label">How to read this glossary</div>
+        <div class="authority-block__headline">The useful question is not just what an ingredient is. It is why it is there.</div>
+        <p class="authority-block__body">Each ingredient page should be written to answer owner questions clearly: what it supports, what product contains it, what dose is used, and what evidence explains the mechanism.</p>
+      </div>
+      <div>
+        <div class="authority-card">
+          <div class="authority-card__label">SEO target</div>
+          <div class="authority-card__body">Ingredient + dog query coverage: "astaxanthin for dogs", "beta glucan for dogs", "omega 3 dog supplement", and product-specific long-tail searches.</div>
+        </div>
+        <div class="authority-card">
+          <div class="authority-card__label">GEO target</div>
+          <div class="authority-card__body">Clean answer blocks, source fields, author/review fields, and internal links help generative engines understand Broono as a structured canine nutrition authority.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="section-label">FOOTER</div>
+    <div class="footer__inner">
+      <a href="index.html" style="display:inline-block;line-height:0;"><img src="assets/broono-logo-blu.svg" alt="Broono" class="footer__logo" style="height:20px;width:auto;"></a>
+      <div class="footer__origin">Made in Italy - Est. 1960s</div>
+      <div class="footer__cols">
+        <div>
+          <div class="footer__col-label">SHOP</div>
+          <div class="footer__col-links"><a href="pdp.html">Daily Foundation</a><br><a href="pdp.html">Targeted Care</a><br><a href="pdp.html">Shop all</a></div>
+        </div>
+        <div>
+          <div class="footer__col-label">HELP</div>
+          <div class="footer__col-links"><a href="ingredients.html">Ingredients</a><br><a href="index.html">Our story</a><br><a href="blog.html">Articles</a></div>
+        </div>
+      </div>
+      <div class="footer__legal">&copy; 2026 Broono - Privacy - Returns - Terms</div>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+  const products = ['All products', 'Essential', 'Move', 'Prebiotic', 'Calm'];
+  const systems = ['All systems', 'Immune', 'Antioxidant', 'Energy', 'Joints', 'Gut', 'Skin & coat', 'Stress'];
+
+  const ingredients = [
+    {
+      name: 'Beta-1,3/1,6-glucan',
+      type: 'Functional compound',
+      description: 'A yeast-derived beta-glucan used to support immune readiness and trained immune response.',
+      products: ['Essential'],
+      systems: ['Immune'],
+      image: '[ ingredient image: beta-glucan ]'
+    },
+    {
+      name: 'Astaxanthin',
+      type: 'Antioxidant carotenoid',
+      description: 'A broad-spectrum antioxidant selected for cellular defence against oxidative stress.',
+      products: ['Essential'],
+      systems: ['Antioxidant', 'Skin & coat'],
+      image: '[ ingredient image: astaxanthin ]'
+    },
+    {
+      name: 'Coenzyme Q10',
+      type: 'Cellular nutrient',
+      description: 'Supports mitochondrial energy production, a core process behind vitality and ageing.',
+      products: ['Essential'],
+      systems: ['Energy', 'Antioxidant'],
+      image: '[ ingredient image: CoQ10 ]'
+    },
+    {
+      name: 'Omega-3 EPA + DHA',
+      type: 'Marine lipid',
+      description: 'Marine-sourced fatty acids used for joint comfort, skin barrier function, and neurological health.',
+      products: ['Essential', 'Move'],
+      systems: ['Joints', 'Skin & coat'],
+      image: '[ ingredient image: omega-3 ]'
+    },
+    {
+      name: 'Glucosamine',
+      type: 'Joint support nutrient',
+      description: 'A structural joint-support ingredient used to support cartilage and long-term mobility.',
+      products: ['Move'],
+      systems: ['Joints'],
+      image: '[ ingredient image: glucosamine ]'
+    },
+    {
+      name: 'Inulin',
+      type: 'Prebiotic fibre',
+      description: 'A prebiotic fibre selected to feed beneficial gut bacteria and support digestive balance.',
+      products: ['Prebiotic'],
+      systems: ['Gut'],
+      image: '[ ingredient image: inulin ]'
+    },
+    {
+      name: 'L-Theanine',
+      type: 'Amino acid',
+      description: 'A nervous-system support ingredient used for calmer baseline response without sedation.',
+      products: ['Calm'],
+      systems: ['Stress'],
+      image: '[ ingredient image: L-theanine ]'
+    },
+    {
+      name: 'Chamomile extract',
+      type: 'Botanical',
+      description: 'A botanical ingredient used in calming routines for dogs who carry stress quietly.',
+      products: ['Calm'],
+      systems: ['Stress'],
+      image: '[ ingredient image: chamomile ]'
+    }
+  ];
+
+  let activeProduct = 'All products';
+  let activeSystem = 'All systems';
+
+  function renderFilters() {
+    document.getElementById('product-filters').innerHTML = products.map(product =>
+      '<button class="filter-pill ' + (product === activeProduct ? 'filter-pill--active' : '') + '" type="button" data-product="' + product + '">' + product + '</button>'
+    ).join('');
+    document.getElementById('system-filters').innerHTML = systems.map(system =>
+      '<button class="filter-pill ' + (system === activeSystem ? 'filter-pill--active' : '') + '" type="button" data-system="' + system + '">' + system + '</button>'
+    ).join('');
+
+    document.querySelectorAll('[data-product]').forEach(button => {
+      button.addEventListener('click', function(event) {
+        activeProduct = event.currentTarget.dataset.product;
+        renderGlossary();
+      });
+    });
+    document.querySelectorAll('[data-system]').forEach(button => {
+      button.addEventListener('click', function(event) {
+        activeSystem = event.currentTarget.dataset.system;
+        renderGlossary();
+      });
+    });
+  }
+
+  function getFilteredIngredients() {
+    return ingredients.filter(ingredient => {
+      const productMatch = activeProduct === 'All products' || ingredient.products.includes(activeProduct);
+      const systemMatch = activeSystem === 'All systems' || ingredient.systems.includes(activeSystem);
+      return productMatch && systemMatch;
+    });
+  }
+
+  function renderIngredientGrid() {
+    const filtered = getFilteredIngredients();
+    const title = activeProduct !== 'All products' ? activeProduct + ' ingredients' : activeSystem !== 'All systems' ? activeSystem + ' ingredients' : 'All ingredients';
+    document.getElementById('ingredient-list-title').textContent = title;
+    document.getElementById('ingredient-list-count').textContent = filtered.length + (filtered.length === 1 ? ' ingredient' : ' ingredients');
+    document.getElementById('ingredient-grid').innerHTML = filtered.map(ingredient =>
+      '<a class="ingredient-card" href="ingredient.html">' +
+      '<div class="ingredient-card__photo">' + ingredient.image + '</div>' +
+      '<div class="ingredient-card__body">' +
+      '<div class="ingredient-card__type">' + ingredient.type + '</div>' +
+      '<div class="ingredient-card__name">' + ingredient.name + '</div>' +
+      '<div class="ingredient-card__desc">' + ingredient.description + '</div>' +
+      '<div class="badge-row">' +
+      ingredient.products.map(product => '<span class="badge">' + product + '</span>').join('') +
+      ingredient.systems.map(system => '<span class="badge">' + system + '</span>').join('') +
+      '</div>' +
+      '<div class="ingredient-card__link">View ingredient</div>' +
+      '</div>' +
+      '</a>'
+    ).join('');
+  }
+
+  function renderGlossary() {
+    renderFilters();
+    renderIngredientGrid();
+  }
+
+  renderGlossary();
+</script>
+
+</body>
+</html>
