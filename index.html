@@ -117,6 +117,22 @@
     font-weight: 500;
   }
 
+  /* ─── HERO COPY PICKER (wireframe tool) ─────────── */
+  .hero-picker {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px;
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-primary);
+    font-size: 9px; color: var(--color-text-secondary);
+    font-family: inherit;
+  }
+  .hero-picker select {
+    font-size: 9px; font-family: inherit;
+    color: var(--color-text-primary);
+    background: transparent; border: none; outline: none; cursor: pointer;
+    max-width: 260px;
+  }
+
   /* ─── HERO ────────────────────────────────────────── */
   .hero {
     border-bottom: 0.5px solid var(--color-border-tertiary);
@@ -162,26 +178,22 @@
   }
   .brand-statement__inner {
     padding: 16px 14px;
-    display: flex; flex-direction: column; gap: 8px;
+    display: flex; flex-direction: column; gap: 4px;
   }
   .brand-statement__line {
-    font-size: 11px; color: var(--color-text-secondary); line-height: 1.7;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.7; margin-top: 10px;
   }
   .brand-statement__line--bold {
     font-size: 12px; font-weight: 500; color: var(--color-text-primary);
   }
 
   /* ─── EDITORIAL BEAT ──────────────────────────────── */
-  .editorial {
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-    padding: 16px 14px;
-  }
   .editorial__headline {
-    font-size: 13px; font-weight: 500; line-height: 1.6;
+    font-size: 16px; font-weight: 600; line-height: 1.3;
   }
   .editorial__sub {
-    font-size: 13px; line-height: 1.6;
-    color: var(--color-text-secondary); margin-top: 2px;
+    font-size: 13px; line-height: 1.5;
+    color: var(--color-text-secondary);
   }
 
   /* ─── OUTCOME STRIP ───────────────────────────────── */
@@ -911,7 +923,30 @@
 
     <!-- ① HERO -->
     <section class="hero">
-      <div class="section-label">① HERO — Candidate B: Fluent</div>
+      <div class="hero-picker">
+        <span>① HERO copy</span>
+        <select id="heroCopyPicker">
+          <optgroup label="A/B Candidates">
+            <option value="fluent">Candidate B — Fluent</option>
+            <option value="maths">Candidate A — The Maths</option>
+          </optgroup>
+          <optgroup label="Provocations">
+            <option value="health">Health isn't something you chase.</option>
+            <option value="canttell">Your dog can't tell you…</option>
+            <option value="sixty">Sixty years of science.</option>
+            <option value="longevity">Canine longevity starts before symptoms do.</option>
+          </optgroup>
+          <optgroup label="Directions Library">
+            <option value="tuesday">11A — Tuesday</option>
+            <option value="upgrade">11B — The Upgrade</option>
+            <option value="quiet">11C — The Quiet Ones</option>
+            <option value="ritual">11D — The Ritual</option>
+            <option value="timequestion">11E — The Time Question</option>
+            <option value="italianlab">11F — The Italian Lab</option>
+            <option value="alreadygone">11G — Already Gone</option>
+          </optgroup>
+        </select>
+      </div>
       <div class="hero__inner">
         <!-- Mobile: content stacks at bottom of full-bleed bg -->
         <!-- Desktop: content column left, media right -->
@@ -930,20 +965,14 @@
       </div>
     </section>
 
-    <!-- ② BRAND STATEMENT -->
+    <!-- ② BRAND STATEMENT + EDITORIAL BEAT -->
     <section class="brand-statement">
-      <div class="section-label">② BRAND STATEMENT</div>
+      <div class="section-label">② BRAND STATEMENT + EDITORIAL BEAT</div>
       <div class="brand-statement__inner">
-        
+        <div class="editorial__headline">The dogs who thrive aren't luckier.</div>
+        <div class="editorial__sub">Their owners just started earlier.</div>
         <p class="brand-statement__line">Knowing your dog is one thing. Knowing what to do with what you know is another. We translated forty years of canine longevity research into a daily routine that addresses the five systems most responsible for how a dog ages.</p>
       </div>
-    </section>
-
-    <!-- ③ EDITORIAL BEAT -->
-    <section class="editorial">
-      <div class="section-label">② EDITORIAL BEAT</div>
-      <div class="editorial__headline">The dogs who thrive aren't luckier.</div>
-      <div class="editorial__sub">Their owners just started earlier.</div>
     </section>
 
     <!-- ③ OUTCOME STRIP -->
@@ -1313,6 +1342,73 @@
   }
   applyHeroLayout();
   window.addEventListener('resize', applyHeroLayout);
+
+  /* ── HERO COPY SWITCHER ── */
+  const HERO_COPY = {
+    fluent: {
+      headline: 'This is the vocabulary you were missing.',
+      body: "You can tell when they're off before the vet can. You know their gait well enough to notice the millimetre change. You've learned, over years, to read a species that can't tell you what's wrong."
+    },
+    maths: {
+      headline: 'Your dog has about 4,380 days left. What are you doing with them?',
+      body: "Not a tragedy. A maths problem. And maths has answers."
+    },
+    health: {
+      headline: "Health isn't something you chase. It's something you build.",
+      body: ''
+    },
+    canttell: {
+      headline: "Your dog can't tell you something's wrong. Start before they have to.",
+      body: ''
+    },
+    sixty: {
+      headline: 'Sixty years of pharmaceutical science. All of it for your dog.',
+      body: ''
+    },
+    longevity: {
+      headline: 'Canine longevity starts before symptoms do.',
+      body: ''
+    },
+    tuesday: {
+      headline: 'Protect the years that matter. Starting this Tuesday.',
+      body: "Not the emergency. Not the diagnosis. Not the last good year. The Tuesday when everything was fine — and you did something about it anyway. That's what Broono is for."
+    },
+    upgrade: {
+      headline: "You take magnesium. You track your sleep. Your dog is eating the same kibble they've eaten for six years.",
+      body: "The longevity research for dogs is as developed as it is for humans. The interventions are as actionable. The daily inputs matter just as much. Broono is what happens when you apply the same standard."
+    },
+    quiet: {
+      headline: "They don't ask for much. They deserve everything.",
+      body: "A dog will eat whatever you put in the bowl. Trust you completely. Not complain until they can't hide it anymore. Broono exists because that silence deserves a better answer than luck."
+    },
+    ritual: {
+      headline: 'You already do the walk. You already do the bowl. This is the one thing left.',
+      body: 'A daily chew designed to protect the years ahead — not fix the ones already gone.'
+    },
+    timequestion: {
+      headline: 'Twelve years, give or take. What you do daily determines where in that range you land.',
+      body: ''
+    },
+    italianlab: {
+      headline: 'Designed in Milan. For the one who follows you everywhere.',
+      body: "You probably already have a ritual for yourself — something you take seriously, sourced carefully, built around prevention not cure. Your dog has been waiting for the same standard."
+    },
+    alreadygone: {
+      headline: 'You probably should have started this two years ago. Start it today.',
+      body: "Broono is not for the dog who's already struggling. It's for the dog who isn't — yet. The window for prevention is always wider than the window for repair."
+    }
+  };
+
+  function applyHeroCopy(key) {
+    const copy = HERO_COPY[key];
+    if (!copy) return;
+    document.querySelector('.hero__headline').textContent = copy.headline;
+    const bodyEl = document.querySelector('.hero__body');
+    bodyEl.textContent = copy.body;
+    bodyEl.style.display = copy.body ? '' : 'none';
+  }
+
+  document.getElementById('heroCopyPicker').addEventListener('change', e => applyHeroCopy(e.target.value));
 </script>
 
 </body>

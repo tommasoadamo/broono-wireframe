@@ -1,4 +1,4 @@
-# Broono — Homepage Master Brief
+# eBroono — Homepage Master Brief
 
 > **Version:** 1.0
 > **Date:** 2026-05-07
