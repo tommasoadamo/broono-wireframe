@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="logo-glasses-blue.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broono — PDP Wireframe v1</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --color-background-primary: #F5F0E8;
+    --color-background-secondary: #EDE8DF;
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #5A5550;
+    --color-text-tertiary: #9A9590;
+    --color-border-primary: #1A1A1A;
+    --color-border-secondary: #C8C3BA;
+    --color-border-tertiary: #D8D3CA;
+  }
+
+  body {
+    background: #E8E3DB;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    color: var(--color-text-primary);
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ─── WRAPPER ─────────────────────────────────────── */
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 12px;
+  }
+
+  .phone-frame {
+    width: 340px;
+    overflow: hidden;
+    background: var(--color-background-primary);
+    position: relative;
+  }
+
+  .section-label {
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+    padding: 5px 10px 3px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── NAV DRAWER ──────────────────────────────────── */
+  .nav-drawer {
+    display: none;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 30;
+    background: var(--color-background-primary);
+  }
+  .nav-drawer__inner { padding: 14px 16px; }
+  .nav-drawer__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 4px;
+  }
+  .nav-drawer__logo { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; }
+  .nav-drawer__close {
+    background: none; border: none; cursor: pointer;
+    font-size: 22px; line-height: 1;
+    color: var(--color-text-primary); padding: 0;
+  }
+  .nav-drawer__group-label {
+    font-size: 9px; color: var(--color-text-tertiary);
+    padding: 10px 0 4px; letter-spacing: 0.07em;
+  }
+  .nav-drawer__links { font-size: 13px; }
+  .nav-drawer__link {
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .nav-drawer__link:last-child { border-bottom: none; }
+
+  /* ─── STICKY NAV ──────────────────────────────────── */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+  }
+  .nav__hamburger {
+    background: none; border: none; cursor: pointer;
+    padding: 4px; color: var(--color-text-primary);
+  }
+  .nav__logo { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; }
+  .nav__desktop-links { display: none; }
+  .nav__cart { position: relative; cursor: pointer; padding: 4px; }
+  .nav__cart-badge {
+    position: absolute; top: 0; right: 0;
+    background: var(--color-text-primary);
+    color: var(--color-background-primary);
+    border-radius: 50%; width: 13px; height: 13px;
+    font-size: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 500;
+  }
+
+  /* ─── BREADCRUMB ──────────────────────────────────── */
+  .breadcrumb {
+    padding: 6px 10px;
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    display: flex; gap: 4px; align-items: center;
+  }
+  .breadcrumb__sep { color: var(--color-border-secondary); }
+  .breadcrumb__current { color: var(--color-text-secondary); }
+
+  /* ─── SKU PICKER (wireframe tool) ────────────────── */
+  .sku-picker {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px;
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-primary);
+    font-size: 9px; color: var(--color-text-secondary);
+  }
+  .sku-picker select {
+    font-size: 9px; font-family: inherit;
+    color: var(--color-text-primary);
+    background: transparent; border: none; outline: none; cursor: pointer;
+  }
+
+  /* ─── § ① PRODUCT HERO ────────────────────────────── */
+  .pdp-hero {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .pdp-hero__gallery {
+    background: var(--color-background-secondary);
+    height: 240px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; position: relative;
+  }
+  .pdp-hero__gallery-label {
+    font-size: 9px; color: var(--color-text-tertiary); text-align: center;
+  }
+  .pdp-hero__gallery-thumbs {
+    display: flex; gap: 6px; position: absolute; bottom: 10px;
+  }
+  .pdp-hero__thumb {
+    width: 28px; height: 28px;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 4px;
+    background: var(--color-background-primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: var(--color-text-tertiary);
+  }
+  .pdp-hero__thumb--active {
+    border-color: var(--color-border-primary);
+  }
+  .pdp-hero__thumb--video {
+    position: relative;
+  }
+  .pdp-hero__thumb--video::after {
+    content: "▶";
+    position: absolute;
+    font-size: 6px;
+    color: var(--color-text-secondary);
+  }
+  .pdp-hero__info {
+    padding: 12px 12px 14px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .pdp-hero__badge {
+    display: inline-block;
+    font-size: 8px; font-weight: 500; letter-spacing: 0.07em;
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: 4px; padding: 3px 7px;
+    color: var(--color-text-secondary);
+    align-self: flex-start;
+  }
+  .pdp-hero__name {
+    font-size: 22px; font-weight: 500; line-height: 1.1;
+  }
+  .pdp-hero__descriptor {
+    font-size: 10px; color: var(--color-text-secondary); line-height: 1.6;
+  }
+  .pdp-hero__rating {
+    font-size: 9px; color: var(--color-text-secondary);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .pdp-hero__stars { color: var(--color-text-primary); }
+  .pdp-hero__pull-quote {
+    font-size: 12px; font-weight: 500; line-height: 1.4;
+    border-left: 2px solid var(--color-border-primary);
+    padding-left: 9px;
+  }
+  .pdp-hero__sub-label {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.07em;
+    color: var(--color-text-tertiary); margin-bottom: 4px;
+  }
+  .pdp-hero__sub-grid {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; overflow: hidden;
+    font-size: 9px;
+  }
+  .pdp-hero__sub-row {
+    display: grid; grid-template-columns: 80px repeat(4, 1fr);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .pdp-hero__sub-row:last-child { border-bottom: none; }
+  .pdp-hero__sub-cell {
+    padding: 5px 4px; text-align: center;
+    border-right: 0.5px solid var(--color-border-tertiary);
+    font-size: 8px; color: var(--color-text-secondary);
+    line-height: 1.3;
+  }
+  .pdp-hero__sub-cell:last-child { border-right: none; }
+  .pdp-hero__sub-cell--header {
+    font-weight: 500; color: var(--color-text-tertiary);
+    font-size: 7px; letter-spacing: 0.04em;
+  }
+  .pdp-hero__sub-cell--weight {
+    text-align: left; padding-left: 7px;
+    font-weight: 500; color: var(--color-text-primary);
+  }
+  .pdp-hero__pricing {
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  .pdp-hero__price-subscribe {
+    font-size: 16px; font-weight: 500;
+  }
+  .pdp-hero__price-once {
+    font-size: 11px; color: var(--color-text-tertiary);
+    text-decoration: line-through;
+  }
+  .pdp-hero__price-save {
+    font-size: 9px; color: var(--color-text-secondary);
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: 4px; padding: 2px 5px;
+  }
+  .pdp-hero__ctas { display: flex; flex-direction: column; gap: 7px; }
+  .btn-primary {
+    background: var(--color-text-primary); color: var(--color-background-primary);
+    padding: 11px 14px; border-radius: 6px;
+    font-size: 12px; font-weight: 500; text-align: center; cursor: pointer;
+  }
+  .btn-secondary {
+    border: 0.5px solid var(--color-border-primary);
+    padding: 11px 14px; border-radius: 6px;
+    font-size: 12px; text-align: center; cursor: pointer;
+  }
+  .pdp-hero__trust {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .trust-badge {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 8px; color: var(--color-text-secondary);
+  }
+  .trust-badge__icon {
+    width: 14px; height: 14px;
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px;
+  }
+
+  /* ─── STICKY ATC BAR ──────────────────────────────── */
+  .sticky-atc {
+    position: sticky; bottom: 0; z-index: 10;
+    background: var(--color-background-primary);
+    border-top: 0.5px solid var(--color-border-tertiary);
+    padding: 8px 12px;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  }
+  .sticky-atc__info { flex: 1; min-width: 0; }
+  .sticky-atc__name { font-size: 11px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sticky-atc__price { font-size: 10px; color: var(--color-text-secondary); }
+  .sticky-atc__btn {
+    background: var(--color-text-primary); color: var(--color-background-primary);
+    padding: 9px 16px; border-radius: 6px;
+    font-size: 11px; font-weight: 500; white-space: nowrap; cursor: pointer; flex-shrink: 0;
+  }
+
+  /* ─── § ③ HOW IT WORKS ────────────────────────────── */
+  .how-it-works {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .how-it-works__inner { padding: 6px 10px 14px; }
+  .how-it-works__headline { font-size: 13px; font-weight: 500; margin-bottom: 12px; }
+  .how-it-works__steps { display: flex; flex-direction: column; gap: 10px; }
+  .step {
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .step__number {
+    width: 22px; height: 22px; flex-shrink: 0;
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 500;
+  }
+  .step__content { flex: 1; }
+  .step__title { font-size: 10px; font-weight: 500; margin-bottom: 2px; }
+  .step__body { font-size: 9px; color: var(--color-text-secondary); line-height: 1.6; }
+  .step__connector {
+    width: 22px; flex-shrink: 0;
+    display: flex; justify-content: center;
+    padding: 4px 0;
+  }
+  .step__connector-line {
+    width: 0.5px; height: 10px; background: var(--color-border-tertiary);
+  }
+  .how-it-works__note {
+    margin-top: 12px;
+    font-size: 9px; color: var(--color-text-tertiary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 6px; padding: 8px 10px;
+    line-height: 1.6;
+  }
+
+  /* ─── § ④ PRODUCT THESIS (FULL) ──────────────────── */
+  .product-thesis {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .product-thesis__inner { padding: 6px 10px 14px; }
+  .product-thesis__headline { font-size: 14px; font-weight: 500; line-height: 1.35; margin-bottom: 8px; }
+  .product-thesis__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px; }
+  .product-thesis__chain {
+    border-top: 0.5px solid var(--color-border-tertiary);
+    padding-top: 10px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .product-thesis__chain-label {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.07em;
+    color: var(--color-text-tertiary); margin-bottom: 2px;
+  }
+  .product-thesis__chain-item {
+    font-size: 9px; color: var(--color-text-secondary);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .product-thesis__chain-item::before {
+    content: "→";
+    color: var(--color-text-tertiary);
+    font-size: 8px;
+  }
+
+  /* ─── § ⑤ INGREDIENTS ────────────────────────────── */
+  .ingredients-pdp {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .ingredients-pdp__inner { padding: 6px 10px 14px; }
+  .ingredients-pdp__headline { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .ingredients-pdp__sub { font-size: 9px; color: var(--color-text-tertiary); margin-bottom: 12px; }
+  .ingredient-entry {
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .ingredient-entry:last-of-type { border-bottom: none; }
+  .ingredient-entry__photo {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: var(--color-text-tertiary); text-align: center;
+  }
+  .ingredient-entry__content { flex: 1; }
+  .ingredient-entry__name { font-size: 10px; font-weight: 500; margin-bottom: 1px; }
+  .ingredient-entry__dose {
+    font-size: 8px; color: var(--color-text-tertiary);
+    letter-spacing: 0.04em; margin-bottom: 3px;
+  }
+  .ingredient-entry__body { font-size: 9px; color: var(--color-text-secondary); line-height: 1.6; }
+  .ingredients-pdp__link { font-size: 10px; font-weight: 500; margin-top: 10px; }
+
+  /* ─── § ⑥ THE SCIENCE ────────────────────────────── */
+  .science {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-secondary);
+  }
+  .science__inner { padding: 6px 10px 14px; }
+  .science__label {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.07em;
+    color: var(--color-text-tertiary); margin-bottom: 6px;
+  }
+  .science__headline { font-size: 14px; font-weight: 500; line-height: 1.35; margin-bottom: 8px; }
+  .science__body { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 12px; }
+  .science__callout {
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: 8px; padding: 10px 12px; margin-bottom: 10px;
+    background: var(--color-background-primary);
+  }
+  .science__callout-label {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.07em;
+    color: var(--color-text-tertiary); margin-bottom: 4px;
+  }
+  .science__callout-stat { font-size: 13px; font-weight: 500; line-height: 1.3; margin-bottom: 2px; }
+  .science__callout-source { font-size: 8px; color: var(--color-text-tertiary); }
+  .science__footer { font-size: 9px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  /* ─── § ⑦ QUALITY SIGNAL ─────────────────────────── */
+  .quality-signal {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .quality-signal__inner { padding: 6px 10px 14px; }
+  .quality-signal__headline { font-size: 12px; font-weight: 500; margin-bottom: 6px; }
+  .quality-signal__checkpoints { display: flex; align-items: center; gap: 0; margin-bottom: 10px; }
+  .checkpoint {
+    flex: 1; border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; padding: 10px; text-align: center;
+  }
+  .checkpoint__label {
+    font-size: 7px; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--color-text-tertiary); margin-bottom: 4px;
+  }
+  .checkpoint__title { font-size: 9px; font-weight: 500; margin-bottom: 2px; }
+  .checkpoint__sub { font-size: 8px; color: var(--color-text-secondary); }
+  .checkpoint__arrow { padding: 0 5px; font-size: 12px; color: var(--color-text-tertiary); }
+  .quality-signal__badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 6px; padding: 5px 8px;
+    font-size: 8px; font-weight: 500;
+  }
+  .quality-signal__link { font-size: 9px; color: var(--color-text-secondary); margin-top: 8px; }
+
+  /* ─── § ⑧ HOW TO USE ─────────────────────────────── */
+  .how-to-use {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .how-to-use__inner { padding: 6px 10px 14px; }
+  .how-to-use__headline { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+  .how-to-use__ritual {
+    background: var(--color-background-secondary);
+    border-radius: 8px; padding: 12px; margin-bottom: 10px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .how-to-use__ritual-line { font-size: 11px; font-weight: 500; }
+  .how-to-use__ritual-sub { font-size: 9px; color: var(--color-text-secondary); }
+  .how-to-use__rows { display: flex; flex-direction: column; gap: 0; }
+  .how-to-use__row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    font-size: 9px;
+  }
+  .how-to-use__row:last-child { border-bottom: none; }
+  .how-to-use__row-label { color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.04em; font-size: 8px; }
+  .how-to-use__row-value { color: var(--color-text-primary); font-weight: 500; }
+  .how-to-use__note { font-size: 9px; color: var(--color-text-tertiary); margin-top: 6px; line-height: 1.6; }
+
+  /* ─── § ⑨ REVIEWS ────────────────────────────────── */
+  .reviews-pdp {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .reviews-pdp__summary {
+    margin: 6px 10px 10px; padding: 10px 12px;
+    background: var(--color-background-secondary);
+    border-radius: 8px; border: 0.5px solid var(--color-border-tertiary);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .reviews-pdp__rating { font-size: 16px; font-weight: 500; line-height: 1; }
+  .reviews-pdp__rating-sub { font-size: 8px; color: var(--color-text-secondary); }
+  .reviews-pdp__recommend { font-size: 16px; font-weight: 500; line-height: 1; text-align: right; }
+  .reviews-pdp__recommend-sub { font-size: 8px; color: var(--color-text-secondary); }
+  .reviews-pdp__strip {
+    display: flex; gap: 8px; padding: 0 10px 14px; overflow-x: auto;
+  }
+  .review-card {
+    flex-shrink: 0; width: 200px;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; padding: 10px;
+  }
+  .review-card__header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .review-card__avatar {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: var(--color-text-tertiary);
+  }
+  .review-card__name { font-size: 9px; font-weight: 500; }
+  .review-card__dog { font-size: 8px; color: var(--color-text-tertiary); }
+  .review-card__title { font-size: 10px; font-weight: 500; margin-bottom: 3px; }
+  .review-card__body { font-size: 9px; color: var(--color-text-secondary); }
+
+  /* ─── § ⑩ FAQ ─────────────────────────────────────── */
+  .faq-pdp {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .faq-pdp__inner { padding: 6px 10px 14px; }
+  .faq-pdp__headline { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+  .faq-item {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item__q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; cursor: pointer;
+    font-size: 10px; font-weight: 500;
+  }
+  .faq-item__icon { font-size: 14px; color: var(--color-text-tertiary); flex-shrink: 0; margin-left: 8px; }
+  .faq-item__a {
+    font-size: 9px; color: var(--color-text-secondary);
+    line-height: 1.7; padding-bottom: 10px;
+    display: none;
+  }
+  .faq-item--open .faq-item__a { display: block; }
+  .faq-item--open .faq-item__icon { transform: rotate(45deg); }
+
+  /* ─── § ⑪ COMPLETE THE ROUTINE ───────────────────── */
+  .complete-routine {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .complete-routine__inner { padding: 6px 10px 14px; }
+  .complete-routine__headline { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .complete-routine__sub { font-size: 9px; color: var(--color-text-secondary); margin-bottom: 12px; line-height: 1.5; }
+  .complete-routine__strip {
+    display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px;
+  }
+  .routine-card {
+    flex-shrink: 0; width: 130px;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 8px; overflow: hidden;
+  }
+  .routine-card__photo {
+    background: var(--color-background-secondary); height: 80px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: var(--color-text-tertiary);
+  }
+  .routine-card__body { padding: 7px; }
+  .routine-card__eyebrow {
+    font-size: 7px; font-weight: 500; letter-spacing: 0.05em;
+    color: var(--color-text-tertiary); margin-bottom: 2px;
+  }
+  .routine-card__name { font-size: 10px; font-weight: 500; margin-bottom: 2px; }
+  .routine-card__desc { font-size: 8px; color: var(--color-text-secondary); margin-bottom: 6px; line-height: 1.4; }
+  .routine-card__cta {
+    font-size: 8px; font-weight: 500;
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: 4px; padding: 4px 7px; text-align: center; cursor: pointer;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────── */
+  .footer { border-top: 0.5px solid var(--color-border-tertiary); }
+  .footer__inner { padding: 12px 10px 24px; }
+  .footer__logo { font-size: 11px; font-weight: 500; margin-bottom: 4px; letter-spacing: 0.07em; }
+  .footer__origin { font-size: 9px; color: var(--color-text-tertiary); margin-bottom: 12px; }
+  .footer__cols {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 12px; margin-bottom: 12px;
+  }
+  .footer__col-label {
+    font-size: 8px; font-weight: 500; color: var(--color-text-tertiary);
+    margin-bottom: 6px; letter-spacing: 0.06em;
+  }
+  .footer__col-links { font-size: 10px; color: var(--color-text-secondary); line-height: 2; }
+  .footer__legal { font-size: 8px; color: var(--color-text-tertiary); text-align: center; }
+
+  /* ═══════════════════════════════════════════════════
+     DESKTOP BREAKPOINT  ≥ 768px
+  ═══════════════════════════════════════════════════ */
+  @media (min-width: 768px) {
+    body { padding: 0; }
+    .page-wrapper { padding: 0; align-items: stretch; }
+    .phone-frame { width: 100%; max-width: 100%; overflow: visible; }
+    .section-label { display: none; }
+
+    /* ── NAV ── */
+    .nav {
+      height: 56px; padding: 0 48px;
+      max-width: 1280px; width: 100%; margin: 0 auto; position: sticky;
+    }
+    .nav-wrapper {
+      background: var(--color-background-primary);
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav__hamburger { display: none; }
+    .nav__logo { font-size: 14px; }
+    .nav__desktop-links {
+      display: flex; gap: 28px; align-items: center; font-size: 13px;
+    }
+    .nav__desktop-link { color: var(--color-text-secondary); cursor: pointer; }
+    .nav__desktop-link:hover { color: var(--color-text-primary); }
+    .nav__cart-badge { width: 16px; height: 16px; font-size: 9px; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      padding: 8px 48px; max-width: 1280px; margin: 0 auto; width: 100%; font-size: 12px;
+    }
+
+    /* ── HERO ── */
+    .pdp-hero__inner {
+      display: grid; grid-template-columns: 55fr 45fr;
+      max-width: 1280px; margin: 0 auto; padding: 0 48px 48px; gap: 48px;
+      align-items: start;
+    }
+    .pdp-hero__gallery {
+      height: 480px; border-radius: 10px;
+    }
+    .pdp-hero__gallery-label { font-size: 13px; }
+    .pdp-hero__gallery-thumbs { gap: 8px; bottom: 14px; }
+    .pdp-hero__thumb { width: 48px; height: 48px; font-size: 9px; }
+    .pdp-hero__info { padding: 32px 0 0; gap: 14px; }
+    .pdp-hero__badge { font-size: 11px; padding: 4px 10px; }
+    .pdp-hero__name { font-size: 40px; }
+    .pdp-hero__descriptor { font-size: 15px; }
+    .pdp-hero__rating { font-size: 13px; }
+    .pdp-hero__pull-quote { font-size: 18px; }
+    .pdp-hero__sub-cell { font-size: 11px; padding: 7px 6px; }
+    .pdp-hero__sub-cell--header { font-size: 10px; }
+    .pdp-hero__sub-cell--weight { padding-left: 10px; }
+    .pdp-hero__pricing { gap: 10px; }
+    .pdp-hero__price-subscribe { font-size: 24px; }
+    .pdp-hero__price-once { font-size: 15px; }
+    .pdp-hero__price-save { font-size: 12px; }
+    .btn-primary { font-size: 14px; padding: 14px; }
+    .btn-secondary { font-size: 14px; padding: 14px; }
+    .trust-badge { font-size: 12px; }
+    .trust-badge__icon { width: 18px; height: 18px; font-size: 9px; }
+    .sticky-atc { display: none; }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works__inner {
+      padding: 48px; max-width: 1280px; margin: 0 auto;
+    }
+    .how-it-works__headline { font-size: 24px; margin-bottom: 24px; }
+    .how-it-works__steps { flex-direction: row; gap: 0; align-items: flex-start; }
+    .step { flex-direction: column; align-items: center; text-align: center; flex: 1; padding: 0 16px; }
+    .step__number { width: 32px; height: 32px; font-size: 13px; margin-bottom: 8px; }
+    .step__title { font-size: 14px; }
+    .step__body { font-size: 13px; }
+    .step__connector { display: none; }
+    .how-it-works__note { font-size: 13px; margin-top: 24px; }
+
+    /* ── PRODUCT THESIS ── */
+    .product-thesis__inner {
+      padding: 48px; max-width: 1280px; margin: 0 auto;
+    }
+    .product-thesis__headline { font-size: 28px; }
+    .product-thesis__body { font-size: 15px; }
+    .product-thesis__chain-item { font-size: 14px; }
+    .product-thesis__chain-label { font-size: 11px; }
+
+    /* ── INGREDIENTS ── */
+    .ingredients-pdp__inner {
+      padding: 48px; max-width: 1280px; margin: 0 auto;
+    }
+    .ingredients-pdp__headline { font-size: 24px; }
+    .ingredients-pdp__sub { font-size: 14px; margin-bottom: 24px; }
+    .ingredient-entry { padding: 16px 0; gap: 16px; }
+    .ingredient-entry__photo { width: 64px; height: 64px; font-size: 9px; border-radius: 8px; }
+    .ingredient-entry__name { font-size: 15px; }
+    .ingredient-entry__dose { font-size: 12px; }
+    .ingredient-entry__body { font-size: 14px; }
+    .ingredients-pdp__link { font-size: 14px; margin-top: 16px; }
+
+    /* ── SCIENCE ── */
+    .science__inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; padding: 48px;
+      max-width: 1280px; margin: 0 auto; align-items: start;
+    }
+    .science__label { font-size: 11px; }
+    .science__headline { font-size: 28px; }
+    .science__body { font-size: 15px; }
+    .science__callout-stat { font-size: 20px; }
+    .science__callout-label { font-size: 11px; }
+    .science__callout-source { font-size: 12px; }
+    .science__footer { font-size: 14px; }
+
+    /* ── QUALITY SIGNAL ── */
+    .quality-signal__inner {
+      padding: 48px; max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: flex-start; gap: 56px;
+    }
+    .quality-signal__content { flex: 1; }
+    .quality-signal__headline { font-size: 20px; }
+    .checkpoint__label { font-size: 10px; }
+    .checkpoint__title { font-size: 14px; }
+    .checkpoint__sub { font-size: 13px; }
+    .checkpoint__arrow { font-size: 20px; padding: 0 10px; }
+    .badge { font-size: 13px; padding: 7px 14px; }
+    .quality-signal__link { font-size: 13px; }
+
+    /* ── HOW TO USE ── */
+    .how-to-use__inner {
+      padding: 48px; max-width: 720px; margin: 0 auto;
+    }
+    .how-to-use__headline { font-size: 24px; margin-bottom: 16px; }
+    .how-to-use__ritual { padding: 20px; }
+    .how-to-use__ritual-line { font-size: 18px; }
+    .how-to-use__ritual-sub { font-size: 14px; }
+    .how-to-use__row { font-size: 14px; padding: 12px 0; }
+    .how-to-use__row-label { font-size: 12px; }
+    .how-to-use__note { font-size: 13px; }
+
+    /* ── REVIEWS ── */
+    .reviews-pdp__summary {
+      margin: 16px auto 24px;
+      padding: 16px 24px;
+      max-width: 1280px; width: calc(100% - 96px);
+    }
+    .reviews-pdp__rating { font-size: 28px; }
+    .reviews-pdp__rating-sub { font-size: 13px; }
+    .reviews-pdp__recommend { font-size: 28px; }
+    .reviews-pdp__recommend-sub { font-size: 13px; }
+    .reviews-pdp__strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible; gap: 20px;
+      padding: 0 48px 48px; max-width: 1280px; margin: 0 auto;
+    }
+    .review-card { width: auto; flex-shrink: 1; }
+    .review-card__name { font-size: 14px; }
+    .review-card__dog { font-size: 12px; }
+    .review-card__title { font-size: 16px; }
+    .review-card__body { font-size: 14px; }
+    .review-card__avatar { width: 40px; height: 40px; }
+
+    /* ── FAQ ── */
+    .faq-pdp__inner {
+      padding: 48px; max-width: 720px; margin: 0 auto;
+    }
+    .faq-pdp__headline { font-size: 24px; margin-bottom: 16px; }
+    .faq-item__q { font-size: 15px; padding: 14px 0; }
+    .faq-item__a { font-size: 14px; }
+
+    /* ── COMPLETE THE ROUTINE ── */
+    .complete-routine__inner {
+      padding: 48px; max-width: 1280px; margin: 0 auto;
+    }
+    .complete-routine__headline { font-size: 24px; }
+    .complete-routine__sub { font-size: 14px; margin-bottom: 20px; }
+    .complete-routine__strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible; gap: 20px;
+    }
+    .routine-card { width: auto; flex-shrink: 1; }
+    .routine-card__photo { height: 160px; font-size: 11px; }
+    .routine-card__eyebrow { font-size: 10px; }
+    .routine-card__name { font-size: 15px; }
+    .routine-card__desc { font-size: 13px; }
+    .routine-card__cta { font-size: 12px; padding: 7px 12px; }
+
+    /* ── FOOTER ── */
+    .footer__inner { padding: 48px; max-width: 1280px; margin: 0 auto; }
+    .footer__logo { font-size: 16px; margin-bottom: 6px; }
+    .footer__origin { font-size: 13px; margin-bottom: 32px; }
+    .footer__cols { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    .footer__col-label { font-size: 11px; }
+    .footer__col-links { font-size: 14px; }
+    .footer__legal { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">PDP wireframe v1 — Broono dog supplements</h2>
+
+<div class="page-wrapper">
+<div class="phone-frame">
+
+  <!-- NAV DRAWER (mobile) -->
+  <div id="nav-drawer" class="nav-drawer">
+    <div class="nav-drawer__inner">
+      <div class="nav-drawer__header">
+        <span class="nav-drawer__logo">BRAND LOGO</span>
+        <button class="nav-drawer__close" onclick="document.getElementById('nav-drawer').style.display='none'">×</button>
+      </div>
+      <div class="nav-drawer__group-label">COLLECTIONS</div>
+      <div class="nav-drawer__links">
+        <div class="nav-drawer__link">Daily Foundation</div>
+        <div class="nav-drawer__link">Targeted Care</div>
+      </div>
+      <div class="nav-drawer__group-label">MORE</div>
+      <div class="nav-drawer__links">
+        <div class="nav-drawer__link">Our story</div>
+        <div class="nav-drawer__link">The science</div>
+        <div class="nav-drawer__link" style="border-bottom:none;">FAQ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAV -->
+  <nav class="nav">
+    <button class="nav__hamburger" onclick="document.getElementById('nav-drawer').style.display='block'" aria-label="Open menu">
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><rect width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="6" width="18" height="1.5" rx="0.75" fill="currentColor"/><rect y="12" width="18" height="1.5" rx="0.75" fill="currentColor"/></svg>
+    </button>
+    <span class="nav__logo">BRAND LOGO</span>
+    <nav class="nav__desktop-links" aria-label="Main navigation">
+      <span class="nav__desktop-link">Daily Foundation</span>
+      <span class="nav__desktop-link">Targeted Care</span>
+      <span class="nav__desktop-link">Our story</span>
+      <span class="nav__desktop-link">The science</span>
+      <span class="nav__desktop-link">FAQ</span>
+    </nav>
+    <div class="nav__cart" aria-label="Cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="nav__cart-badge">0</span>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html" style="color:inherit;text-decoration:none;">Home</a><span class="breadcrumb__sep">/</span>
+    <span>Daily Foundation</span><span class="breadcrumb__sep">/</span>
+    <span class="breadcrumb__current" id="breadcrumb-product">Essential</span>
+  </div>
+
+  <!-- SKU PICKER (wireframe tool) -->
+  <div class="sku-picker">
+    <span>SKU</span>
+    <select id="skuPicker">
+      <option value="essential">Essential — Daily Foundation</option>
+      <option value="move">Move — Targeted Care</option>
+      <option value="prebiotic">Prebiotic — Targeted Care</option>
+      <option value="calm">Calm — Targeted Care</option>
+    </select>
+  </div>
+
+  <!-- ① PRODUCT HERO -->
+  <section class="pdp-hero">
+    <div class="section-label">① PRODUCT HERO — ABOVE THE FOLD</div>
+    <div class="pdp-hero__inner">
+      <!-- Gallery -->
+      <div class="pdp-hero__gallery">
+        <div class="pdp-hero__gallery-label">[ product photo ]</div>
+        <div class="pdp-hero__gallery-thumbs">
+          <div class="pdp-hero__thumb pdp-hero__thumb--active">1</div>
+          <div class="pdp-hero__thumb">2</div>
+          <div class="pdp-hero__thumb">3</div>
+          <div class="pdp-hero__thumb pdp-hero__thumb--video">▶</div>
+        </div>
+      </div>
+      <!-- Info column -->
+      <div class="pdp-hero__info">
+        <div class="pdp-hero__badge" id="hero-badge">FOUNDATION</div>
+        <div class="pdp-hero__name" id="hero-name">Essential</div>
+        <div class="pdp-hero__descriptor" id="hero-descriptor">Daily support for long-term energy, immunity, and healthspan.</div>
+        <div class="pdp-hero__rating">
+          <span class="pdp-hero__stars">★★★★★</span>
+          <span id="hero-rating">4.8 (234 reviews)</span>
+        </div>
+
+        <!-- ② PULL-QUOTE -->
+        <div class="section-label" style="padding:0;margin-top:2px;">② PRODUCT THESIS — PULL-QUOTE</div>
+        <div class="pdp-hero__pull-quote" id="hero-pull-quote">Designed for the dogs who look perfectly fine.</div>
+
+        <!-- Subscription snippet -->
+        <div>
+          <div class="pdp-hero__sub-label">SUBSCRIBE &amp; SAVE — SELECT WEIGHT + FREQUENCY</div>
+          <div class="pdp-hero__sub-grid">
+            <div class="pdp-hero__sub-row">
+              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header pdp-hero__sub-cell--weight">Weight</div>
+              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header">20 days</div>
+              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header">30 days</div>
+              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header">45 days</div>
+              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--header">60 days</div>
+            </div>
+            <div class="pdp-hero__sub-row">
+              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--weight">Up to 10 kg</div>
+              <div class="pdp-hero__sub-cell">—</div>
+              <div class="pdp-hero__sub-cell" style="border:0.5px solid var(--color-border-primary); font-weight:500;">$21 / mo</div>
+              <div class="pdp-hero__sub-cell">—</div>
+              <div class="pdp-hero__sub-cell">—</div>
+            </div>
+            <div class="pdp-hero__sub-row">
+              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--weight">10–25 kg</div>
+              <div class="pdp-hero__sub-cell">—</div>
+              <div class="pdp-hero__sub-cell">—</div>
+              <div class="pdp-hero__sub-cell">$26 / mo</div>
+              <div class="pdp-hero__sub-cell">—</div>
+            </div>
+            <div class="pdp-hero__sub-row">
+              <div class="pdp-hero__sub-cell pdp-hero__sub-cell--weight">25 kg +</div>
+              <div class="pdp-hero__sub-cell">$28 / mo</div>
+              <div class="pdp-hero__sub-cell">—</div>
+              <div class="pdp-hero__sub-cell">—</div>
+              <div class="pdp-hero__sub-cell">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="pdp-hero__pricing">
+          <span class="pdp-hero__price-subscribe">$21.00 / mo</span>
+          <span class="pdp-hero__price-once">$27.99</span>
+          <span class="pdp-hero__price-save">Save 20%</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="pdp-hero__ctas">
+          <div class="btn-primary" id="hero-atc">Start the habit</div>
+          <div class="btn-secondary">Buy once — $27.99</div>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="pdp-hero__trust">
+          <div class="trust-badge"><div class="trust-badge__icon">✓</div>Science-backed</div>
+          <div class="trust-badge"><div class="trust-badge__icon">✓</div>Natural ingredients</div>
+          <div class="trust-badge"><div class="trust-badge__icon">✓</div>Made in Italy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY ATC (mobile only) -->
+  <div class="sticky-atc">
+    <div class="sticky-atc__info">
+      <div class="sticky-atc__name" id="sticky-name">Essential</div>
+      <div class="sticky-atc__price">$21.00 / mo · Subscribe &amp; save</div>
+    </div>
+    <div class="sticky-atc__btn" id="sticky-btn">Start the habit</div>
+  </div>
+
+  <!-- ③ HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="section-label">③ HOW IT WORKS</div>
+    <div class="how-it-works__inner">
+      <div class="how-it-works__headline">How it works</div>
+      <div class="how-it-works__steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <div class="step__content">
+            <div class="step__title">Give one chew daily</div>
+            <div class="step__body">Same time each morning. With breakfast, before the walk — whatever fits the routine. The habit that requires no decision is the one that survives.</div>
+          </div>
+        </div>
+        <div class="step__connector"><div class="step__connector-line"></div></div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <div class="step__content">
+            <div class="step__title">Active ingredients absorb</div>
+            <div class="step__body">Each ingredient is formulated for bioavailability — the dose delivered is the dose that works. Mechanisms are sourced; nothing is proprietary or vague.</div>
+          </div>
+        </div>
+        <div class="step__connector"><div class="step__connector-line"></div></div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <div class="step__content">
+            <div class="step__title">Results build over time</div>
+            <div class="step__body">Structural outcomes — joint integrity, immune readiness, gut balance — are not immediate. They accumulate. Consistency is the mechanism.</div>
+          </div>
+        </div>
+      </div>
+      <div class="how-it-works__note">Many pet parents start noticing changes at 4–8 weeks of consistent use. The science behind why this takes time is explained in The Science section below.</div>
+    </div>
+  </section>
+
+  <!-- ④ PRODUCT THESIS (FULL) -->
+  <section class="product-thesis">
+    <div class="section-label">④ PRODUCT THESIS — FULL</div>
+    <div class="product-thesis__inner">
+      <div class="product-thesis__headline" id="thesis-headline">Built for the dogs who don't need fixing yet.</div>
+      <div class="product-thesis__body" id="thesis-body">Essential is Broono's daily foundation supplement — designed not to treat a condition, but to build the biological baseline that determines how a dog ages. The formulation targets the five systems most responsible for healthspan: immune readiness, antioxidant defence, energy metabolism, gut absorption, and musculoskeletal integrity. One chew, same time each day, repeated over months and years. The outcomes are structural, not immediate — and that is precisely the point.</div>
+      <div class="product-thesis__chain">
+        <div class="product-thesis__chain-label" id="thesis-chain-label">DAILY FOUNDATION → OUTCOMES OVER TIME</div>
+        <div class="product-thesis__chain-item" id="thesis-chain-1">Immune readiness</div>
+        <div class="product-thesis__chain-item" id="thesis-chain-2">Antioxidant defence</div>
+        <div class="product-thesis__chain-item" id="thesis-chain-3">Steady energy metabolism</div>
+        <div class="product-thesis__chain-item" id="thesis-chain-4">Slowed ageing process</div>
+        <div class="product-thesis__chain-item" id="thesis-chain-5">Longer healthspan</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ INGREDIENTS -->
+  <section class="ingredients-pdp">
+    <div class="section-label">⑤ INGREDIENTS</div>
+    <div class="ingredients-pdp__inner">
+      <div class="ingredients-pdp__headline">What's inside</div>
+      <div class="ingredients-pdp__sub">Every ingredient named. Every dose declared. Every mechanism sourced.</div>
+
+      <div class="ingredient-entry">
+        <div class="ingredient-entry__photo">[ photo ]</div>
+        <div class="ingredient-entry__content">
+          <div class="ingredient-entry__name">Beta-1,3/1,6-glucan</div>
+          <div class="ingredient-entry__dose">65 MG PER CHEW</div>
+          <div class="ingredient-entry__body">Derived from brewer's yeast cell wall. Studied for its role in trained immunity — the process by which immune cells learn to respond more efficiently to real threats.</div>
+        </div>
+      </div>
+
+      <div class="ingredient-entry">
+        <div class="ingredient-entry__photo">[ photo ]</div>
+        <div class="ingredient-entry__content">
+          <div class="ingredient-entry__name">Astaxanthin</div>
+          <div class="ingredient-entry__dose">2 MG PER CHEW</div>
+          <div class="ingredient-entry__body">A carotenoid antioxidant with unusually broad-spectrum activity. Helps support cellular defence against oxidative stress — a primary driver of the ageing process.</div>
+        </div>
+      </div>
+
+      <div class="ingredient-entry">
+        <div class="ingredient-entry__photo">[ photo ]</div>
+        <div class="ingredient-entry__content">
+          <div class="ingredient-entry__name">Coenzyme Q10</div>
+          <div class="ingredient-entry__dose">30 MG PER CHEW</div>
+          <div class="ingredient-entry__body">Supports mitochondrial energy production in cells. Levels naturally decline with age; supplementation helps maintain the metabolic efficiency that underpins vitality.</div>
+        </div>
+      </div>
+
+      <div class="ingredient-entry">
+        <div class="ingredient-entry__photo">[ photo ]</div>
+        <div class="ingredient-entry__content">
+          <div class="ingredient-entry__name">Omega-3 (EPA + DHA)</div>
+          <div class="ingredient-entry__dose">300 MG PER CHEW</div>
+          <div class="ingredient-entry__body">Marine-sourced. Supports joint comfort, skin barrier function, and neurological health. Research suggests most commercial dog foods provide sub-optimal omega-3 levels.</div>
+        </div>
+      </div>
+
+      <div class="ingredients-pdp__link">Explore all ingredients and mechanisms →</div>
+    </div>
+  </section>
+
+  <!-- ⑥ THE SCIENCE -->
+  <section class="science">
+    <div class="section-label">⑥ THE SCIENCE</div>
+    <div class="science__inner">
+      <div>
+        <div class="science__label">THE FORMULATION RATIONALE</div>
+        <div class="science__headline" id="science-headline">Why this formula. Why these doses.</div>
+        <div class="science__body" id="science-body">The five systems that determine how a dog ages — immune, antioxidant, metabolic, musculoskeletal, and digestive — are not independent. They interact. A formulation that addresses only one system in isolation misses the compounding effect of supporting them together. Essential is built around that interaction. Every ingredient was selected for its specific mechanism and dosed to the level studied in the research, not the minimum required to appear on a label.</div>
+        <div class="science__footer">No proprietary blends. No vague claims. Every ingredient listed, every dose declared, every mechanism sourced. Because the people who choose Broono already know how to read a label.</div>
+      </div>
+      <div>
+        <div class="science__callout">
+          <div class="science__callout-label">KEY FINDING — PURINA LIFESPAN STUDY</div>
+          <div class="science__callout-stat">"Lean-fed Labradors lived a median 1.8 years longer and had significantly delayed onset of chronic disease."</div>
+          <div class="science__callout-source">14-year longitudinal study · n=48</div>
+        </div>
+        <div class="science__callout">
+          <div class="science__callout-label">DOG AGING PROJECT</div>
+          <div class="science__callout-stat">"Dogs fed once daily showed better owner-reported health status than dogs fed multiple times per day."</div>
+          <div class="science__callout-source">Open-science cohort · 50,000+ dogs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ QUALITY SIGNAL -->
+  <section class="quality-signal">
+    <div class="section-label">⑦ QUALITY SIGNAL</div>
+    <div class="quality-signal__inner">
+      <div class="quality-signal__content">
+        <div class="quality-signal__headline">We don't trust the specification sheet. We test it.</div>
+        <div class="quality-signal__checkpoints">
+          <div class="checkpoint">
+            <div class="checkpoint__label">CHECKPOINT 1</div>
+            <div class="checkpoint__title">Incoming ingredients tested</div>
+            <div class="checkpoint__sub">Before production begins</div>
+          </div>
+          <div class="checkpoint__arrow">→</div>
+          <div class="checkpoint">
+            <div class="checkpoint__label">CHECKPOINT 2</div>
+            <div class="checkpoint__title">Finished batch tested</div>
+            <div class="checkpoint__sub">Before it leaves the lab</div>
+          </div>
+        </div>
+        <div class="quality-signal__badges">
+          <div class="badge">ISO 22000</div>
+          <div class="badge">Pharmaceutical-grade</div>
+          <div class="badge">Made in Italy</div>
+        </div>
+        <div class="quality-signal__link">→ Our quality standards</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑧ HOW TO USE -->
+  <section class="how-to-use">
+    <div class="section-label">⑧ HOW TO USE</div>
+    <div class="how-to-use__inner">
+      <div class="how-to-use__headline">The ritual</div>
+      <div class="how-to-use__ritual">
+        <div class="how-to-use__ritual-line">One chew. Same time. Every day.</div>
+        <div class="how-to-use__ritual-sub">The science is complicated. The habit isn't.</div>
+      </div>
+      <div class="how-to-use__rows">
+        <div class="how-to-use__row">
+          <span class="how-to-use__row-label">DOSE</span>
+          <span class="how-to-use__row-value">1 chew daily (see weight guide)</span>
+        </div>
+        <div class="how-to-use__row">
+          <span class="how-to-use__row-label">WHEN</span>
+          <span class="how-to-use__row-value">Morning · with or without food</span>
+        </div>
+        <div class="how-to-use__row">
+          <span class="how-to-use__row-label">FORMAT</span>
+          <span class="how-to-use__row-value">Soft chew · palatability tested</span>
+        </div>
+        <div class="how-to-use__row">
+          <span class="how-to-use__row-label">STORAGE</span>
+          <span class="how-to-use__row-value">Cool, dry place · resealable pouch</span>
+        </div>
+      </div>
+      <div class="how-to-use__note">Results build with consistency. Most pet parents start noticing changes at 4–8 weeks. Daily use is the mechanism — not the dose.</div>
+    </div>
+  </section>
+
+  <!-- ⑨ REVIEWS -->
+  <section class="reviews-pdp">
+    <div class="section-label">⑨ REVIEWS</div>
+    <div class="reviews-pdp__summary">
+      <div>
+        <div class="reviews-pdp__rating">4.8 / 5</div>
+        <div class="reviews-pdp__rating-sub">★★★★★ · 234 reviews</div>
+      </div>
+      <div>
+        <div class="reviews-pdp__recommend">94%</div>
+        <div class="reviews-pdp__recommend-sub">would recommend</div>
+      </div>
+    </div>
+    <div class="reviews-pdp__strip">
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__avatar">photo</div>
+          <div>
+            <div class="review-card__name">Sarah M.</div>
+            <div class="review-card__dog">Labrador · ★★★★★</div>
+          </div>
+        </div>
+        <div class="review-card__title">"Running like a puppy again"</div>
+        <div class="review-card__body">She's 9 years old. Noticed a difference in 3 weeks.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__avatar">photo</div>
+          <div>
+            <div class="review-card__name">James K.</div>
+            <div class="review-card__dog">Golden · ★★★★★</div>
+          </div>
+        </div>
+        <div class="review-card__title">"Finally a brand I trust"</div>
+        <div class="review-card__body">The ingredient list is completely transparent. Exactly what I was looking for.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__avatar">photo</div>
+          <div>
+            <div class="review-card__name">Priya R.</div>
+            <div class="review-card__dog">Poodle mix · ★★★★★</div>
+          </div>
+        </div>
+        <div class="review-card__title">"Coat is noticeably shinier"</div>
+        <div class="review-card__body">People keep asking what we're doing differently.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑩ FAQ -->
+  <section class="faq-pdp">
+    <div class="section-label">⑩ FAQ</div>
+    <div class="faq-pdp__inner">
+      <div class="faq-pdp__headline">Frequently asked</div>
+      <div class="faq-item faq-item--open">
+        <div class="faq-item__q" onclick="toggleFaq(this)">
+          How long until I see results?
+          <span class="faq-item__icon">+</span>
+        </div>
+        <div class="faq-item__a">Structural outcomes take time. Most pet parents start noticing changes — in coat condition, energy levels, or mobility — at 4–8 weeks of consistent daily use. The supplement is building a biological baseline, not producing an immediate effect. Consistency is the mechanism.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q" onclick="toggleFaq(this)">
+          Is Essential suitable for all dogs?
+          <span class="faq-item__icon">+</span>
+        </div>
+        <div class="faq-item__a">Essential is formulated for dogs of all ages and breeds. If your dog has a diagnosed health condition or is on medication, we recommend checking with your vet before starting any supplement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q" onclick="toggleFaq(this)">
+          Can I give Essential alongside a Targeted Care product?
+          <span class="faq-item__icon">+</span>
+        </div>
+        <div class="faq-item__a">Yes. Essential is designed as the daily foundation; Targeted Care products (Move, Prebiotic, Calm) address specific systems on top of that baseline. The two collections are designed to work together.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q" onclick="toggleFaq(this)">
+          How does the subscription work?
+          <span class="faq-item__icon">+</span>
+        </div>
+        <div class="faq-item__a">You choose the delivery frequency that matches your dog's weight and usage. You can pause, change frequency, or cancel at any time from your account — no fees, no lock-in. The subscription saves 20% versus one-time purchase.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q" onclick="toggleFaq(this)">
+          Where is Essential made?
+          <span class="faq-item__icon">+</span>
+        </div>
+        <div class="faq-item__a">Made in Italy in our family laboratory, to pharmaceutical-grade manufacturing standards (ISO 22000). Every incoming ingredient and every finished batch is independently tested before leaving the facility.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑪ COMPLETE THE ROUTINE -->
+  <section class="complete-routine">
+    <div class="section-label">⑪ COMPLETE THE ROUTINE</div>
+    <div class="complete-routine__inner">
+      <div class="complete-routine__headline">Complete the routine</div>
+      <div class="complete-routine__sub" id="routine-sub">Essential is the foundation. Add targeted support for the systems that need it most.</div>
+      <div class="complete-routine__strip">
+        <div class="routine-card">
+          <div class="routine-card__photo">[ photo ]</div>
+          <div class="routine-card__body">
+            <div class="routine-card__eyebrow">TARGETED CARE</div>
+            <div class="routine-card__name">Move</div>
+            <div class="routine-card__desc">Joint support for dogs who still run like they always have.</div>
+            <div class="routine-card__cta">Add to routine</div>
+          </div>
+        </div>
+        <div class="routine-card">
+          <div class="routine-card__photo">[ photo ]</div>
+          <div class="routine-card__body">
+            <div class="routine-card__eyebrow">TARGETED CARE</div>
+            <div class="routine-card__name">Prebiotic</div>
+            <div class="routine-card__desc">Gut support for absorption, immunity, and skin health.</div>
+            <div class="routine-card__cta">Add to routine</div>
+          </div>
+        </div>
+        <div class="routine-card">
+          <div class="routine-card__photo">[ photo ]</div>
+          <div class="routine-card__body">
+            <div class="routine-card__eyebrow">TARGETED CARE</div>
+            <div class="routine-card__name">Calm</div>
+            <div class="routine-card__desc">Daily support for dogs who carry their stress quietly.</div>
+            <div class="routine-card__cta">Add to routine</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">BRAND LOGO</div>
+      <div class="footer__origin">🇮🇹 Made in Italy · Est. 1960s</div>
+      <div class="footer__cols">
+        <div>
+          <div class="footer__col-label">SHOP</div>
+          <div class="footer__col-links">Daily Foundation<br>Targeted Care<br>Shop all</div>
+        </div>
+        <div>
+          <div class="footer__col-label">HELP</div>
+          <div class="footer__col-links">Our story<br>The science<br>FAQ</div>
+        </div>
+      </div>
+      <div class="footer__legal">© 2026 Broono · Privacy · Returns · Terms</div>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+  /* ── FAQ ACCORDION ── */
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('faq-item--open');
+  }
+
+  /* ── SKU SWITCHER ── */
+  const SKU_DATA = {
+    essential: {
+      badge: 'FOUNDATION',
+      name: 'Essential',
+      descriptor: 'Daily support for long-term energy, immunity, and healthspan.',
+      rating: '4.8 (234 reviews)',
+      pullQuote: 'Designed for the dogs who look perfectly fine.',
+      atcLabel: 'Start the habit',
+      breadcrumb: 'Essential',
+      breadcrumbCollection: 'Daily Foundation',
+      thesisHeadline: 'Built for the dogs who don\'t need fixing yet.',
+      thesisBody: 'Essential is Broono\'s daily foundation supplement — designed not to treat a condition, but to build the biological baseline that determines how a dog ages. The formulation targets the five systems most responsible for healthspan: immune readiness, antioxidant defence, energy metabolism, gut absorption, and musculoskeletal integrity. One chew, same time each day, repeated over months and years.',
+      thesisChainLabel: 'DAILY FOUNDATION → OUTCOMES OVER TIME',
+      thesisChain: ['Immune readiness', 'Antioxidant defence', 'Steady energy metabolism', 'Slowed ageing process', 'Longer healthspan'],
+      scienceHeadline: 'Why this formula. Why these doses.',
+      scienceBody: 'The five systems that determine how a dog ages — immune, antioxidant, metabolic, musculoskeletal, and digestive — are not independent. They interact. Essential is built around that interaction. Every ingredient was selected for its specific mechanism and dosed to the level studied in the research.',
+      routineSub: 'Essential is the foundation. Add targeted support for the systems that need it most.',
+    },
+    move: {
+      badge: 'TARGETED CARE',
+      name: 'Move',
+      descriptor: 'Daily joint support for dogs who still run like they always have.',
+      rating: '4.9 (142 reviews)',
+      pullQuote: 'Support doesn\'t wait for the limp. It starts on an ordinary Tuesday.',
+      atcLabel: 'Add to routine',
+      breadcrumb: 'Move',
+      breadcrumbCollection: 'Targeted Care',
+      thesisHeadline: 'Joints deteriorate years before a dog shows pain.',
+      thesisBody: 'Move is formulated for the musculoskeletal system — specifically for the cartilage, synovial fluid, and bone density that determine how freely a dog moves across its lifetime. The ingredients are dosed at clinically studied levels, not at the minimum required to appear on a label. Daily use, started before symptoms appear, is when this supplement works best.',
+      thesisChainLabel: 'MUSCULOSKELETAL SUPPORT → OUTCOMES',
+      thesisChain: ['Cartilage integrity maintained', 'Synovial fluid supported', 'Bone density preserved', 'Sustained mobility over years'],
+      scienceHeadline: 'The joints that last are the joints that were supported early.',
+      scienceBody: 'Cartilage has limited regenerative capacity. Once degraded, it does not repair easily. The research case for preventative joint support — beginning in healthy dogs, before any sign of stiffness — is well established in veterinary nutrition literature. Move is built on that premise.',
+      routineSub: 'Move targets joints specifically. Pair with Essential as your daily foundation for whole-system support.',
+    },
+    prebiotic: {
+      badge: 'TARGETED CARE',
+      name: 'Prebiotic',
+      descriptor: 'Daily gut support for absorption, immunity, and skin health.',
+      rating: '4.7 (187 reviews)',
+      pullQuote: 'What absorbs well, ages well.',
+      atcLabel: 'Add to routine',
+      breadcrumb: 'Prebiotic',
+      breadcrumbCollection: 'Targeted Care',
+      thesisHeadline: 'The gut is upstream of almost everything.',
+      thesisBody: 'Prebiotic supports the digestive system — specifically the microbiome balance, nutrient absorption efficiency, and gut-linked immunity that together determine how much of what a dog eats actually reaches its cells. Skin and coat health are a downstream indicator: when the gut is working well, it shows.',
+      thesisChainLabel: 'GUT SUPPORT → OUTCOMES',
+      thesisChain: ['Microbiome balance supported', 'Nutrient absorption improved', 'Gut-linked immunity strengthened', 'Skin and coat health visible'],
+      scienceHeadline: 'Absorption is the rate-limiting step in nutrition.',
+      scienceBody: 'A dog can eat an excellent diet and still be nutritionally sub-optimal if gut absorption is inefficient. The microbiome mediates absorption, immune signalling, and inflammation. Supporting it proactively — before dysbiosis becomes visible — is the logic behind Prebiotic.',
+      routineSub: 'Prebiotic targets gut health specifically. Pair with Essential as your daily foundation for whole-system support.',
+    },
+    calm: {
+      badge: 'TARGETED CARE',
+      name: 'Calm',
+      descriptor: 'Daily support for dogs who carry their stress quietly.',
+      rating: '4.8 (98 reviews)',
+      pullQuote: 'Not every dog who needs this shows it.',
+      atcLabel: 'Add to routine',
+      breadcrumb: 'Calm',
+      breadcrumbCollection: 'Targeted Care',
+      thesisHeadline: 'Stress without a name is still stress.',
+      thesisBody: 'Calm supports the nervous system — specifically the neurochemical balance that determines how a dog processes novelty, separation, noise, and change. Not sedation. Not suppression. Support for the system that regulates emotional response, so that ordinary days feel ordinary again.',
+      thesisChainLabel: 'NERVOUS SYSTEM SUPPORT → OUTCOMES',
+      thesisChain: ['Neurochemical balance supported', 'Stress response modulated', 'Recovery from arousal faster', 'Calmer baseline over time'],
+      scienceHeadline: 'Calm is not the absence of stimulation. It is the capacity to return.',
+      scienceBody: 'The target is not to remove a dog\'s responsiveness — it is to shorten the recovery arc after a stressor. The ingredients in Calm are selected for their studied role in supporting GABA signalling and cortisol regulation, at doses consistent with the available research.',
+      routineSub: 'Calm targets emotional balance specifically. Pair with Essential as your daily foundation for whole-system support.',
+    }
+  };
+
+  function applySku(key) {
+    const d = SKU_DATA[key];
+    if (!d) return;
+    document.getElementById('hero-badge').textContent = d.badge;
+    document.getElementById('hero-name').textContent = d.name;
+    document.getElementById('hero-descriptor').textContent = d.descriptor;
+    document.getElementById('hero-rating').textContent = d.rating;
+    document.getElementById('hero-pull-quote').textContent = d.pullQuote;
+    document.getElementById('hero-atc').textContent = d.atcLabel;
+    document.getElementById('sticky-name').textContent = d.name;
+    document.getElementById('sticky-btn').textContent = d.atcLabel;
+    document.getElementById('breadcrumb-product').textContent = d.breadcrumb;
+    document.getElementById('thesis-headline').textContent = d.thesisHeadline;
+    document.getElementById('thesis-body').textContent = d.thesisBody;
+    document.getElementById('thesis-chain-label').textContent = d.thesisChainLabel;
+    const chainIds = ['thesis-chain-1','thesis-chain-2','thesis-chain-3','thesis-chain-4','thesis-chain-5'];
+    chainIds.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (d.thesisChain[i]) { el.textContent = d.thesisChain[i]; el.style.display = ''; }
+      else { el.style.display = 'none'; }
+    });
+    document.getElementById('science-headline').textContent = d.scienceHeadline;
+    document.getElementById('science-body').textContent = d.scienceBody;
+    document.getElementById('routine-sub').textContent = d.routineSub;
+  }
+
+  document.getElementById('skuPicker').addEventListener('change', e => applySku(e.target.value));
+</script>
+
+</body>
+</html>

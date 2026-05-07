@@ -936,3 +936,109 @@ Directions explored and set aside from the primary homepage and landing page arc
 ---
 
 *End of Broono Homepage Master Brief — v1.0*
+
+---
+
+## 14. Product Detail Page (PDP) — Master Brief
+
+> **Status:** In progress
+> **Sections drafted:** § ① ② — copy directions complete; § ③–⑪ structure decided, copy directions pending
+
+---
+
+### 14.0 — PDP Status at a Glance
+
+| #  | Section                     | Status                                                  |
+| -- | --------------------------- | ------------------------------------------------------- |
+| ① | Product Hero (above fold)   | Decided — copy directions complete                     |
+| ② | Product Thesis (pull-quote) | Decided — copy per SKU complete, subject to adjustment |
+| ③ | How It Works                | Decided — copy directions pending                      |
+| ④ | Product Thesis (full)       | Decided — copy directions pending                      |
+| ⑤ | Ingredients                 | Decided — copy directions pending                      |
+| ⑥ | The Science                 | Decided — copy directions pending                      |
+| ⑦ | Quality Signal              | Decided — copy directions pending                      |
+| ⑧ | How to Use                  | Decided — copy directions pending                      |
+| ⑨ | Reviews                     | Pending — waiting on customer content                  |
+| ⑩ | FAQ                         | Decided — copy per SKU pending                         |
+| ⑪ | Complete the Routine        | Decided — copy directions pending                      |
+
+---
+
+### 14.1 — PDP Design Principles
+
+The PDP visitor has intent. They arrived from a product card, collection page, or ad. The page does not need to introduce Broono — it needs to confirm the visitor is in the right place, educate them on this specific product, and remove every remaining doubt before the action.
+
+**The three jobs of the PDP — in order:**
+
+1. **Confirm the decision** — above the fold, the visitor should immediately know: right product, right collection, right brand.
+2. **Earn the purchase through transparency** — ingredients named, doses declared, mechanisms sourced. The science section carries the formulation rationale. No vague claims.
+3. **Remove the last doubt** — reviews and FAQ are not decoration. They are the final conversation before the purchase.
+
+**PDP-specific voice note:** The Sage voice on the PDP operates at closer range than on the homepage. The visitor is not browsing — they are evaluating. Copy should be more precise, less poetic. Emotion in headlines; clarity in every line of body copy. The abstraction rule still applies, but the landing strip is shorter.
+
+**Colour:** Each PDP uses the product's secondary colour as the accent throughout — collection badge, pull-quote, ingredient callout borders, science section background tints.
+
+| Product   | Collection    | Accent colour |
+| --------- | ------------- | ------------- |
+| Essential | FOUNDATION    | Tangerine     |
+| Move      | TARGETED CARE | Iris          |
+| Prebiotic | TARGETED CARE | Cherry        |
+| Calm      | TARGETED CARE | Peppermint    |
+
+---
+
+### § ① — Product Hero (Above the Fold)
+
+**Job:** Orient instantly and hold. The visitor arrived with intent — confirm it immediately, remove friction, invite the action.
+
+**Design:**
+
+- Two-column: gallery left (~55%), info right (~45%)
+- Gallery: photo stack + product video thumbnail; swipe carousel on mobile
+- Sticky mobile bar: product name + price + ATC on scroll
+- Background: White or Oatmilk Tint +1
+
+**Info column — top to bottom:**
+
+1. Collection badge — FOUNDATION or TARGETED CARE in small caps, product accent colour
+2. Product name — Pesto M.
+3. Short descriptor — benefit statement, one sentence, plain language (see per-SKU table)
+4. Star rating + review count
+5. Pull-quote — § ② (see below)
+6. Subscription snippet — weight × frequency grid, default to subscribe
+7. Price — subscribe price bold, one-time strikethrough, "subscribe & save X%"
+8. Variant selector — if applicable
+9. ATC — "Start the habit" (Foundation) / "Add to routine" (Targeted Care)
+10. Trust badges — Science-backed · Natural ingredients · Made in Italy
+
+**Status:** Decided — descriptors placeholder pending final SKU brief
+
+**Short descriptors per SKU:**
+
+| Product   | Collection    | Descriptor                                                        |
+| --------- | ------------- | ----------------------------------------------------------------- |
+| Essential | FOUNDATION    | Daily support for long-term energy, immunity, and healthspan.     |
+| Move      | TARGETED CARE | Daily joint support for dogs who still run like they always have. |
+| Prebiotic | TARGETED CARE | Daily gut support for absorption, immunity, and skin health.      |
+| Calm      | TARGETED CARE | Daily support for dogs who carry their stress quietly.            |
+
+---
+
+### § ② — Product Thesis (Pull-Quote, Above Fold)
+
+**Job:** First brand voice the visitor reads after the product name. States Broono's position on the system this product supports. Confirms the visitor is in the right place. Does not sell — orients.
+
+**Design:** Single line. Apfel Grotezk Fett. Sits between star rating and subscription snippet. No quotation marks.
+
+**Status:** Decided — subject to adjustment
+
+**Copy per SKU:**
+
+| Product   | Pull-quote                                                                        |
+| --------- | --------------------------------------------------------------------------------- |
+| Essential | Designed for the dogs who look perfectly fine.                                    |
+| Move      | Support doesn't wait for the limp. It starts on an ordinary Tuesday.              |
+| Prebiotic | Supports a healthy gut microbiome. The most important driver of long-term health. |
+| Calm      | Not every dog who needs this shows it.                                            |
+
+**Voice note:** One declarative sentence per product. Sage voice — states a position, does not persuade. The pull-quote is a door, not a room. The full thesis (§ ④) is where the argument is made.
