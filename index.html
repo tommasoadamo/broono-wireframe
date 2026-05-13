@@ -140,7 +140,11 @@
     border-bottom: 0.5px solid var(--color-border-tertiary);
   }
   .hero__inner {
-    background: var(--color-background-secondary);
+    background-color: var(--color-background-secondary);
+    background-image: url("assets/pictures/weimaraner-beige-185-1.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
     min-height: 300px;
     display: flex;
     flex-direction: column;
@@ -148,7 +152,12 @@
     padding: 16px;
     position: relative;
   }
+  .hero__content {
+    position: relative;
+    z-index: 1;
+  }
   .hero__media-placeholder {
+    display: none !important;
     position: absolute; top: 30%; left: 50%;
     transform: translate(-50%, -50%);
     font-size: 9px; color: var(--color-text-tertiary);
@@ -163,6 +172,33 @@
   }
   .hero__body--italic { font-style: italic; margin-bottom: 12px; }
   .hero__ctas { display: flex; gap: 8px; }
+  .hero-text-image {
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .hero-text-image__inner {
+    background: var(--color-background-secondary);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .hero-text-image__content {
+    max-width: none;
+  }
+  .hero-text-image__media {
+    min-height: 220px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--color-background-secondary);
+  }
+  .hero-text-image__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
   .btn-primary {
     background: var(--color-text-primary); color: var(--color-background-primary);
     padding: 9px 14px; border-radius: 6px;
@@ -618,6 +654,7 @@
 
     /* ── HERO ── */
     .hero__inner {
+      background-position: center center;
       flex-direction: row;
       align-items: stretch;
       min-height: 520px;
@@ -631,7 +668,7 @@
     }
     .hero__media {
       flex: 1;
-      background: var(--color-background-secondary);
+      background: transparent;
       display: flex; align-items: center; justify-content: center;
       position: relative;
     }
@@ -645,6 +682,27 @@
     .btn-primary { font-size: 14px; padding: 14px 24px; }
     .btn-secondary { font-size: 14px; padding: 14px 24px; }
     .hero__ctas { gap: 12px; }
+    .hero-text-image__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 48px;
+      min-height: 520px;
+      padding: 48px 56px;
+    }
+    .hero-text-image__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+      max-width: none;
+    }
+    .hero-text-image__media {
+      min-height: 420px;
+    }
+    .hero-text-image__media img {
+      min-height: 420px;
+    }
 
     /* ── BRAND STATEMENT ── */
     .brand-statement__inner {
@@ -1010,6 +1068,24 @@
         </div>
         <div class="hero__media">
           <span class="hero__media-placeholder">[ full-bleed photo / video ]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ①b HERO TEXT + IMAGE -->
+    <section class="hero-text-image">
+      <div class="section-label">①b HERO TEXT + IMAGE</div>
+      <div class="hero-text-image__inner">
+        <div class="hero__content hero-text-image__content">
+          <h2 class="hero__headline">Built for the quiet signals you already notice.</h2>
+          <p class="hero__body">Daily care for the dog who still runs to the door, still asks for the walk, still looks fine today. Broono is designed for the years before symptoms make the decision for you.</p>
+          <div class="hero__ctas">
+            <div class="btn-primary">Shop all</div>
+            <div class="btn-secondary">Take the quiz</div>
+          </div>
+        </div>
+        <div class="hero__media hero-text-image__media">
+          <img src="assets/pictures/weimaraner-beige-185-1.png" alt="Weimaraner dog on a beige background">
         </div>
       </div>
     </section>
@@ -1409,11 +1485,11 @@
     if (window.innerWidth >= 768) {
       /* Desktop: hide the placeholder that was inside .hero__inner for mobile stacking */
       if (heroMediaPlaceholder) heroMediaPlaceholder.style.display = 'none';
-      if (heroMediaRight) heroMediaRight.style.display = 'block';
+      if (heroMediaRight) heroMediaRight.style.display = 'none';
       heroContent.style.position = 'relative';
     } else {
       /* Mobile: stack content over the bg, show placeholder in middle */
-      if (heroMediaPlaceholder) heroMediaPlaceholder.style.display = 'block';
+      if (heroMediaPlaceholder) heroMediaPlaceholder.style.display = 'none';
       if (heroMediaRight) heroMediaRight.style.display = 'none';
     }
   }
