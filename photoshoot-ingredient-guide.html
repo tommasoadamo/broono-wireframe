@@ -270,6 +270,59 @@
       text-align: center;
     }
 
+    .table-scroll {
+      margin: 24px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .table-scroll table {
+      margin: 0;
+    }
+
+    .appendix-table th:nth-child(2),
+    .appendix-table td:nth-child(2) {
+      position: sticky;
+      left: 0;
+      background: var(--paper);
+      z-index: 1;
+      box-shadow: 1px 0 0 var(--line);
+    }
+
+    .appendix-table th:nth-child(2) {
+      background: #eef5ff;
+      z-index: 2;
+    }
+
+    @media (max-width: 860px) {
+      .appendix-table {
+        font-size: 13px;
+      }
+
+      .appendix-table th,
+      .appendix-table td {
+        padding: 7px 8px;
+      }
+
+      .appendix-table th.sku,
+      .appendix-table td.sku {
+        text-align: center;
+        width: 44px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .appendix-table {
+        font-size: 12px;
+        min-width: 640px;
+      }
+
+      .appendix-table th,
+      .appendix-table td {
+        padding: 6px 7px;
+      }
+    }
+
     @media (max-width: 980px) {
       html {
         scroll-padding-top: 92px;
@@ -420,18 +473,18 @@
             <tr><th>Ingredient</th><th>Role</th></tr>
           </thead>
           <tbody>
-            <tr><td><strong>Yeast Cell Wall</strong></td><td>Source of beta-glucans, which modulate the immune system by activating macrophages and natural killer cells. Supports immune readiness without overstimulating the immune response.</td></tr>
-            <tr><td><strong>Inulin</strong></td><td>A prebiotic fibre that feeds beneficial gut bacteria (primarily Bifidobacterium and Lactobacillus strains). Supports a balanced microbiome, which in turn influences immune function, digestion, and mood.</td></tr>
-            <tr><td><strong>Glycine</strong></td><td>An amino acid and primary component of collagen. Supports the synthesis of connective tissue, skin elasticity, and joint cartilage. Also plays a role in liver detoxification and sleep quality.</td></tr>
-            <tr><td><strong>MSM</strong> <em>(Methylsulfonylmethane)</em></td><td>An organic sulphur compound that supports collagen and keratin formation, reduces oxidative stress in joint tissue, and contributes to coat quality and skin health.</td></tr>
-            <tr><td><strong>Selenium</strong></td><td>A trace mineral and antioxidant cofactor. Supports thyroid hormone metabolism and immune function. Works synergistically with Vitamin E to protect cell membranes from oxidative damage.</td></tr>
-            <tr><td><strong>Calcium</strong></td><td>Essential for bone density, dental health, muscle contraction, and nerve signal transmission. Particularly important in growing dogs and seniors where bone remodelling is active.</td></tr>
-            <tr><td><strong>Zinc</strong></td><td>Supports skin integrity, wound healing, immune function, and enzyme activity. Zinc deficiency is one of the most common mineral deficiencies in dogs and is often visible first in coat and skin condition.</td></tr>
-            <tr><td><strong>Copper</strong></td><td>Supports iron absorption, connective tissue formation, and melanin production (responsible for coat pigmentation). Works alongside zinc in maintaining skin and coat health.</td></tr>
-            <tr><td><strong>Manganese</strong></td><td>Supports bone formation, cartilage development, and the activation of enzymes involved in energy metabolism and antioxidant defence. Often under-represented in commercial dog food.</td></tr>
-            <tr><td><strong>Vitamin B Complex</strong></td><td>A group of water-soluble vitamins (B1, B2, B3, B5, B6, B7, B9, B12) that support energy metabolism, red blood cell production, nervous system function, and coat and skin health.</td></tr>
-            <tr><td><strong>Vitamin C</strong></td><td>An antioxidant that supports collagen synthesis, immune function, and iron absorption. Dogs synthesise some Vitamin C endogenously but benefit from supplementation under stress or during illness.</td></tr>
-            <tr><td><strong>Vitamin E</strong></td><td>A fat-soluble antioxidant that protects cell membranes from free radical damage. Supports skin and coat health, immune function, and works in tandem with selenium.</td></tr>
+            <tr><td data-label="Overlap"><strong>Yeast Cell Wall</strong></td><td data-label="Prop">Source of beta-glucans, which modulate the immune system by activating macrophages and natural killer cells. Supports immune readiness without overstimulating the immune response.</td></tr>
+            <tr><td data-label="Overlap"><strong>Inulin</strong></td><td data-label="Prop">A prebiotic fibre that feeds beneficial gut bacteria (primarily Bifidobacterium and Lactobacillus strains). Supports a balanced microbiome, which in turn influences immune function, digestion, and mood.</td></tr>
+            <tr><td data-label="Overlap"><strong>Glycine</strong></td><td data-label="Prop">An amino acid and primary component of collagen. Supports the synthesis of connective tissue, skin elasticity, and joint cartilage. Also plays a role in liver detoxification and sleep quality.</td></tr>
+            <tr><td data-label="Overlap"><strong>MSM</strong> <em>(Methylsulfonylmethane)</em></td><td data-label="Prop">An organic sulphur compound that supports collagen and keratin formation, reduces oxidative stress in joint tissue, and contributes to coat quality and skin health.</td></tr>
+            <tr><td data-label="Overlap"><strong>Selenium</strong></td><td data-label="Prop">A trace mineral and antioxidant cofactor. Supports thyroid hormone metabolism and immune function. Works synergistically with Vitamin E to protect cell membranes from oxidative damage.</td></tr>
+            <tr><td data-label="Overlap"><strong>Calcium</strong></td><td data-label="Prop">Essential for bone density, dental health, muscle contraction, and nerve signal transmission. Particularly important in growing dogs and seniors where bone remodelling is active.</td></tr>
+            <tr><td data-label="Overlap"><strong>Zinc</strong></td><td data-label="Prop">Supports skin integrity, wound healing, immune function, and enzyme activity. Zinc deficiency is one of the most common mineral deficiencies in dogs and is often visible first in coat and skin condition.</td></tr>
+            <tr><td data-label="Overlap"><strong>Copper</strong></td><td data-label="Prop">Supports iron absorption, connective tissue formation, and melanin production (responsible for coat pigmentation). Works alongside zinc in maintaining skin and coat health.</td></tr>
+            <tr><td data-label="Overlap"><strong>Manganese</strong></td><td data-label="Prop">Supports bone formation, cartilage development, and the activation of enzymes involved in energy metabolism and antioxidant defence. Often under-represented in commercial dog food.</td></tr>
+            <tr><td data-label="Overlap"><strong>Vitamin B Complex</strong></td><td data-label="Prop">A group of water-soluble vitamins (B1, B2, B3, B5, B6, B7, B9, B12) that support energy metabolism, red blood cell production, nervous system function, and coat and skin health.</td></tr>
+            <tr><td data-label="Overlap"><strong>Vitamin C</strong></td><td data-label="Prop">An antioxidant that supports collagen synthesis, immune function, and iron absorption. Dogs synthesise some Vitamin C endogenously but benefit from supplementation under stress or during illness.</td></tr>
+            <tr><td data-label="Overlap"><strong>Vitamin E</strong></td><td data-label="Prop">A fat-soluble antioxidant that protects cell membranes from free radical damage. Supports skin and coat health, immune function, and works in tandem with selenium.</td></tr>
           </tbody>
         </table>
 
@@ -561,16 +614,17 @@
 
         <h2 id="appendix">Appendix &mdash; Prop Shopping List</h2>
         <p>All food and botanical props across the four-SKU shoot. Overlaps marked across products. Use this to consolidate purchasing and identify props that can be styled differently between sets.</p>
+        <div class="table-scroll">
         <table class="appendix-table">
           <thead>
             <tr>
               <th></th>
               <th>Prop / Food Item</th>
               <th>Ingredient(s) Represented</th>
-              <th>Essential</th>
-              <th>Prebiotic</th>
-              <th>Move</th>
-              <th>Calm</th>
+              <th class="sku">Essential</th>
+              <th class="sku">Prebiotic</th>
+              <th class="sku">Move</th>
+              <th class="sku">Calm</th>
               <th>Notes</th>
             </tr>
           </thead>
@@ -614,6 +668,7 @@
             <tr><td>&#9989;</td><td><strong>Spinach leaves</strong></td><td>Magnesium Glycinate</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>Supporting prop</td></tr>
           </tbody>
         </table>
+        </div>
 
         <h3 id="key-overlaps-summary">Key Overlaps Summary</h3>
         <table>
