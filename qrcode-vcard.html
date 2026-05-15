@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vCard Builder</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
+  <style>
+    :root {
+      --accent:   #0559C6;
+      --accent2:  #E06214;
+      --bg:       #FFEBC2;
+      --surface:  #fff;
+      --panel:    #f5f0e8;
+      --border:   rgba(0,0,0,0.10);
+      --text:     #1a1a1a;
+      --muted:    #666;
+      --toggle-on: #0559C6;
+      --toggle-off: #ccc;
+      --radius:   12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* ── Editor panel ─────────────────────────────────────── */
+    #editor {
+      width: 340px;
+      min-width: 280px;
+      background: var(--surface);
+      border-right: 1.5px solid var(--border);
+      padding: 1.5rem 1.25rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    #editor h2 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .field-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .field-row input[type="text"],
+    .field-row input[type="email"],
+    .field-row input[type="tel"],
+    .field-row input[type="url"] {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.65rem;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: var(--text);
+      background: var(--panel);
+      transition: border-color 0.15s, opacity 0.15s;
+      outline: none;
+    }
+
+    .field-row input:focus { border-color: var(--accent); }
+    .field-row input:disabled { opacity: 0.35; pointer-events: none; }
+
+    /* Toggle switch */
+    .toggle {
+      flex-shrink: 0;
+      position: relative;
+      width: 34px;
+      height: 20px;
+    }
+
+    .toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: var(--toggle-off);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .toggle input:checked + .toggle-track { background: var(--toggle-on); }
+
+    .toggle-track::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 14px; height: 14px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .toggle input:checked + .toggle-track::after { transform: translateX(14px); }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 1rem 0 0.5rem;
+    }
+
+    /* ── Preview area ─────────────────────────────────────── */
+    #preview-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(5,89,198,0.12);
+    }
+
+    .card-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.15rem;
+    }
+
+    .card-title {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .card-company {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1.4rem;
+    }
+
+    #qr {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    #qr-wrap {
+      position: relative;
+      width: 160px;
+      height: 160px;
+    }
+
+    #qr-cutout-overlay {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border: 1.5px dashed rgba(0,0,0,0.25);
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    #qr canvas, #qr img {
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .card-details {
+      list-style: none;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .card-details a { color: inherit; text-decoration: none; }
+    .card-details a:hover { color: var(--accent); }
+
+    .btn-download {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 100px;
+      transition: opacity 0.15s;
+    }
+
+    .btn-download:hover { opacity: 0.85; }
+
+    /* QR format selector */
+    .qr-format-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .qr-format-row label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .qr-format-row select {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: var(--text);
+      background: var(--panel);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .qr-format-row select:focus { border-color: var(--accent); }
+
+    /* vcf output */
+    #vcf-out {
+      width: 300px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    /* ── Mode tabs ─────────────────────────────────────── */
+    .mode-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .mode-tab {
+      flex: 1;
+      padding: 0.45rem 0.5rem;
+      font-family: inherit;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--panel);
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .mode-tab.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .mode-section { display: none; }
+    .mode-section.visible { display: contents; }
+
+    /* URL card preview tweaks */
+    .card-url-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      word-break: break-all;
+      margin-top: 0.8rem;
+    }
+
+    @media print {
+      #editor, #vcf-out { display: none; }
+      #preview-wrap { padding: 0; }
+      .card { box-shadow: none; border: none; }
+      .btn-download { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Editor ──────────────────────────────────────────────── -->
+<aside id="editor">
+  <h2>Card Builder</h2>
+
+  <div class="mode-tabs">
+    <button class="mode-tab active" data-mode="vcard">vCard</button>
+    <button class="mode-tab" data-mode="url">URL QR</button>
+  </div>
+
+  <!-- ── URL QR mode ── -->
+  <div class="mode-section" id="mode-url">
+    <div class="section-label">URL</div>
+    <div class="field-row">
+      <input type="url" id="url-input" placeholder="https://example.com" value="https://example.com" style="flex:1" />
+    </div>
+    <div class="section-label">Logo Cutout</div>
+    <div class="field-row" style="flex-direction:column;align-items:stretch;gap:0.4rem">
+      <div style="display:flex;align-items:center;gap:0.6rem">
+        <label class="toggle"><input type="checkbox" id="tog-url-cutout"><span class="toggle-track"></span></label>
+        <span style="font-size:0.78rem;color:var(--muted)">Enable cutout</span>
+      </div>
+      <div id="url-cutout-controls" style="display:none;padding-left:2.5rem">
+        <input type="range" id="url-cutout-size" min="5" max="30" value="20" style="width:100%;accent-color:var(--accent)" />
+        <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--muted);margin-top:0.2rem">
+          <span>Size: <strong id="url-cutout-size-label">20%</strong></span>
+          <span id="url-cutout-warn" style="color:#c00;display:none">⚠ exceeds EC limit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── vCard mode ── -->
+  <div class="mode-section visible" id="mode-vcard">
+  <div class="section-label">Name</div>
+  <div class="field-row">
+    <label class="toggle"><input type="checkbox" id="tog-firstName"><span class="toggle-track"></span></label>
+    <input type="text" id="firstName" placeholder="First name" value="First" disabled />
+  </div>
+  <div class="field-row">
+    <label class="toggle"><input type="checkbox" id="tog-lastName"><span class="toggle-track"></span></label>
+    <input type="text" id="lastName" placeholder="Last name" value="Last" disabled />
+  </div>
+
+  <div class="section-label">Work</div>
+  <div class="field-row">
+    <label class="toggle"><input type="checkbox" id="tog-title"><span class="toggle-track"></span></label>
+    <input type="text" id="title" placeholder="Job title" value="Job Title" disabled />
+  </div>
+  <div class="field-row">
+    <label class="toggle"><input type="checkbox" id="tog-company"><span class="toggle-track"></span></label>
+    <input type="text" id="company" placeholder="Company" value="Company Name" disabled />
+  </div>
+
+  <div class="section-label">Contact</div>
+  <div class="field-row">
+    <label class="toggle"><input type="checkbox" id="tog-email"><span class="toggle-track"></span></label>
+    <input type="email" id="email" placeholder="Email" value="email@example.com" disabled />
+  </div>
+  <div class="field-row">
+    <label class="toggle"><input type="checkbox" id="tog-phone"><span class="toggle-track"></span></label>
+    <input type="tel" id="phone" placeholder="Phone" value="+1 000 000 0000" disabled />
+  </div>
+
+  <div class="section-label">QR Format</div>
+  <div class="qr-format-row">
+    <label for="qr-format">Format</label>
+    <select id="qr-format">
+      <option value="mecard">MECARD (compact)</option>
+      <option value="vcard">vCard 3.0 (full)</option>
+    </select>
+  </div>
+
+  <div class="section-label">Online</div>
+  <div class="field-row">
+    <label class="toggle"><input type="checkbox" id="tog-website"><span class="toggle-track"></span></label>
+    <input type="url" id="website" placeholder="Website" value="https://example.com" disabled />
+  </div>
+  <div class="field-row">
+    <label class="toggle"><input type="checkbox" id="tog-social"><span class="toggle-track"></span></label>
+    <input type="url" id="social" placeholder="LinkedIn / social URL" value="https://linkedin.com/in/handle" disabled />
+  </div>
+  <div class="field-row" id="qr-social-row" style="display:none">
+    <label class="toggle"><input type="checkbox" id="tog-social-qr"><span class="toggle-track"></span></label>
+    <span style="font-size:0.78rem;color:var(--muted)">Include social in QR</span>
+  </div>
+
+  <div class="section-label">Logo Cutout</div>
+  <div class="field-row" style="flex-direction:column;align-items:stretch;gap:0.4rem">
+    <div style="display:flex;align-items:center;gap:0.6rem">
+      <label class="toggle"><input type="checkbox" id="tog-cutout"><span class="toggle-track"></span></label>
+      <span style="font-size:0.78rem;color:var(--muted)">Enable cutout</span>
+    </div>
+    <div id="cutout-controls" style="display:none;padding-left:2.5rem">
+      <input type="range" id="cutout-size" min="5" max="30" value="20" style="width:100%;accent-color:var(--accent)" />
+      <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--muted);margin-top:0.2rem">
+        <span>Size: <strong id="cutout-size-label">20%</strong></span>
+        <span id="cutout-warn" style="color:#c00;display:none">⚠ exceeds EC limit</span>
+      </div>
+    </div>
+  </div>
+  </div><!-- end #mode-vcard -->
+</aside>
+
+<!-- ── Preview ─────────────────────────────────────────────── -->
+<main id="preview-wrap">
+  <div class="card">
+    <div class="card-name" id="pv-name"></div>
+    <div class="card-title" id="pv-title"></div>
+    <div class="card-company" id="pv-company"></div>
+    <div id="qr"><div id="qr-wrap"></div></div>
+    <ul class="card-details" id="pv-details"></ul>
+    <div class="card-url-label" id="pv-url-label" style="display:none"></div>
+    <a class="btn-download" id="pv-download" download="contact.vcf">Save contact</a>
+    <a class="btn-download" id="btn-svg" href="#" style="margin-top:0.5rem;background:var(--accent2)">Download QR (SVG)</a>
+  </div>
+  <pre id="vcf-out"></pre>
+</main>
+
+<script>
+  const FIELDS = ['firstName','lastName','title','company','email','phone','website','social'];
+
+  let currentMode = 'vcard'; // 'vcard' | 'url'
+
+  // ── Mode tabs ──────────────────────────────────────────────
+  document.querySelectorAll('.mode-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentMode = btn.dataset.mode;
+      document.querySelectorAll('.mode-tab').forEach(b => b.classList.toggle('active', b === btn));
+      document.getElementById('mode-vcard').classList.toggle('visible', currentMode === 'vcard');
+      document.getElementById('mode-url').classList.toggle('visible', currentMode === 'url');
+      render();
+    });
+  });
+
+  function val(id) {
+    const tog = document.getElementById('tog-' + id);
+    if (tog && !tog.checked) return '';
+    return document.getElementById(id)?.value.trim() ?? '';
+  }
+
+  function buildVcf() {
+    const lines = ['BEGIN:VCARD', 'VERSION:3.0'];
+    const fn = [val('firstName'), val('lastName')].filter(Boolean).join(' ');
+    if (fn) lines.push(`FN:${fn}`);
+    lines.push(`N:${val('lastName')};${val('firstName')};;;`);
+    if (val('email'))   lines.push(`EMAIL;TYPE=INTERNET:${val('email')}`);
+    if (val('phone'))   lines.push(`TEL;TYPE=CELL:${val('phone')}`);
+    if (val('company')) lines.push(`ORG:${val('company')}`);
+    if (val('title'))   lines.push(`TITLE:${val('title')}`);
+    if (val('website')) lines.push(`URL:${val('website')}`);
+    if (val('social'))  lines.push(`X-SOCIALPROFILE;TYPE=linkedin:${val('social')}`);
+    lines.push('END:VCARD');
+    return lines.join('\r\n');
+  }
+
+  function buildMecard() {
+    function esc(s) { return s.replace(/([\\:;"])/g, '\\$1'); }
+    const parts = ['MECARD:'];
+    const last = val('lastName'), first = val('firstName');
+    if (last || first) parts.push(`N:${esc(last)},${esc(first)};`);
+    if (val('phone'))   parts.push(`TEL:${val('phone').replace(/[^\d+]/g, '')};`);
+    if (val('email'))   parts.push(`EMAIL:${esc(val('email'))};`);
+    if (val('website')) parts.push(`URL:${esc(val('website'))};`);
+    const socialQr = document.getElementById('tog-social-qr');
+    if (val('social') && socialQr?.checked) parts.push(`NOTE:${esc(val('social'))};`);
+    parts.push(';');
+    return parts.join('');
+  }
+
+  const EC_CUTOUT_LIMIT = { L: 0.07, M: 0.15 };
+
+  function cutoutFraction() {
+    if (currentMode === 'url') {
+      const tog = document.getElementById('tog-url-cutout');
+      if (!tog?.checked) return 0;
+      return parseInt(document.getElementById('url-cutout-size').value, 10) / 100;
+    }
+    const tog = document.getElementById('tog-cutout');
+    if (!tog?.checked) return 0;
+    return parseInt(document.getElementById('cutout-size').value, 10) / 100;
+  }
+
+  function buildQrSvg(qrText, ecLevel, frac) {
+    const ecMap = { [QRCode.CorrectLevel.L]: 'L', [QRCode.CorrectLevel.M]: 'M', [QRCode.CorrectLevel.Q]: 'Q', [QRCode.CorrectLevel.H]: 'H' };
+    const qr = qrcode(0, ecMap[ecLevel] || 'L');
+    qr.addData(qrText);
+    qr.make();
+    const n = qr.getModuleCount();
+    const quiet = 4;
+    const size = n + quiet * 2;
+    const cutModules = Math.round(n * frac);
+    const cutStart = Math.floor((n - cutModules) / 2);
+    const cutEnd = cutStart + cutModules;
+
+    let rects = '';
+    for (let r = 0; r < n; r++) {
+      for (let c = 0; c < n; c++) {
+        const inCutout = frac > 0 && r >= cutStart && r < cutEnd && c >= cutStart && c < cutEnd;
+        if (!inCutout && qr.isDark(r, c)) {
+          rects += `<rect x="${c + quiet}" y="${r + quiet}" width="1" height="1"/>`;
+        }
+      }
+    }
+    const cutoutRect = frac > 0
+      ? `<rect x="${cutStart + quiet}" y="${cutStart + quiet}" width="${cutModules}" height="${cutModules}" fill="white"/>`
+      : '';
+    return [
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" shape-rendering="crispEdges">`,
+      `<rect width="${size}" height="${size}" fill="white"/>`,
+      `<g fill="black">${rects}</g>`,
+      cutoutRect,
+      `</svg>`
+    ].join('');
+  }
+
+  function renderQrBlock(qrText, qrLevel, frac, warnId) {
+    const qrWrap = document.getElementById('qr-wrap');
+    qrWrap.innerHTML = '';
+
+    if (qrText.length > 1) {
+      new QRCode(qrWrap, {
+        text: qrText, width: 160, height: 160,
+        colorDark: '#1a1a1a', colorLight: '#ffffff',
+        correctLevel: qrLevel,
+      });
+      if (frac > 0) {
+        const px = Math.round(160 * frac);
+        const overlay = document.createElement('div');
+        overlay.id = 'qr-cutout-overlay';
+        overlay.style.width  = px + 'px';
+        overlay.style.height = px + 'px';
+        qrWrap.appendChild(overlay);
+      }
+    }
+
+    // Cutout warning
+    const ecKey = { [QRCode.CorrectLevel.L]: 'L', [QRCode.CorrectLevel.M]: 'M' }[qrLevel] || 'L';
+    const limit = EC_CUTOUT_LIMIT[ecKey];
+    const warn = document.getElementById(warnId);
+    if (warn) warn.style.display = (frac > 0 && frac * frac > limit) ? '' : 'none';
+
+    // SVG download
+    const svgBtn = document.getElementById('btn-svg');
+    if (qrText.length > 1) {
+      svgBtn.style.display = '';
+      svgBtn.onclick = (e) => {
+        e.preventDefault();
+        const svg = buildQrSvg(qrText, qrLevel, frac);
+        const blob = new Blob([svg], { type: 'image/svg+xml' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'qr-code.svg';
+        a.click();
+      };
+    } else {
+      svgBtn.style.display = 'none';
+    }
+  }
+
+  function render() {
+    if (currentMode === 'url') {
+      renderUrlMode();
+    } else {
+      renderVcardMode();
+    }
+  }
+
+  function renderUrlMode() {
+    const url = document.getElementById('url-input').value.trim();
+    const frac = cutoutFraction();
+
+    // Card UI
+    document.getElementById('pv-name').textContent    = '';
+    document.getElementById('pv-title').textContent   = '';
+    document.getElementById('pv-company').textContent = '';
+    document.getElementById('pv-details').innerHTML   = '';
+    document.getElementById('pv-download').style.display = 'none';
+    const urlLabel = document.getElementById('pv-url-label');
+    urlLabel.style.display = url ? '' : 'none';
+    urlLabel.textContent = url;
+
+    renderQrBlock(url || ' ', QRCode.CorrectLevel.L, frac, 'url-cutout-warn');
+    document.getElementById('vcf-out').textContent = '';
+  }
+
+  function renderVcardMode() {
+    const vcf = buildVcf();
+    document.getElementById('pv-download').style.display = '';
+    document.getElementById('pv-url-label').style.display = 'none';
+
+    // Card preview
+    const fn = [val('firstName'), val('lastName')].filter(Boolean).join(' ');
+    document.getElementById('pv-name').textContent    = fn || '—';
+    document.getElementById('pv-title').textContent   = val('title');
+    document.getElementById('pv-company').textContent = val('company');
+
+    const detailsEl = document.getElementById('pv-details');
+    detailsEl.innerHTML = '';
+    [
+      val('email')   && { href: `mailto:${val('email')}`,  label: val('email') },
+      val('phone')   && { href: `tel:${val('phone')}`,     label: val('phone') },
+      val('website') && { href: val('website'),             label: val('website') },
+      val('social')  && { href: val('social'),              label: val('social') },
+    ].filter(Boolean).forEach(({ href, label }) => {
+      const li = document.createElement('li');
+      const a  = document.createElement('a');
+      a.href = href; a.textContent = label; a.target = '_blank';
+      li.appendChild(a); detailsEl.appendChild(li);
+    });
+
+    // Download
+    const blob = new Blob([vcf], { type: 'text/vcard' });
+    document.getElementById('pv-download').href = URL.createObjectURL(blob);
+
+    const format = document.getElementById('qr-format').value;
+    const qrText = format === 'mecard' ? buildMecard() : vcf;
+    const qrLevel = format === 'mecard' ? QRCode.CorrectLevel.L : QRCode.CorrectLevel.M;
+    const frac = cutoutFraction();
+
+    renderQrBlock(qrText.length > 10 ? qrText : ' ', qrLevel, frac, 'cutout-warn');
+    document.getElementById('vcf-out').textContent = vcf;
+  }
+
+  // Wire up vCard inputs and toggles
+  FIELDS.forEach(id => {
+    const input = document.getElementById(id);
+    const tog   = document.getElementById('tog-' + id);
+    if (input) input.addEventListener('input', render);
+    if (tog) {
+      tog.addEventListener('change', () => {
+        if (input) input.disabled = !tog.checked;
+        render();
+      });
+    }
+  });
+
+  document.getElementById('qr-format').addEventListener('change', render);
+
+  document.getElementById('tog-cutout').addEventListener('change', () => {
+    const on = document.getElementById('tog-cutout').checked;
+    document.getElementById('cutout-controls').style.display = on ? '' : 'none';
+    render();
+  });
+  document.getElementById('cutout-size').addEventListener('input', () => {
+    document.getElementById('cutout-size-label').textContent =
+      document.getElementById('cutout-size').value + '%';
+    render();
+  });
+
+  // URL mode controls
+  document.getElementById('url-input').addEventListener('input', render);
+  document.getElementById('tog-url-cutout').addEventListener('change', () => {
+    const on = document.getElementById('tog-url-cutout').checked;
+    document.getElementById('url-cutout-controls').style.display = on ? '' : 'none';
+    render();
+  });
+  document.getElementById('url-cutout-size').addEventListener('input', () => {
+    document.getElementById('url-cutout-size-label').textContent =
+      document.getElementById('url-cutout-size').value + '%';
+    render();
+  });
+
+  function syncSocialQrRow() {
+    const socialOn = document.getElementById('tog-social').checked;
+    const formatEl = document.getElementById('qr-format');
+    const isMecard = formatEl.value === 'mecard';
+    document.getElementById('qr-social-row').style.display =
+      (socialOn && isMecard) ? '' : 'none';
+    render();
+  }
+  document.getElementById('tog-social').addEventListener('change', syncSocialQrRow);
+  document.getElementById('qr-format').addEventListener('change', syncSocialQrRow);
+  document.getElementById('tog-social-qr').addEventListener('change', render);
+
+  render();
+</script>
+</body>
+</html>
