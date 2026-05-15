@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BROONO - Photoshoot Ingredient Guide</title>
+  <style>
+    @font-face {
+      font-family: "Pesto";
+      src: url("/assets/fonts/Pesto Mafio Font/pesto_mafio.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ApfelGrotezk";
+      src: url("/assets/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ApfelGrotezk";
+      src: url("/assets/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ApfelGrotezk";
+      src: url("/assets/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Fett.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    :root {
+      --blue: #0559c6;
+      --cream: #ffebc2;
+      --ink: #151515;
+      --muted: #5d6470;
+      --line: #d9e2ee;
+      --paper: #fffdf8;
+      --white: #ffffff;
+      --sidebar: 320px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 32px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "ApfelGrotezk", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: rgba(5, 89, 198, 0.35);
+      text-underline-offset: 3px;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 30px 28px;
+      background: var(--blue);
+      color: var(--cream);
+      overflow-y: auto;
+      border-right: 1px solid rgba(255, 235, 194, 0.22);
+    }
+
+    .brand {
+      display: block;
+      width: 148px;
+      margin-bottom: 36px;
+    }
+
+    .toc-toggle {
+      display: none;
+    }
+
+    .toc__label {
+      margin-bottom: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .toc ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .toc li {
+      margin: 0;
+      line-height: 1.28;
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 0;
+      color: var(--cream);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 235, 194, 0.16);
+    }
+
+    .toc a:hover {
+      color: var(--white);
+      border-bottom-color: rgba(255, 255, 255, 0.55);
+    }
+
+    .toc__item {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .toc__subitem {
+      padding-left: 14px;
+      font-size: 12px;
+      opacity: 0.84;
+    }
+
+    .page {
+      max-width: 940px;
+      padding: 58px 72px 96px;
+    }
+
+    .document {
+      width: min(100%, 780px);
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.12;
+      color: var(--blue);
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-family: "Pesto", Georgia, serif;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 400;
+      max-width: 11ch;
+    }
+
+    h2 {
+      clear: both;
+      margin: 64px 0 18px;
+      padding-top: 4px;
+      font-family: "Pesto", Georgia, serif;
+      font-size: 36px;
+      font-weight: 400;
+      border-top: 3px solid var(--blue);
+    }
+
+    .title-subhead {
+      margin: -6px 0 24px;
+      padding-top: 0;
+      font-family: "ApfelGrotezk", Arial, sans-serif;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 500;
+      line-height: 1.2;
+      border-top: 0;
+      max-width: 18ch;
+    }
+
+    h3 {
+      clear: both;
+      margin: 34px 0 12px;
+      font-size: 21px;
+      font-weight: 700;
+    }
+
+    h4 {
+      margin: 24px 0 10px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul, ol {
+      margin: 0 0 22px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    blockquote {
+      margin: 0 0 34px;
+      padding: 18px 22px;
+      background: var(--cream);
+      border-left: 5px solid var(--blue);
+      color: var(--ink);
+    }
+
+    blockquote p {
+      margin: 0;
+    }
+
+    hr {
+      margin: 42px 0;
+      border: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--blue);
+      background: #eef5ff;
+    }
+
+    .document > h1 + blockquote {
+      margin-top: 22px;
+    }
+
+    .document > h2:first-of-type {
+      margin-top: 48px;
+    }
+
+    .document > .title-subhead:first-of-type {
+      margin-top: -6px;
+    }
+
+    .appendix-table th:first-child,
+    .appendix-table td:first-child {
+      text-align: center;
+      width: 36px;
+    }
+
+    .appendix-table td.tick {
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      html {
+        scroll-padding-top: 92px;
+      }
+
+      .shell {
+        display: block;
+      }
+
+      .sidebar {
+        position: sticky;
+        z-index: 10;
+        height: auto;
+        max-height: 42vh;
+        padding: 18px 20px;
+      }
+
+      .brand {
+        width: 118px;
+        margin-bottom: 0;
+      }
+
+      .toc-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 9px 13px;
+        border: 1px solid rgba(255, 235, 194, 0.42);
+        border-radius: 4px;
+        background: transparent;
+        color: var(--cream);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .toc-toggle::after {
+        content: "+";
+        margin-left: 10px;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .sidebar.is-open .toc-toggle::after {
+        content: "-";
+      }
+
+      .sidebar__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .toc {
+        display: none;
+        margin-top: 18px;
+      }
+
+      .sidebar.is-open {
+        max-height: 72vh;
+      }
+
+      .sidebar.is-open .toc {
+        display: block;
+      }
+
+      .toc ol {
+        columns: 2;
+        column-gap: 24px;
+      }
+
+      .page {
+        padding: 38px 24px 72px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        font-size: 16px;
+      }
+
+      .sidebar {
+        max-height: none;
+      }
+
+      .toc ol {
+        columns: 1;
+      }
+
+      .page {
+        padding: 30px 18px 64px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="sidebar__top">
+        <img class="brand" src="/assets/logo/broono-logo-beige.svg" alt="BROONO">
+        <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="document-toc">Contents</button>
+      </div>
+      <nav class="toc" id="document-toc" aria-label="Document sections">
+        <div class="toc__label">Contents</div>
+        <ol>
+          <li class="toc__item"><a href="#essential">1. Essential</a></li>
+          <li class="toc__subitem"><a href="#essential-ingredients">Ingredients</a></li>
+          <li class="toc__subitem"><a href="#essential-photoshoot-notes">Photoshoot Notes</a></li>
+          <li class="toc__item"><a href="#prebiotic">2. Prebiotic</a></li>
+          <li class="toc__subitem"><a href="#prebiotic-ingredients">Ingredients</a></li>
+          <li class="toc__subitem"><a href="#prebiotic-photoshoot-notes">Photoshoot Notes</a></li>
+          <li class="toc__item"><a href="#move">3. Move</a></li>
+          <li class="toc__subitem"><a href="#move-ingredients">Ingredients</a></li>
+          <li class="toc__subitem"><a href="#move-photoshoot-notes">Photoshoot Notes</a></li>
+          <li class="toc__item"><a href="#calm">4. Calm</a></li>
+          <li class="toc__subitem"><a href="#calm-ingredients">Ingredients</a></li>
+          <li class="toc__subitem"><a href="#calm-photoshoot-notes">Photoshoot Notes</a></li>
+          <li class="toc__item"><a href="#appendix">5. Appendix &mdash; Prop Shopping List</a></li>
+          <li class="toc__subitem"><a href="#key-overlaps-summary">Key Overlaps Summary</a></li>
+        </ol>
+      </nav>
+    </aside>
+    <main class="page">
+      <article class="document">
+        <h1 id="broono-photoshoot-ingredient-guide">Broono &mdash; Photoshoot Ingredient Guide</h1>
+        <h2 class="title-subhead" id="soft-chews-range-art-direction-reference">Soft Chews Range &middot; Art Direction Reference</h2>
+
+        <hr />
+
+        <h2 id="essential">Essential</h2>
+        <p><strong>The daily nutritional foundation.</strong> Essential is built for the dog who looks perfectly fine &mdash; which is exactly the point. It covers the core systems that sustain long-term health before any visible deficiency appears: immune defence, skin and coat integrity, bone density, and mineral balance. Not a response to a problem. A decision made before one exists.</p>
+
+        <h3 id="essential-ingredients">Ingredients</h3>
+        <table>
+          <thead>
+            <tr><th>Ingredient</th><th>Role</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Yeast Cell Wall</strong></td><td>Source of beta-glucans, which modulate the immune system by activating macrophages and natural killer cells. Supports immune readiness without overstimulating the immune response.</td></tr>
+            <tr><td><strong>Inulin</strong></td><td>A prebiotic fibre that feeds beneficial gut bacteria (primarily Bifidobacterium and Lactobacillus strains). Supports a balanced microbiome, which in turn influences immune function, digestion, and mood.</td></tr>
+            <tr><td><strong>Glycine</strong></td><td>An amino acid and primary component of collagen. Supports the synthesis of connective tissue, skin elasticity, and joint cartilage. Also plays a role in liver detoxification and sleep quality.</td></tr>
+            <tr><td><strong>MSM</strong> <em>(Methylsulfonylmethane)</em></td><td>An organic sulphur compound that supports collagen and keratin formation, reduces oxidative stress in joint tissue, and contributes to coat quality and skin health.</td></tr>
+            <tr><td><strong>Selenium</strong></td><td>A trace mineral and antioxidant cofactor. Supports thyroid hormone metabolism and immune function. Works synergistically with Vitamin E to protect cell membranes from oxidative damage.</td></tr>
+            <tr><td><strong>Calcium</strong></td><td>Essential for bone density, dental health, muscle contraction, and nerve signal transmission. Particularly important in growing dogs and seniors where bone remodelling is active.</td></tr>
+            <tr><td><strong>Zinc</strong></td><td>Supports skin integrity, wound healing, immune function, and enzyme activity. Zinc deficiency is one of the most common mineral deficiencies in dogs and is often visible first in coat and skin condition.</td></tr>
+            <tr><td><strong>Copper</strong></td><td>Supports iron absorption, connective tissue formation, and melanin production (responsible for coat pigmentation). Works alongside zinc in maintaining skin and coat health.</td></tr>
+            <tr><td><strong>Manganese</strong></td><td>Supports bone formation, cartilage development, and the activation of enzymes involved in energy metabolism and antioxidant defence. Often under-represented in commercial dog food.</td></tr>
+            <tr><td><strong>Vitamin B Complex</strong></td><td>A group of water-soluble vitamins (B1, B2, B3, B5, B6, B7, B9, B12) that support energy metabolism, red blood cell production, nervous system function, and coat and skin health.</td></tr>
+            <tr><td><strong>Vitamin C</strong></td><td>An antioxidant that supports collagen synthesis, immune function, and iron absorption. Dogs synthesise some Vitamin C endogenously but benefit from supplementation under stress or during illness.</td></tr>
+            <tr><td><strong>Vitamin E</strong></td><td>A fat-soluble antioxidant that protects cell membranes from free radical damage. Supports skin and coat health, immune function, and works in tandem with selenium.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 id="essential-photoshoot-notes">Photoshoot Notes</h3>
+        <p><strong>Visual register:</strong> Warm, grounded, abundant. A kitchen counter or a farmhouse table rather than a laboratory. This is the everyday SKU &mdash; the shot should feel like something you reach for every morning.</p>
+        <p><strong>Palette:</strong> Oatmilk, warm ochre, muted green, ivory, golden brown.</p>
+        <ul>
+          <li><strong>Nutritional yeast</strong> needs a vessel &mdash; a small ceramic dish or wooden spoon. Loose, it reads as dust. Contained, it reads as ingredient.</li>
+          <li><strong>Chicory root</strong> is your structural hero for inulin. Lay it whole and cut one cross-section. It's architectural and unfamiliar enough to create interest.</li>
+          <li><strong>Marrow bone</strong> for glycine &mdash; cut lengthways. Beautiful on a light linen or slate surface. Signals premium provenance rather than pet-shop.</li>
+          <li><strong>Brazil nuts</strong> are the strongest single-ingredient prop for selenium. One cracked open alongside two or three whole nuts is all you need.</li>
+          <li><strong>Shiitake mushrooms</strong> for copper &mdash; dried or fresh. More distinctive than cashews for this context.</li>
+          <li><strong>Hazelnuts</strong> for manganese &mdash; warm brown, Italian resonance, beautiful whole or cracked. Can double as a texture element if scattered.</li>
+          <li><strong>Egg or avocado</strong> for the B complex. Both read "nourishment" immediately. Avocado halved gives you a colour contrast and a strong geometric form.</li>
+          <li>Cycle <strong>Vitamin C</strong> (rosehip or red bell pepper) and <strong>Vitamin E</strong> (sunflower, almonds, avocado) across SKUs to avoid repetition.</li>
+        </ul>
+        <p><strong>Key shot:</strong> Chicory root, marrow bone, Brazil nuts, and scattered hazelnuts on warm linen. That's the Essential story in one frame.</p>
+
+        <hr />
+
+        <h2 id="prebiotic">Prebiotic</h2>
+        <p><strong>The gut specialist.</strong> Prebiotic goes deeper into the digestive system than Essential's foundational inulin. It combines fermentable fibres, soothing botanicals, and motility support to maintain a resilient, well-functioning gut &mdash; the system that determines how well every other nutrient is absorbed. A dog with a compromised gut absorbs less of everything else.</p>
+
+        <h3 id="prebiotic-ingredients">Ingredients</h3>
+        <table>
+          <thead>
+            <tr><th>Ingredient</th><th>Role</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Inulin</strong></td><td>Prebiotic fibre that selectively feeds beneficial gut bacteria. Foundational to the formula &mdash; present here at higher prominence than in Essential given the digestive focus.</td></tr>
+            <tr><td><strong>Pumpkin</strong></td><td>Rich in soluble and insoluble fibre (particularly pectin), supporting stool consistency and bowel regularity. Also contains cucurbitacin, which has mild anti-parasitic properties. Beta-carotene provides antioxidant support.</td></tr>
+            <tr><td><strong>Psyllium Husk</strong></td><td>A highly soluble fibre derived from Plantago ovata seeds. Forms a gel in the gut that bulks stool, regulates transit time, and supports the mucous lining of the intestinal wall. Works in both directions &mdash; helps with loose stools and constipation.</td></tr>
+            <tr><td><strong>Liquorice Root</strong></td><td>Contains glycyrrhizin and flavonoids with anti-inflammatory and soothing properties. Helps protect and repair the gut lining, reduce gastric inflammation, and support the mucosal barrier.</td></tr>
+            <tr><td><strong>Fennel Seeds</strong></td><td>A carminative &mdash; reduces gas, bloating, and gut cramping by relaxing smooth muscle in the gastrointestinal tract. Also mildly antimicrobial. Deeply embedded in Italian culinary and folk medicine tradition.</td></tr>
+            <tr><td><strong>Vitamin B3</strong> <em>(Niacin)</em></td><td>Supports energy metabolism in gut epithelial cells and the production of digestive enzymes. Also plays a role in maintaining the gut lining's structural integrity.</td></tr>
+            <tr><td><strong>Vitamin B9</strong> <em>(Folate)</em></td><td>Essential for cell division and DNA synthesis. The gut lining renews itself every few days &mdash; folate is critical to that regeneration process.</td></tr>
+            <tr><td><strong>Vitamin E</strong></td><td>Antioxidant support for the gut lining. Protects intestinal cells from oxidative stress caused by inflammation or microbial imbalance.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 id="prebiotic-photoshoot-notes">Photoshoot Notes</h3>
+        <p><strong>Visual register:</strong> Earthy, botanical, warm. A herbalist's kitchen or an Italian countryside pantry. The mood is unhurried and grounding.</p>
+        <p><strong>Palette:</strong> Amber, deep ochre, warm orange (pumpkin), muted sage, cream, woody brown (liquorice root).</p>
+        <ul>
+          <li><strong>Pumpkin</strong> is your warmth anchor &mdash; use a small whole Hokkaido or red kuri variety (more elegant than standard carving pumpkins). Halved to show the interior flesh and seeds gives you both texture and colour.</li>
+          <li><strong>Fennel</strong> works on two levels: halved bulb as hero (showing its beautiful layered cross-section) plus seeds scattered as a secondary element. Fennel is distinctively Italian &mdash; it earns its prominence here beyond just ingredient representation.</li>
+          <li><strong>Liquorice root sticks</strong> are the unexpected standout of this shoot. Woody, fibrous, architectural &mdash; bundle them tied with linen twine, or lay them crossed. Most people won't identify them immediately, which creates intrigue.</li>
+          <li><strong>Psyllium husk</strong> needs a vessel. In a small apothecary jar, a ceramic spoon, or folded into linen it reads as a considered ingredient. Loose on a surface it disappears.</li>
+          <li><strong>Porcini mushrooms</strong> for Vitamin B3 &mdash; dried or fresh, whole or sliced. Premium, unmistakably Italian.</li>
+          <li><strong>Asparagus spears</strong> or <strong>halved beetroot</strong> for Vitamin B9. Asparagus gives you vertical geometry; beetroot gives you deep jewel tones and a dramatic cut face.</li>
+          <li>Use a different <strong>Vitamin E</strong> prop from Essential here (cycle between sunflower, almonds, and avocado across the range).</li>
+        </ul>
+        <p><strong>Key shot:</strong> Halved pumpkin, fennel bulb, liquorice root bundle, and a ceramic spoon of psyllium husk. Fennel fronds scattered as set dressing. That's the Prebiotic story.</p>
+        <p><strong>Italy tie-in:</strong> Fennel and liquorice root together are embedded in Italian culinary and folk medicine culture. No caption needed &mdash; the ingredients do it.</p>
+
+        <hr />
+
+        <h2 id="move">Move</h2>
+        <p><strong>The joint and mobility formula.</strong> Move is built around a single biological reality: cartilage does not repair itself easily, and inflammation compounds over time. This formula combines the structural building blocks of cartilage with some of the most clinically supported natural anti-inflammatories available, working across multiple pathways simultaneously. Preventive before symptoms. Supportive after they appear.</p>
+
+        <h3 id="move-ingredients">Ingredients</h3>
+        <table>
+          <thead>
+            <tr><th>Ingredient</th><th>Role</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Boswellia</strong></td><td>A resin derived from Boswellia serrata trees. Contains boswellic acids (particularly AKBA) which specifically inhibit 5-LOX, an enzyme that drives leukotriene production and joint inflammation. One of the most evidence-backed natural anti-inflammatories for musculoskeletal conditions.</td></tr>
+            <tr><td><strong>Ginger</strong></td><td>Contains gingerols and shogaols which inhibit both COX and LOX inflammatory pathways. Also supports circulation and has antioxidant properties. Synergistic with turmeric.</td></tr>
+            <tr><td><strong>Turmeric</strong></td><td>Curcumin, turmeric's active compound, is a broad-spectrum anti-inflammatory and antioxidant. Inhibits NF-&kappa;B, a key regulator of the inflammatory response. Often combined with boswellia for complementary pathway inhibition.</td></tr>
+            <tr><td><strong>Glucosamine</strong></td><td>An amino sugar and primary building block of glycosaminoglycans &mdash; the structural molecules of cartilage and synovial fluid. Supports cartilage synthesis and joint lubrication. Naturally derived from shellfish.</td></tr>
+            <tr><td><strong>Chondroitin</strong></td><td>A glycosaminoglycan found in cartilage. Inhibits enzymes (MMPs) that break down cartilage, while supporting water retention within the cartilage matrix. Works structurally alongside glucosamine.</td></tr>
+            <tr><td><strong>MSM</strong> <em>(Methylsulfonylmethane)</em></td><td>Provides bioavailable sulphur for collagen and connective tissue synthesis. Reduces oxidative stress in joint tissue and has mild analgesic properties. Supports the broader connective tissue matrix.</td></tr>
+            <tr><td><strong>Vitamin C</strong></td><td>Essential cofactor for collagen synthesis. Without adequate Vitamin C, the hydroxylation of proline and lysine &mdash; the process that gives collagen its structural strength &mdash; cannot occur.</td></tr>
+            <tr><td><strong>Vitamin E</strong></td><td>Protects joint tissue from oxidative damage. Fat-soluble, so it reaches cell membranes within the synovial environment where water-soluble antioxidants cannot.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 id="move-photoshoot-notes">Photoshoot Notes</h3>
+        <p><strong>Visual register:</strong> Warm, ancient, elemental. Not a pharmacy &mdash; an apothecary. The ingredients here carry history: resin, root, spice. The shot should feel like something discovered rather than manufactured.</p>
+        <p><strong>Palette:</strong> Deep amber, turmeric orange, ginger gold, warm ivory, dark stone. This is your most saturated, most dramatic SKU.</p>
+        <ul>
+          <li><strong>Boswellia resin tears</strong> are your unconditional hero &mdash; across the entire four-SKU range, nothing looks like this. Golden-amber droplets that look like solidified honey or raw amber. A small pile on dark slate or marble is a standalone campaign image. Source these.</li>
+          <li><strong>Turmeric root</strong> halved is your colour statement. The interior is a shocking, vivid orange. Cut it fresh on set if possible &mdash; it oxidises. Laid next to ginger root (cut to show its pale yellow interior), the two roots together create a natural colour gradient and visual rhyme.</li>
+          <li><strong>Ginger root</strong> whole plus one clean cross-section slice. The exterior texture and interior colour in a single composition.</li>
+          <li><strong>Crab claw or whole prawns</strong> for glucosamine. This is the honest source and photographs dramatically. If you want warmth over drama, a corn cob section works as the plant-based alternative.</li>
+          <li><strong>Knuckle bone</strong> for chondroitin &mdash; a large one, cut to show the cartilaginous joint. More specific than a generic bone and structurally communicates the joint health story without words.</li>
+          <li><strong>Savoy cabbage or Brussels sprouts</strong> for MSM. Use whichever wasn't used in Essential to avoid repetition across the range.</li>
+          <li>Cycle <strong>Vitamin C</strong> and <strong>Vitamin E</strong> props to avoid repeats from Essential and Prebiotic.</li>
+        </ul>
+        <p><strong>Key shot:</strong> Boswellia resin tears on dark slate, fresh turmeric root halved, ginger root whole, knuckle bone in background. This is the most photographable set of the four SKUs.</p>
+        <p><strong>Important:</strong> Boswellia resin tears + turmeric + ginger in one frame tells the anti-inflammatory story visually without any labelling. If there's one three-ingredient composition to prioritise across the range, this is it.</p>
+
+        <hr />
+
+        <h2 id="calm">Calm</h2>
+        <p><strong>The nervous system formula.</strong> Calm works on the biochemical roots of anxiety and stress &mdash; not by sedating, but by supporting the neurotransmitter pathways and nervous system regulation that make a dog's baseline more resilient. Serotonin synthesis, GABA activity, cortisol response. The goal is a dog that is simply less reactive &mdash; not drowsy, not altered. Balanced.</p>
+
+        <h3 id="calm-ingredients">Ingredients</h3>
+        <table>
+          <thead>
+            <tr><th>Ingredient</th><th>Role</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Camellia Sinensis</strong></td><td>The tea plant &mdash; the natural source of L-theanine, an amino acid that promotes alpha brain wave activity, associated with wakeful relaxation. L-theanine modulates glutamate receptors and increases GABA, serotonin, and dopamine levels without causing sedation.</td></tr>
+            <tr><td><strong>Passiflora</strong> <em>(Passionflower)</em></td><td>A clinically studied anxiolytic botanical. Works primarily by enhancing GABA activity in the brain &mdash; the same pathway targeted by pharmaceutical anti-anxiety medications, but through a gentler, indirect mechanism. Reduces generalised anxiety without impairing cognitive function.</td></tr>
+            <tr><td><strong>Tryptophan</strong></td><td>An essential amino acid and the direct precursor to serotonin and melatonin. Serotonin regulates mood, social behaviour, and gut function. Melatonin regulates sleep-wake cycles. Dogs cannot synthesise tryptophan &mdash; it must come from diet.</td></tr>
+            <tr><td><strong>Magnesium Glycinate</strong></td><td>Magnesium regulates NMDA receptors involved in stress response, and supports muscle relaxation. The glycinate chelate form has superior bioavailability and gentler gut impact than other magnesium compounds. Glycine itself has additional calming properties.</td></tr>
+            <tr><td><strong>Vitamin B6</strong></td><td>A critical cofactor in the conversion of tryptophan to serotonin, and in the synthesis of GABA and dopamine. Without adequate B6, neurotransmitter production is limited regardless of precursor availability.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 id="calm-photoshoot-notes">Photoshoot Notes</h3>
+        <p><strong>Visual register:</strong> Botanical, still, delicate. This shoot lives in a different world from the others &mdash; closer to a florist's table or an apothecary than a kitchen. More negative space. Fewer props. Objects that feel placed rather than arranged.</p>
+        <p><strong>Palette:</strong> Pale lilac, sage green, cream, warm ivory, deep brown (chocolate). The passionflower hands you a palette &mdash; everything else supports it.</p>
+        <ul>
+          <li><strong>Passionflower</strong> is the non-negotiable hero of this shoot and arguably the most photographable single ingredient across the entire range. Its structure is extraordinary: geometric, intricate, white and purple corona. One fresh flower, clean background, close crop. This is your campaign image for Calm. Source it regardless of cost or effort.</li>
+          <li><strong>Passion fruit</strong> halved provides a secondary fruit prop &mdash; jewel-like interior, deep purple exterior. Use as a supporting element alongside the flower.</li>
+          <li><strong>Matcha</strong> in a ceramic spoon for Camellia sinensis. Vivid green, very fine powder, and instantly legible as a premium, considered ingredient. Alternatively, loose white tea for a softer, more delicate visual.</li>
+          <li><strong>Walnuts</strong> for tryptophan &mdash; whole and cracked. The brain-like interior is quietly conceptual in the context of a mood and nervous system supplement. It does visual work beyond just "food prop."</li>
+          <li><strong>Dark chocolate</strong> broken into irregular pieces covers both tryptophan and magnesium visually. One prop, two ingredients. It also adds depth and richness that prevents the shoot from feeling too pale and cold. A broken slab on linen is all it needs to be.</li>
+          <li><strong>Pistachios</strong> (in shell or halved) for Vitamin B6 &mdash; pale sage green, premium, elegant. Significantly more considered than a banana for this brand's visual register.</li>
+        </ul>
+        <p><strong>Key shot:</strong> A single passionflower in focus, matcha-filled ceramic spoon, dark chocolate broken pieces, and scattered pistachios. Walnuts in soft background. Maximum negative space.</p>
+        <p><strong>Tone note:</strong> This is the only SKU where the composition should feel quiet. The other three have energy &mdash; Prebiotic is warm and abundant, Move is dramatic, Essential is grounded. Calm should feel like an exhale.</p>
+
+        <hr />
+
+        <h2 id="appendix">Appendix &mdash; Prop Shopping List</h2>
+        <p>All food and botanical props across the four-SKU shoot. Overlaps marked across products. Use this to consolidate purchasing and identify props that can be styled differently between sets.</p>
+        <table class="appendix-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Prop / Food Item</th>
+              <th>Ingredient(s) Represented</th>
+              <th>Essential</th>
+              <th>Prebiotic</th>
+              <th>Move</th>
+              <th>Calm</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td></td><td><strong>Nutritional yeast flakes</strong></td><td>Yeast Cell Wall</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td>In a small ceramic dish</td></tr>
+            <tr><td>&#9989;</td><td><strong>Chicory root</strong></td><td>Inulin</td><td class="tick">&#10003;</td><td class="tick">&#10003;</td><td></td><td></td><td>Style differently between the two sets</td></tr>
+            <tr><td></td><td><strong>Marrow bone (cut)</strong></td><td>Glycine</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td>Cut lengthways</td></tr>
+            <tr><td></td><td><strong>Knuckle bone (large)</strong></td><td>Chondroitin</td><td></td><td></td><td class="tick">&#10003;</td><td></td><td>Shows cartilage</td></tr>
+            <tr><td>&#9989;</td><td><strong>Brazil nuts</strong></td><td>Selenium</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td>Whole + one cracked</td></tr>
+            <tr><td>&#9989;</td><td><strong>Broccoli florets</strong></td><td>Calcium</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>&#9989;</td><td><strong>Pumpkin seeds</strong></td><td>Zinc</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td>Already visible within pumpkin prop on Prebiotic set</td></tr>
+            <tr><td>&#9989;</td><td><strong>Shiitake mushrooms</strong></td><td>Copper</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td>Fresh or dried</td></tr>
+            <tr><td></td><td><strong>Hazelnuts</strong></td><td>Manganese</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td>Whole + cracked</td></tr>
+            <tr><td>&#9989;</td><td><strong>Egg (whole or yolk)</strong></td><td>Vitamin B Complex</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>&#9989;</td><td><strong>Avocado (halved)</strong></td><td>Vitamin B Complex, Vitamin E</td><td class="tick">&#10003;</td><td></td><td class="tick">&#10003;</td><td></td><td>Restyle between sets</td></tr>
+            <tr><td></td><td><strong>Rosehip</strong></td><td>Vitamin C</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td>Use if red bell pepper used for Move</td></tr>
+            <tr><td>&#9989;</td><td><strong>Red bell pepper (halved)</strong></td><td>Vitamin C</td><td></td><td></td><td class="tick">&#10003;</td><td></td><td>Use if rosehip used for Essential</td></tr>
+            <tr><td></td><td><strong>Sunflower head / seeds</strong></td><td>Vitamin E</td><td class="tick">&#10003;</td><td class="tick">&#10003;</td><td class="tick">&#10003;</td><td></td><td>Cycle across sets</td></tr>
+            <tr><td>&#9989;</td><td><strong>Almonds</strong></td><td>Calcium, Vitamin E</td><td class="tick">&#10003;</td><td class="tick">&#10003;</td><td class="tick">&#10003;</td><td></td><td>Cycle across sets</td></tr>
+            <tr><td>&#9989;</td><td><strong>Savoy cabbage / Brussels sprouts</strong></td><td>MSM</td><td class="tick">&#10003;</td><td></td><td class="tick">&#10003;</td><td></td><td>Use different brassica between the two</td></tr>
+            <tr><td>&#9989;</td><td><strong>Garlic cloves</strong></td><td>Inulin, MSM</td><td class="tick">&#10003;</td><td></td><td></td><td></td><td>Supporting prop</td></tr>
+            <tr><td>&#9989;</td><td><strong>Small whole pumpkin (Hokkaido / red kuri)</strong></td><td>Pumpkin</td><td></td><td class="tick">&#10003;</td><td></td><td></td><td>Halved to show interior</td></tr>
+            <tr><td></td><td><strong>Psyllium husk</strong></td><td>Psyllium Husk</td><td></td><td class="tick">&#10003;</td><td></td><td></td><td>In ceramic spoon or small apothecary jar</td></tr>
+            <tr><td>&#9989;</td><td><strong>Dried liquorice root sticks</strong></td><td>Liquorice Root</td><td></td><td class="tick">&#10003;</td><td></td><td></td><td>Bundle with linen twine</td></tr>
+            <tr><td></td><td><strong>Fennel bulb + seeds</strong></td><td>Fennel Seeds</td><td></td><td class="tick">&#10003;</td><td></td><td></td><td>Bulb halved; seeds as scatter</td></tr>
+            <tr><td></td><td><strong>Porcini mushrooms</strong></td><td>Vitamin B3</td><td></td><td class="tick">&#10003;</td><td></td><td></td><td>Dried or fresh</td></tr>
+            <tr><td></td><td><strong>Asparagus spears</strong></td><td>Vitamin B9</td><td></td><td class="tick">&#10003;</td><td></td><td></td><td></td></tr>
+            <tr><td></td><td><strong>Beetroot (halved)</strong></td><td>Vitamin B9</td><td></td><td class="tick">&#10003;</td><td></td><td></td><td>Alternative to asparagus</td></tr>
+            <tr><td></td><td><strong>Boswellia resin tears</strong></td><td>Boswellia</td><td></td><td></td><td class="tick">&#10003;</td><td></td><td>Source via herbal / botanical supplier</td></tr>
+            <tr><td>&#9989;</td><td><strong>Fresh ginger root</strong></td><td>Ginger</td><td></td><td></td><td class="tick">&#10003;</td><td></td><td>Whole + one cross-section slice</td></tr>
+            <tr><td>&#9989;</td><td><strong>Fresh turmeric root</strong></td><td>Turmeric</td><td></td><td></td><td class="tick">&#10003;</td><td></td><td>Halved to show orange interior</td></tr>
+            <tr><td></td><td><strong>Crab claw / whole prawns</strong></td><td>Glucosamine</td><td></td><td></td><td class="tick">&#10003;</td><td></td><td>Shellfish alternative is corn cob</td></tr>
+            <tr><td></td><td><strong>Corn cob section</strong></td><td>Glucosamine</td><td></td><td></td><td class="tick">&#10003;</td><td></td><td>Plant-based alternative to shellfish</td></tr>
+            <tr><td></td><td><strong>Fresh passionflower</strong></td><td>Passiflora</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>Source from botanical / flower supplier &mdash; priority</td></tr>
+            <tr><td></td><td><strong>Passion fruit (halved)</strong></td><td>Passiflora</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>Supporting prop to flower</td></tr>
+            <tr><td></td><td><strong>Matcha powder</strong></td><td>Camellia Sinensis</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>In ceramic spoon</td></tr>
+            <tr><td>&#9989;</td><td><strong>Loose white or green tea</strong></td><td>Camellia Sinensis</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>Alternative to matcha</td></tr>
+            <tr><td>&#9989;</td><td><strong>Walnuts</strong></td><td>Tryptophan</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>Whole + cracked</td></tr>
+            <tr><td></td><td><strong>Dark chocolate (broken slab)</strong></td><td>Tryptophan, Magnesium Glycinate</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>One prop, two ingredients</td></tr>
+            <tr><td></td><td><strong>Pistachios</strong></td><td>Vitamin B6</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>In shell or halved</td></tr>
+            <tr><td>&#9989;</td><td><strong>Spinach leaves</strong></td><td>Magnesium Glycinate</td><td></td><td></td><td></td><td class="tick">&#10003;</td><td>Supporting prop</td></tr>
+          </tbody>
+        </table>
+
+        <h3 id="key-overlaps-summary">Key Overlaps Summary</h3>
+        <table>
+          <thead>
+            <tr><th>Prop</th><th>Appears In</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Chicory root</td><td>Essential, Prebiotic</td></tr>
+            <tr><td>Avocado</td><td>Essential, Move</td></tr>
+            <tr><td>Sunflower / seeds</td><td>Essential, Prebiotic, Move</td></tr>
+            <tr><td>Almonds</td><td>Essential, Prebiotic, Move</td></tr>
+            <tr><td>Savoy cabbage / Brussels sprouts</td><td>Essential, Move</td></tr>
+            <tr><td>Pumpkin seeds</td><td>Essential (zinc) + visible within pumpkin prop on Prebiotic</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Styling note:</strong> Where props overlap, purchase once and restyle between sets &mdash; different surface, different vessel, different composition angle. Do not use identical arrangements across SKUs.</p>
+
+        <hr />
+
+        <p><em>Broono &middot; Internal Reference Document &middot; Photoshoot Art Direction</em></p>
+      </article>
+    </main>
+  </div>
+  <script>
+    const sidebar = document.querySelector(".sidebar");
+    const toggle = document.querySelector(".toc-toggle");
+    const toc = document.querySelector(".toc");
+
+    if (sidebar && toggle && toc) {
+      toggle.addEventListener("click", () => {
+        const isOpen = sidebar.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      toc.addEventListener("click", (event) => {
+        if (event.target.closest("a") && window.matchMedia("(max-width: 980px)").matches) {
+          sidebar.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
