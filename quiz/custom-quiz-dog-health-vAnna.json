@@ -3,9 +3,9 @@
   "title": "Dog Health Quiz (Anna)",
   "breedsRef": "custom-breeds.json",
 
-  "screens": ["intro", "q1", "q2", "q3", "q4", "q5", "q6", "results"],
+  "screens": ["intro", "q1", "q2", "q3", "q4", "q5", "q6","email", "results"],
   "autoAdvance": ["q2", "q3", "q5", "q6"],
-  "progressScreens": ["q1", "q2", "q3", "q4", "q5", "q6", "results"],
+  "progressScreens": ["q1", "q2", "q3", "q4", "q5", "q6","email", "results"],
 
   "personalization": {},
 
