@@ -321,12 +321,12 @@
   <h2>Card Builder</h2>
 
   <div class="mode-tabs">
-    <button class="mode-tab active" data-mode="vcard">vCard</button>
-    <button class="mode-tab" data-mode="url">URL QR</button>
+    <button class="mode-tab" data-mode="vcard">vCard</button>
+    <button class="mode-tab active" data-mode="url">URL QR</button>
   </div>
 
   <!-- ── URL QR mode ── -->
-  <div class="mode-section" id="mode-url">
+  <div class="mode-section visible" id="mode-url">
     <div class="section-label">URL</div>
     <div class="field-row">
       <input type="url" id="url-input" placeholder="https://example.com" value="https://example.com" style="flex:1" />
@@ -348,7 +348,7 @@
   </div>
 
   <!-- ── vCard mode ── -->
-  <div class="mode-section visible" id="mode-vcard">
+  <div class="mode-section" id="mode-vcard">
   <div class="section-label">Name</div>
   <div class="field-row">
     <label class="toggle"><input type="checkbox" id="tog-firstName"><span class="toggle-track"></span></label>
@@ -430,6 +430,7 @@
     <div class="card-url-label" id="pv-url-label" style="display:none"></div>
     <a class="btn-download" id="pv-download" download="contact.vcf">Save contact</a>
     <a class="btn-download" id="btn-svg" href="#" style="margin-top:0.5rem;background:var(--accent2)">Download QR (SVG)</a>
+    <a class="btn-download" id="btn-png" href="#" style="margin-top:0.5rem;background:var(--accent2)">Download QR (PNG)</a>
   </div>
   <pre id="vcf-out"></pre>
 </main>
@@ -437,7 +438,7 @@
 <script>
   const FIELDS = ['firstName','lastName','title','company','email','phone','website','social'];
 
-  let currentMode = 'vcard'; // 'vcard' | 'url'
+  let currentMode = 'url'; // 'vcard' | 'url'
 
   // ── Mode tabs ──────────────────────────────────────────────
   document.querySelectorAll('.mode-tab').forEach(btn => {
@@ -559,6 +560,7 @@
 
     // SVG download
     const svgBtn = document.getElementById('btn-svg');
+    const pngBtn = document.getElementById('btn-png');
     if (qrText.length > 1) {
       svgBtn.style.display = '';
       svgBtn.onclick = (e) => {
@@ -570,8 +572,31 @@
         a.download = 'qr-code.svg';
         a.click();
       };
+      pngBtn.style.display = '';
+      pngBtn.onclick = (e) => {
+        e.preventDefault();
+        const scale = 4;
+        const svg = buildQrSvg(qrText, qrLevel, frac);
+        const img = new Image();
+        const blob = new Blob([svg], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width  = 160 * scale;
+          canvas.height = 160 * scale;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          URL.revokeObjectURL(url);
+          const a = document.createElement('a');
+          a.href = canvas.toDataURL('image/png');
+          a.download = 'qr-code.png';
+          a.click();
+        };
+        img.src = url;
+      };
     } else {
       svgBtn.style.display = 'none';
+      pngBtn.style.display = 'none';
     }
   }
 

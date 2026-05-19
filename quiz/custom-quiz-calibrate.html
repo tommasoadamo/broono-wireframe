@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Broono Quiz Score Calibrator</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: sans-serif; max-width: 680px; margin: 2rem auto; padding: 0 1rem; background: #fafafa; }
+    h1 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+
+    .config-selector { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding: 0.75rem 1rem; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; flex-wrap: wrap; }
+    .config-selector label { font-size: 0.875rem; font-weight: bold; flex-shrink: 0; }
+    .config-selector select { flex: 1; min-width: 0; padding: 0.4rem 0.5rem; font-size: 0.95rem; border: 1px solid #ccc; border-radius: 4px; }
+
+    .field { margin: 0.75rem 0; }
+    .field-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.3rem; flex-wrap: wrap; }
+    .field-label { font-size: 0.875rem; font-weight: bold; flex-shrink: 0; }
+    .field-row { display: flex; align-items: flex-start; gap: 0.75rem; flex-wrap: wrap; }
+    select, input[type="text"], input[type="number"], input[type="email"] {
+      flex: 1; min-width: 0; padding: 0.4rem 0.5rem; font-size: 0.95rem; border: 1px solid #ccc; border-radius: 4px;
+    }
+    .question-text { margin: 0; font-size: 0.8rem; color: #666; font-style: italic; }
+    .dog-name { font-style: normal; font-weight: bold; }
+
+    .impact { width: 100%; display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap; margin-top: 0.25rem; }
+    .pill { font-size: 0.75rem; font-weight: bold; padding: 2px 7px; border-radius: 99px; white-space: nowrap; }
+    .pill-zero { background: #f0f0f0; color: #aaa; }
+
+    .totals { margin-top: 1.5rem; padding: 1rem 1.25rem; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; }
+    .totals-grid { display: flex; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .score-box { text-align: center; padding: 0.75rem 1rem; border-radius: 6px; flex: 1; min-width: 72px; }
+    .score-box .val { font-size: 2rem; font-weight: bold; line-height: 1; }
+    .score-box .name { font-size: 0.75rem; margin-top: 0.25rem; text-transform: capitalize; word-break: break-word; }
+    .score-box.active { outline: 2px solid currentColor; }
+    .threshold { font-size: 0.75rem; color: #999; text-align: center; margin-top: 0.25rem; }
+    .recommendation { font-size: 0.9rem; color: #333; margin-top: 0.5rem; }
+    .recommendation strong { color: #111; }
+
+    #fields-container { min-height: 100px; }
+
+    @media (max-width: 480px) {
+      body { margin: 1rem auto; }
+      h1 { font-size: 1.1rem; }
+      .config-selector { gap: 0.5rem; padding: 0.6rem 0.75rem; }
+      .field-row { flex-direction: column; gap: 0.4rem; }
+      .field-row > * { width: 100%; }
+      .impact { margin-top: 0; }
+      .score-box .val { font-size: 1.5rem; }
+      .totals-grid { gap: 0.5rem; }
+      .score-box { padding: 0.5rem 0.5rem; min-width: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Broono Quiz — Score Calibrator</h1>
+
+  <div class="config-selector">
+    <label>Config file</label>
+    <select id="config-select">
+      <option value="custom-quiz-dog-health.json">custom-quiz-dog-health.json</option>
+      <option value="custom-quiz-dog-health-vAnna.json">custom-quiz-dog-health-vAnna.json</option>
+    </select>
+  </div>
+
+  <div id="fields-container"></div>
+
+  <div class="totals">
+    <div class="totals-grid" id="scores-grid"></div>
+    <div class="threshold" id="threshold-label"></div>
+    <div class="recommendation" id="recommendation">—</div>
+  </div>
+
+  <script type="module">
+    import { computeScoresFromConfig, ruleContributions, breedContributions } from './custom-quiz.js';
+
+    // ── Colour palette for outputs (cycles if more than 5) ──
+    const PALETTE = [
+      { bg: '#dbeafe', text: '#1d4ed8' },
+      { bg: '#dcfce7', text: '#15803d' },
+      { bg: '#fef9c3', text: '#92400e' },
+      { bg: '#fce7f3', text: '#9d174d' },
+      { bg: '#ede9fe', text: '#6b21a8' },
+    ];
+
+    let quizConfig = null;
+    let breeds = [];
+    let answers = {};
+    // Map from field id → { outputKey → totalPoints from this field }
+    let fieldImpactMap = {};
+
+    // ── Load config ───────────────────────────────────────
+
+    async function loadConfig(filename) {
+      const res = await fetch(`./${filename}`);
+      quizConfig = await res.json();
+      breeds = quizConfig.breeds ?? [];
+      answers = {};
+      buildForm();
+    }
+
+    document.getElementById('config-select').addEventListener('change', e => {
+      loadConfig(/** @type {HTMLSelectElement} */ (e.target).value);
+    });
+
+    // ── Interpolate {field} tokens in question text ───────
+
+    function interpolate(text) {
+      return text.replace(/\{(\w+)\}/g, (_, key) => answers[key] ?? key);
+    }
+
+    // ── Build the form from config ────────────────────────
+
+    function buildForm() {
+      const container = document.getElementById('fields-container');
+      container.innerHTML = '';
+      fieldImpactMap = {};
+
+      const scoring = quizConfig.scoring;
+      const outputColors = Object.fromEntries(
+        scoring.outputs.map((o, i) => [o, PALETTE[i % PALETTE.length]])
+      );
+
+      for (const [screenId, q] of Object.entries(quizConfig.questions)) {
+        if (q.type === 'email-gate') continue; // skip email for scoring purposes
+
+        const field = document.createElement('div');
+        field.className = 'field';
+        field.dataset.screenId = screenId;
+
+        // Header: bold label + italic question
+        const header = document.createElement('div');
+        header.className = 'field-header';
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'field-label';
+        labelSpan.textContent = screenId.toUpperCase();
+        const questionP = document.createElement('p');
+        questionP.className = 'question-text';
+        questionP.innerHTML = interpolate(q.question).replace(
+          /\{(\w+)\}/g,
+          (_, k) => `<span class="dog-name" data-key="${k}">${k}</span>`
+        );
+        header.append(labelSpan, questionP);
+
+        // Input row
+        const row = document.createElement('div');
+        row.className = 'field-row';
+        const impactDiv = document.createElement('div');
+        impactDiv.className = 'impact';
+        impactDiv.id = `impact_${screenId}`;
+
+        const input = buildInput(screenId, q, outputColors);
+        row.append(input, impactDiv);
+        field.append(header, row);
+        container.appendChild(field);
+      }
+
+      buildScoreBoxes();
+      recalculate();
+    }
+
+    function buildInput(screenId, q, outputColors) {
+      if (q.type === 'multi-select') {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'display:flex;gap:0.4rem;flex-wrap:wrap;flex:1;min-width:0;width:100%';
+        const maxSelect = q.maxSelect ?? q.options.length;
+        const selected = new Set();
+        for (const opt of q.options) {
+          const btn = document.createElement('button');
+          btn.textContent = opt.label;
+          btn.dataset.value = opt.value;
+          btn.style.cssText = 'padding:0.3rem 0.75rem;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:0.85rem;background:#fff';
+          btn.addEventListener('click', () => {
+            if (opt.value === 'none') {
+              selected.clear();
+              wrap.querySelectorAll('button').forEach(b => b.style.background = '#fff');
+              selected.add('none');
+              btn.style.background = '#e8f0fc';
+            } else {
+              selected.delete('none');
+              wrap.querySelector('[data-value="none"]').style.background = '#fff';
+              if (selected.has(opt.value)) {
+                selected.delete(opt.value);
+                btn.style.background = '#fff';
+              } else if (selected.size < maxSelect) {
+                selected.add(opt.value);
+                btn.style.background = '#e8f0fc';
+              }
+            }
+            answers[q.storeAs] = Array.from(selected);
+            recalculate();
+          });
+          wrap.appendChild(btn);
+        }
+        return wrap;
+      }
+
+      if (q.type === 'cards') {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'display:flex;gap:0.4rem;flex-wrap:wrap;flex:1;min-width:0;width:100%';
+        for (const opt of q.options) {
+          const btn = document.createElement('button');
+          btn.textContent = opt.label;
+          btn.dataset.value = opt.value;
+          btn.style.cssText = 'padding:0.3rem 0.75rem;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:0.85rem;background:#fff';
+          btn.addEventListener('click', () => {
+            wrap.querySelectorAll('button').forEach(b => b.style.background = '#fff');
+            btn.style.background = '#e8f0fc';
+            answers[q.storeAs] = opt.value;
+            recalculate();
+          });
+          wrap.appendChild(btn);
+        }
+        return wrap;
+      }
+
+      if (q.type === 'breed-search') {
+        const sel = document.createElement('select');
+        sel.style.flex = '1';
+        const blank = document.createElement('option');
+        blank.value = '';
+        blank.textContent = '— select breed —';
+        sel.appendChild(blank);
+        for (const b of breeds) {
+          const opt = document.createElement('option');
+          opt.value = b.name;
+          opt.textContent = b.name;
+          sel.appendChild(opt);
+        }
+        sel.addEventListener('change', () => {
+          answers[q.storeAs] = sel.value || undefined;
+          recalculate();
+        });
+        return sel;
+      }
+
+      if (q.type === 'number') {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'display:flex;gap:0.4rem;flex:1';
+        const inp = document.createElement('input');
+        inp.type = 'number';
+        inp.min = String(q.min ?? 0);
+        inp.max = String(q.max ?? 9999);
+        inp.step = String(q.step ?? 1);
+        inp.value = '';
+        inp.style.flex = '1';
+
+        if (q.unitToggle) {
+          const unitSel = document.createElement('select');
+          unitSel.style.cssText = 'flex:0 0 70px';
+          for (const u of q.unitToggle) {
+            const opt = document.createElement('option');
+            opt.value = u;
+            opt.textContent = u;
+            unitSel.appendChild(opt);
+          }
+          const update = () => {
+            const raw = parseFloat(inp.value) || 0;
+            const unit = unitSel.value;
+            const factor = q.unitConversions?.[unit] ?? 1;
+            answers[q.storeAs] = raw * factor;
+            recalculate();
+          };
+          inp.addEventListener('input', update);
+          unitSel.addEventListener('change', update);
+          wrap.append(inp, unitSel);
+        } else {
+          inp.addEventListener('input', () => {
+            answers[q.storeAs] = parseFloat(inp.value) || 0;
+            recalculate();
+          });
+          wrap.appendChild(inp);
+        }
+        return wrap;
+      }
+
+      // Default: text input
+      const inp = document.createElement('input');
+      inp.type = q.type === 'email-gate' ? 'email' : 'text';
+      inp.placeholder = q.placeholder ?? '';
+      inp.style.flex = '1';
+      inp.addEventListener('input', () => {
+        answers[q.storeAs] = inp.value.trim() || undefined;
+        updateInterpolations();
+        recalculate();
+      });
+      return inp;
+    }
+
+    function buildScoreBoxes() {
+      const grid = document.getElementById('scores-grid');
+      grid.innerHTML = '';
+      const threshold = quizConfig.scoring.threshold;
+      document.getElementById('threshold-label').textContent = `Threshold to recommend: ≥ ${threshold}`;
+      for (const [i, output] of quizConfig.scoring.outputs.entries()) {
+        const color = PALETTE[i % PALETTE.length];
+        const box = document.createElement('div');
+        box.className = 'score-box';
+        box.id = `box_${output}`;
+        box.style.cssText = `background:${color.bg};color:${color.text}`;
+        box.innerHTML = `<div class="val" id="val_${output}">–</div><div class="name">${output}</div>`;
+        grid.appendChild(box);
+      }
+    }
+
+    // ── Recalculate scores and update UI ──────────────────
+
+    function recalculate() {
+      if (!quizConfig) return;
+      const { scoring } = quizConfig;
+      const scores = computeScoresFromConfig(answers, scoring, breeds);
+      const breedImpacts = breedContributions(answers, scoring, breeds);
+      const ruleImpacts = ruleContributions(answers, scoring);
+
+      // Build per-field impact map: fieldStoreAs → { output → points }
+      const impactByField = {};
+
+      // Breed contributions → mapped to dog_breed field
+      const breedField = scoring.breedRules?.breedField;
+      if (breedField) {
+        impactByField[breedField] = {};
+        for (const { output, points } of breedImpacts) {
+          impactByField[breedField][output] = (impactByField[breedField][output] ?? 0) + points;
+        }
+      }
+
+      // Rule contributions → mapped to their field's storeAs
+      const storeAsForField = Object.fromEntries(
+        Object.values(quizConfig.questions).map(q => [q.storeAs, q.storeAs])
+      );
+      for (const { rule, active, points } of ruleImpacts) {
+        if (!active) continue;
+        const fieldKey = rule.field;
+        if (!impactByField[fieldKey]) impactByField[fieldKey] = {};
+        impactByField[fieldKey][rule.output] = (impactByField[fieldKey][rule.output] ?? 0) + points;
+      }
+
+      // Render impact pills for each question
+      for (const [screenId, q] of Object.entries(quizConfig.questions)) {
+        const impactDiv = document.getElementById(`impact_${screenId}`);
+        if (!impactDiv) continue;
+        const fieldKey = q.storeAs;
+        const impact = impactByField[fieldKey] ?? {};
+        impactDiv.innerHTML = renderImpactPills(impact, scoring.outputs);
+      }
+
+      // Update score boxes
+      for (const [i, output] of scoring.outputs.entries()) {
+        const color = PALETTE[i % PALETTE.length];
+        const val = document.getElementById(`val_${output}`);
+        const box = document.getElementById(`box_${output}`);
+        if (val) val.textContent = String(scores[output] ?? 0);
+        if (box) box.classList.remove('active');
+      }
+
+      // Highlight winner
+      const winner = Object.entries(scores)
+        .filter(([, v]) => v >= scoring.threshold)
+        .sort((a, b) => b[1] - a[1])[0];
+
+      const rec = document.getElementById('recommendation');
+      if (winner) {
+        document.getElementById(`box_${winner[0]}`)?.classList.add('active');
+        rec.innerHTML = `<strong>Recommended:</strong> ${winner[0]}`;
+      } else {
+        rec.innerHTML = `<strong>Recommended:</strong> none (no score ≥ ${scoring.threshold})`;
+      }
+    }
+
+    function renderImpactPills(impact, outputs) {
+      const parts = [];
+      for (const [i, output] of outputs.entries()) {
+        const pts = impact[output];
+        if (!pts) continue;
+        const color = PALETTE[i % PALETTE.length];
+        const sign = pts > 0 ? '+' : '';
+        parts.push(`<span class="pill" style="background:${color.bg};color:${color.text}">${output} ${sign}${pts}</span>`);
+      }
+      if (!parts.length) parts.push(`<span class="pill pill-zero">no effect</span>`);
+      return parts.join('');
+    }
+
+    function updateInterpolations() {
+      document.querySelectorAll('.question-text').forEach(p => {
+        p.querySelectorAll('[data-key]').forEach(span => {
+          const key = span.dataset.key;
+          span.textContent = answers[key] ?? key;
+        });
+      });
+    }
+
+    // ── Init ──────────────────────────────────────────────
+    loadConfig('custom-quiz-dog-health.json');
+  </script>
+</body>
+</html>
