@@ -1,0 +1,2192 @@
+[
+  {
+    "name": "Affenpinscher",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 3,
+    "weight-adult-max": 5,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Afghan Hound",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 23,
+    "weight-adult-max": 27,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin or ear comfort, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Airedale Terrier",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 23,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Akita",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 32,
+    "weight-adult-max": 59,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Alaskan Klee Kai",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 3,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Alaskan Malamute",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 34,
+    "weight-adult-max": 39,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "American Bulldog",
+    "risk_joint": 3,
+    "risk_gut": 4,
+    "risk_skin": 4,
+    "risk_anxiety": 1,
+    "weight-adult-min": 34,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation."
+  },
+  {
+    "name": "American English Coonhound",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 20,
+    "weight-adult-max": 29,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "American Eskimo Dog",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 3,
+    "weight-adult-max": 16,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "American Foxhound",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 27,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "American Hairless Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 13,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "American Leopard Hound",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 16,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin or ear comfort, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "American Staffordshire Terrier",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 18,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "American Water Spaniel",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 11,
+    "weight-adult-max": 20,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Anatolian Shepherd Dog",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 36,
+    "weight-adult-max": 68,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness, skin or ear comfort, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Appenzeller Sennenhund",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 22,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Australian Cattle Dog",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 16,
+    "weight-adult-max": 23,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Australian Kelpie",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 16,
+    "weight-adult-max": 23,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Australian Shepherd",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 18,
+    "weight-adult-max": 29,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin or ear comfort, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Australian Stumpy Tail Cattle Dog",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 15,
+    "weight-adult-max": 20,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Australian Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 7,
+    "weight-adult-max": 9,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Azawakh",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 15,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Barbado da Terceira",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 21,
+    "weight-adult-max": 27,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Barbet",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 16,
+    "weight-adult-max": 29,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Basenji",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 10,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Basset Fauve de Bretagne",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 10,
+    "weight-adult-max": 18,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Basset Hound",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 1,
+    "weight-adult-min": 18,
+    "weight-adult-max": 29,
+    "description": "A heavy, low-set breed that can be prone to back, elbow, and hip strain, so weight control and gentle free movement are important; digestion can be sensitive and skin folds or ears may need regular care."
+  },
+  {
+    "name": "Bavarian Mountain Scent Hound",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 17,
+    "weight-adult-max": 30,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin or ear comfort, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Beagle",
+    "risk_joint": 2,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 9,
+    "weight-adult-max": 14,
+    "description": "Usually active and sturdy, but can gain weight easily, which increases joint stress; they may have food sensitivities, digestive upset, itchy skin, and anxiety or restlessness if under-exercised."
+  },
+  {
+    "name": "Bearded Collie",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 20,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Beauceron",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 32,
+    "weight-adult-max": 50,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Bedlington Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 8,
+    "weight-adult-max": 10,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Belgian Laekenois",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 25,
+    "weight-adult-max": 29,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Belgian Malinois",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 18,
+    "weight-adult-max": 36,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Belgian Sheepdog",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 20,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Belgian Tervuren",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 20,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Bergamasco Sheepdog",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 26,
+    "weight-adult-max": 38,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Berger Picard",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 23,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Bernese Mountain Dog",
+    "risk_joint": 5,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 32,
+    "weight-adult-max": 52,
+    "description": "A giant breed with notable joint demands, especially hips, elbows, and arthritis risk; steady low-impact movement, careful growth, and weight management help protect mobility."
+  },
+  {
+    "name": "Bichon Frisé",
+    "risk_joint": 1,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 5,
+    "weight-adult-max": 8,
+    "description": "Often lively and small-framed, with lower joint load but possible kneecap issues; skin allergies, ear irritation, tear staining, sensitive digestion, and separation anxiety can be common concerns."
+  },
+  {
+    "name": "Biewer Terrier",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 2,
+    "weight-adult-max": 4,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Black and Tan Coonhound",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 29,
+    "weight-adult-max": 50,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Black Russian Terrier",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 36,
+    "weight-adult-max": 59,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Bloodhound",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 36,
+    "weight-adult-max": 50,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Blue Picardy Spaniel",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 20,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Bluetick Coonhound",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 20,
+    "weight-adult-max": 36,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Boerboel",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 68,
+    "weight-adult-max": 91,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Bohemian Shepherd",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 17,
+    "weight-adult-max": 27,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin or ear comfort, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Bolognese",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 3,
+    "weight-adult-max": 5,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Border Collie",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 14,
+    "weight-adult-max": 25,
+    "description": "Highly active and intelligent, with a strong need for free movement and mental work; anxiety, compulsive behaviour, or hyperactivity may appear if exercise and stimulation are limited."
+  },
+  {
+    "name": "Border Terrier",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 7,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Borzoi",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 27,
+    "weight-adult-max": 48,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Boston Terrier",
+    "risk_joint": 2,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Bouvier des Ardennes",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 22,
+    "weight-adult-max": 35,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Bouvier des Flandres",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 32,
+    "weight-adult-max": 50,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Boxer",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 23,
+    "weight-adult-max": 36,
+    "description": "A powerful, energetic breed that benefits from regular movement but may face hip, knee, digestive, gas, and skin sensitivity issues; excitement and restlessness can increase without routine."
+  },
+  {
+    "name": "Boykin Spaniel",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 11,
+    "weight-adult-max": 18,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Bracco Italiano",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 25,
+    "weight-adult-max": 41,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain."
+  },
+  {
+    "name": "Braque du Bourbonnais",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 16,
+    "weight-adult-max": 24,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Braque Francais Pyrenean",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 18,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Braque Saint-Germain",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 18,
+    "weight-adult-max": 26,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Brazilian Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 10,
+    "weight-adult-max": 10,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Briard",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 25,
+    "weight-adult-max": 45,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Brittany",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 14,
+    "weight-adult-max": 18,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Broholmer",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 41,
+    "weight-adult-max": 68,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Brussels Griffon",
+    "risk_joint": 1,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 4,
+    "weight-adult-max": 5,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include digestive sensitivity or bloat awareness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Bull Terrier",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 23,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Bullmastiff",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 45,
+    "weight-adult-max": 59,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Cairn Terrier",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 6,
+    "weight-adult-max": 6,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Calupoh",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 32,
+    "weight-adult-max": 45,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Canaan Dog",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 16,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Canadian Eskimo Dog",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 18,
+    "weight-adult-max": 40,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Cane Corso",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 40,
+    "weight-adult-max": 50,
+    "description": "A large, muscular breed with higher joint load, especially hips, elbows, and knees; controlled exercise, free but not excessive movement, and lean body condition are especially important."
+  },
+  {
+    "name": "Cardigan Welsh Corgi",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 11,
+    "weight-adult-max": 17,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Carolina Dog",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 14,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Catahoula Leopard Dog",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 23,
+    "weight-adult-max": 43,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain."
+  },
+  {
+    "name": "Caucasian Shepherd Dog",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 45,
+    "weight-adult-max": 77,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness, skin or ear comfort, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Cavachon",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 5,
+    "weight-adult-max": 9,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Cavalier King Charles Spaniel",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 6,
+    "weight-adult-max": 8,
+    "description": "A gentle companion breed that may develop kneecap, back, ear, skin, or digestive sensitivities; moderate movement and calm routines can support comfort and reduce anxiety."
+  },
+  {
+    "name": "Cavapoo",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 5,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Central Asian Shepherd Dog",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 40,
+    "weight-adult-max": 50,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness, skin or ear comfort, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Cesky Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 6,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Chesapeake Bay Retriever",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 25,
+    "weight-adult-max": 36,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Chihuahua",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 3,
+    "weight-adult-max": 3,
+    "description": "Small and delicate, with possible kneecap, dental, and digestive sensitivities; anxiety, reactivity, and nervous energy may increase if they lack safe movement and predictable handling."
+  },
+  {
+    "name": "Chinese Crested",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 4,
+    "weight-adult-max": 5,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Chinese Shar-Pei",
+    "risk_joint": 3,
+    "risk_gut": 4,
+    "risk_skin": 4,
+    "risk_anxiety": 1,
+    "weight-adult-min": 20,
+    "weight-adult-max": 27,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation."
+  },
+  {
+    "name": "Chinook",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 23,
+    "weight-adult-max": 41,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain."
+  },
+  {
+    "name": "Chow Chow",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 20,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Cirneco dell'Etna",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 9,
+    "weight-adult-max": 13,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Clumber Spaniel",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 25,
+    "weight-adult-max": 39,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Cockapoo",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 5,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Cocker Spaniel",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 9,
+    "weight-adult-max": 14,
+    "description": "Often active and affectionate, with possible ear infections, skin allergies, and digestive sensitivities; regular grooming, steady exercise, and routine help support comfort and emotional balance."
+  },
+  {
+    "name": "Collie",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 23,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Coton de Tulear",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 4,
+    "weight-adult-max": 7,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Croatian Sheepdog",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 13,
+    "weight-adult-max": 20,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Curly-Coated Retriever",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 27,
+    "weight-adult-max": 43,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Czechoslovakian Vlciak",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 20,
+    "weight-adult-max": 26,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Dachshund",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 5,
+    "weight-adult-max": 15,
+    "description": "A long-backed breed with a higher risk of spinal strain and disc problems, so jumping and excess weight are key concerns; controlled movement helps maintain muscle without overloading the back."
+  },
+  {
+    "name": "Dalmatian",
+    "risk_joint": 2,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 20,
+    "weight-adult-max": 32,
+    "description": "An athletic breed that needs plenty of free movement and hydration; digestion, urinary metabolism, skin sensitivity, and restlessness can become issues if diet or exercise are poorly matched."
+  },
+  {
+    "name": "Dandie Dinmont Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 8,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Danish-Swedish Farmdog",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 7,
+    "weight-adult-max": 9,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Deutscher Wachtelhund",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 18,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Dobermann",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 27,
+    "weight-adult-max": 45,
+    "description": "A lean, athletic breed that needs regular movement to stay balanced; joint strain, digestive sensitivity, and anxiety-related restlessness can appear when exercise or routine is inconsistent."
+  },
+  {
+    "name": "Dogo Argentino",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 36,
+    "weight-adult-max": 45,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Dogue de Bordeaux",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 45,
+    "weight-adult-max": 50,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Drentsche Patrijshond",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 25,
+    "weight-adult-max": 33,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Drever",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 16,
+    "weight-adult-max": 18,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Dutch Shepherd",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 19,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin or ear comfort, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "English Bulldog",
+    "risk_joint": 4,
+    "risk_gut": 4,
+    "risk_skin": 4,
+    "risk_anxiety": 2,
+    "weight-adult-min": 18,
+    "weight-adult-max": 23,
+    "description": "A heavy, compact breed with higher risk around hips, knees, skin folds, allergies, gas, and digestive upset; they need careful, low-impact movement and protection from overheating."
+  },
+  {
+    "name": "English Cocker Spaniel",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 12,
+    "weight-adult-max": 15,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "English Foxhound",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 27,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "English Setter",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 20,
+    "weight-adult-max": 36,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "English Springer Spaniel",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 18,
+    "weight-adult-max": 23,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "English Toy Spaniel",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 4,
+    "weight-adult-max": 6,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Entlebucher Mountain Dog",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 1,
+    "weight-adult-min": 18,
+    "weight-adult-max": 29,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, skin or ear comfort."
+  },
+  {
+    "name": "Estrela Mountain Dog",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 1,
+    "weight-adult-min": 35,
+    "weight-adult-max": 60,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness, skin or ear comfort."
+  },
+  {
+    "name": "Eurasier",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 18,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Field Spaniel",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 16,
+    "weight-adult-max": 23,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Finnish Lapphund",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 15,
+    "weight-adult-max": 24,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Finnish Spitz",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 9,
+    "weight-adult-max": 15,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Flat-Coated Retriever",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 27,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "French Bulldog",
+    "risk_joint": 3,
+    "risk_gut": 4,
+    "risk_skin": 4,
+    "risk_anxiety": 2,
+    "weight-adult-min": 13,
+    "weight-adult-max": 13,
+    "description": "A compact companion breed that can have spine, knee, gut, allergy, and skin-fold sensitivities; short controlled activity, weight control, and calm routines support mobility and breathing comfort."
+  },
+  {
+    "name": "French Spaniel",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 23,
+    "weight-adult-max": 27,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "German Longhaired Pointer",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 25,
+    "weight-adult-max": 36,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "German Pinscher",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 11,
+    "weight-adult-max": 20,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "German Shepherd",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 23,
+    "weight-adult-max": 41,
+    "description": "A working breed with higher hip, elbow, digestive, and anxiety risk; they need structured exercise, free movement, and mental engagement to protect joints and reduce stress behaviours."
+  },
+  {
+    "name": "German Shorthaired Pointer",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 20,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "German Spitz",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 11,
+    "weight-adult-max": 12,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "German Wirehaired Pointer",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 23,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Giant Schnauzer",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 25,
+    "weight-adult-max": 43,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Glen of Imaal Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 15,
+    "weight-adult-max": 18,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Golden Retriever",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 1,
+    "weight-adult-min": 25,
+    "weight-adult-max": 34,
+    "description": "A large, active breed often watched for hip, elbow, arthritis, skin allergy, and ear issues; lean weight and regular low-impact movement are important for long-term mobility."
+  },
+  {
+    "name": "Goldendoodle",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 7,
+    "weight-adult-max": 40,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain."
+  },
+  {
+    "name": "Gordon Setter",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 20,
+    "weight-adult-max": 36,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Grand Basset Griffon Vendéen",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 18,
+    "weight-adult-max": 20,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Great Dane",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 50,
+    "weight-adult-max": 79,
+    "description": "A giant, deep-chested breed with major joint load and bloat awareness needs; slow growth, careful feeding, and steady low-impact movement help protect hips, elbows, and digestion."
+  },
+  {
+    "name": "Great Pyrenees",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 39,
+    "weight-adult-max": 45,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Greater Swiss Mountain Dog",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 1,
+    "weight-adult-min": 39,
+    "weight-adult-max": 64,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness, skin or ear comfort."
+  },
+  {
+    "name": "Greyhound",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 27,
+    "weight-adult-max": 32,
+    "description": "A lean sprinter that needs safe space to move but also plenty of rest; thin skin, digestive sensitivity, muscle strain, and anxiety can occur with abrupt routine changes."
+  },
+  {
+    "name": "Hamiltonstovare",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 18,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Hanoverian Scenthound",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 36,
+    "weight-adult-max": 45,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Harrier",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 20,
+    "weight-adult-max": 27,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Havanese",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 3,
+    "weight-adult-max": 6,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Hokkaido",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 20,
+    "weight-adult-max": 30,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Hovawart",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 29,
+    "weight-adult-max": 41,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain."
+  },
+  {
+    "name": "Ibizan Hound",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 20,
+    "weight-adult-max": 23,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin or ear comfort, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Icelandic Sheepdog",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 11,
+    "weight-adult-max": 14,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Irish Red and White Setter",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 16,
+    "weight-adult-max": 27,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Irish Setter",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 27,
+    "weight-adult-max": 32,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Irish Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 11,
+    "weight-adult-max": 12,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Irish Water Spaniel",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 20,
+    "weight-adult-max": 31,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Irish Wolfhound",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 48,
+    "weight-adult-max": 54,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Italian Greyhound",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 3,
+    "weight-adult-max": 6,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Jack Russell Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 6,
+    "weight-adult-max": 8,
+    "description": "A very energetic terrier that needs frequent movement and mental outlets; anxiety, hyperactivity, and frustration behaviours can appear when activity is restricted."
+  },
+  {
+    "name": "Jagdterrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 8,
+    "weight-adult-max": 10,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Japanese Akitainu",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 25,
+    "weight-adult-max": 34,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Japanese Chin",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 3,
+    "weight-adult-max": 5,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Japanese Spitz",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Japanese Terrier",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 5,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Kai Ken",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 11,
+    "weight-adult-max": 18,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Karelian Bear Dog",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 20,
+    "weight-adult-max": 22,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Keeshond",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 16,
+    "weight-adult-max": 20,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Kerry Blue Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 15,
+    "weight-adult-max": 18,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Komondor",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 36,
+    "weight-adult-max": 59,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Kuvasz",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 32,
+    "weight-adult-max": 52,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Labradoodle",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 10,
+    "weight-adult-max": 30,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Labrador Retriever",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 25,
+    "weight-adult-max": 36,
+    "description": "A large, food-motivated breed with higher hip, elbow, arthritis, and weight-related joint risk; consistent exercise, free movement, and portion control are especially helpful."
+  },
+  {
+    "name": "Lagotto Romagnolo",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 11,
+    "weight-adult-max": 16,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Leonberger",
+    "risk_joint": 4,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 41,
+    "weight-adult-max": 77,
+    "description": "A giant breed with increased pressure on hips, elbows, and developing joints; steady low-impact movement, controlled growth, and lean weight help maintain comfortable mobility."
+  },
+  {
+    "name": "Lhasa Apso",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 5,
+    "weight-adult-max": 8,
+    "description": "A small companion breed that may have skin, ear, eye, and digestive sensitivities; moderate daily movement and predictable routines can help reduce stiffness and stress."
+  },
+  {
+    "name": "Maltese",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 3,
+    "weight-adult-max": 3,
+    "description": "A light toy breed with lower joint load but possible kneecap, dental, skin, and digestive sensitivities; gentle movement and stable routines support confidence and comfort."
+  },
+  {
+    "name": "Maltipoo",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 2,
+    "weight-adult-max": 9,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Manchester Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 10,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Mastiff",
+    "risk_joint": 5,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 1,
+    "weight-adult-min": 54,
+    "weight-adult-max": 104,
+    "description": "A very large breed with heavy joint demands, especially hips, elbows, knees, and arthritis risk; free movement should be calm, regular, and supported by strict weight management."
+  },
+  {
+    "name": "Miniature Dachshund",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 4,
+    "weight-adult-max": 5,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Miniature Schnauzer",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 5,
+    "weight-adult-max": 9,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Mixed breed",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": null,
+    "weight-adult-max": null,
+    "description": "Health tendencies vary by size, build, and ancestry; watch body condition, stool quality, skin comfort, anxiety signals, and whether the dog can move freely without stiffness."
+  },
+  {
+    "name": "Neapolitan Mastiff",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 50,
+    "weight-adult-max": 70,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Newfoundland",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 2,
+    "risk_anxiety": 1,
+    "weight-adult-min": 45,
+    "weight-adult-max": 68,
+    "description": "A giant, heavy-coated breed with higher hip, elbow, arthritis, and bloat awareness needs; swimming or low-impact movement can be especially useful for joint comfort."
+  },
+  {
+    "name": "Norfolk Terrier",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 6,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Norwegian Elkhound",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 22,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Norwich Terrier",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 6,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Not sure",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": null,
+    "weight-adult-max": null,
+    "description": "When breed background is unknown, focus on the individual dog's size, weight, movement, digestion, skin condition, energy level, and anxiety signs rather than breed assumptions."
+  },
+  {
+    "name": "Nova Scotia Duck Tolling Retriever",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 16,
+    "weight-adult-max": 23,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Old English Sheepdog",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 27,
+    "weight-adult-max": 45,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Papillon",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 2,
+    "weight-adult-max": 5,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Parson Russell Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 6,
+    "weight-adult-max": 8,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Pembroke Welsh Corgi",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 10,
+    "weight-adult-max": 14,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Pomeranian",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 1,
+    "weight-adult-max": 3,
+    "description": "A small, alert breed that may have kneecap, dental, coat, skin, and digestive sensitivities; anxiety, barking, or hyperactivity can increase without safe movement and routine."
+  },
+  {
+    "name": "Poodle",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 2,
+    "weight-adult-max": 32,
+    "description": "An intelligent, active breed that benefits from movement and mental work; possible concerns include kneecaps in smaller sizes, hips in larger sizes, skin, ears, digestion, and stress sensitivity."
+  },
+  {
+    "name": "Portuguese Water Dog",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 16,
+    "weight-adult-max": 27,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Pug",
+    "risk_joint": 2,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 6,
+    "weight-adult-max": 8,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Puggle",
+    "risk_joint": 2,
+    "risk_gut": 3,
+    "risk_skin": 3,
+    "risk_anxiety": 1,
+    "weight-adult-min": 7,
+    "weight-adult-max": 14,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, digestive sensitivity or bloat awareness, skin, coat, or ear irritation."
+  },
+  {
+    "name": "Rat Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 5,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Rhodesian Ridgeback",
+    "risk_joint": 4,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 29,
+    "weight-adult-max": 41,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Rottweiler",
+    "risk_joint": 5,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 36,
+    "weight-adult-max": 61,
+    "description": "A powerful large breed with high hip, elbow, knee, and arthritis risk; controlled exercise, muscle maintenance, and lean weight are central to comfortable free movement."
+  },
+  {
+    "name": "Russell Terrier",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 4,
+    "weight-adult-max": 7,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Saint Bernard",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 54,
+    "weight-adult-max": 82,
+    "description": "A giant breed with major joint and bloat awareness needs; slow growth, careful feeding, and steady low-impact movement help reduce stress on hips, elbows, and digestion."
+  },
+  {
+    "name": "Samoyed",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 16,
+    "weight-adult-max": 30,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness."
+  },
+  {
+    "name": "Scottish Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 8,
+    "weight-adult-max": 10,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Shetland Sheepdog",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 7,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Shiba Inu",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 8,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Shih Tzu",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 4,
+    "weight-adult-max": 7,
+    "description": "A small companion breed with possible skin, ear, eye, digestive, and kneecap sensitivities; gentle daily movement and grooming support comfort and reduce irritation."
+  },
+  {
+    "name": "Siberian Husky",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 16,
+    "weight-adult-max": 27,
+    "description": "A high-endurance breed with a strong need for free movement; anxiety, vocalising, escape behaviour, or hyperactivity can emerge if exercise and enrichment are too limited."
+  },
+  {
+    "name": "Soft Coated Wheaten Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 14,
+    "weight-adult-max": 20,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Spitz",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 2,
+    "weight-adult-min": 5,
+    "weight-adult-max": 11,
+    "description": "Typically alert and active, with possible coat, skin, dental, digestive, or kneecap sensitivities depending on size; regular movement and routine help reduce stress and restlessness."
+  },
+  {
+    "name": "Springer Spaniel",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 18,
+    "weight-adult-max": 25,
+    "description": "A large, active breed where weight control and steady movement help protect hips, elbows, and long-term mobility; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Sprocker Spaniel",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 14,
+    "weight-adult-max": 20,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Staffordshire Bull Terrier",
+    "risk_joint": 3,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 11,
+    "weight-adult-max": 17,
+    "description": "A muscular, energetic breed that benefits from strong daily movement; skin allergies, joint strain, digestive sensitivity, and frustration or anxiety may appear if activity is restricted."
+  },
+  {
+    "name": "Tibetan Mastiff",
+    "risk_joint": 5,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 1,
+    "weight-adult-min": 32,
+    "weight-adult-max": 68,
+    "description": "A giant breed where hips, elbows, growth rate, and arthritis risk deserve close attention; useful areas to monitor include joint strain, digestive sensitivity or bloat awareness."
+  },
+  {
+    "name": "Tibetan Spaniel",
+    "risk_joint": 1,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 2,
+    "weight-adult-min": 4,
+    "weight-adult-max": 7,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include skin, coat, or ear irritation, stress or restlessness when routines are inconsistent."
+  },
+  {
+    "name": "Tibetan Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 9,
+    "weight-adult-max": 11,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Vizsla",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 20,
+    "weight-adult-max": 27,
+    "description": "A sensitive, athletic breed with high exercise and closeness needs; anxiety, hyperactivity, or restlessness can develop without free movement, training, and predictable companionship."
+  },
+  {
+    "name": "Weimaraner",
+    "risk_joint": 3,
+    "risk_gut": 3,
+    "risk_skin": 1,
+    "risk_anxiety": 3,
+    "weight-adult-min": 25,
+    "weight-adult-max": 41,
+    "description": "A large, energetic breed that needs substantial movement and mental work; joint strain, bloat awareness, digestive sensitivity, and separation anxiety are useful areas to monitor."
+  },
+  {
+    "name": "West Highland White Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 7,
+    "weight-adult-max": 10,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Whippet",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 1,
+    "risk_anxiety": 2,
+    "weight-adult-min": 11,
+    "weight-adult-max": 18,
+    "description": "A lean sprinter that needs safe bursts of free movement plus warmth and rest; thin skin, muscle strain, digestion, and anxiety may need attention in sensitive individuals."
+  },
+  {
+    "name": "Wire Fox Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 7,
+    "weight-adult-max": 9,
+    "description": "A small breed where safe daily movement, dental care, and careful handling support comfort; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Working Cocker Spaniel",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 3,
+    "risk_anxiety": 3,
+    "weight-adult-min": 12,
+    "weight-adult-max": 16,
+    "description": "A medium-sized breed that usually benefits from regular free movement and lean body condition; useful areas to monitor include occasional stiffness, skin, coat, or ear irritation, anxiety, hyperactivity, or frustration if under-stimulated."
+  },
+  {
+    "name": "Yorkshire Terrier",
+    "risk_joint": 2,
+    "risk_gut": 2,
+    "risk_skin": 2,
+    "risk_anxiety": 3,
+    "weight-adult-min": 3,
+    "weight-adult-max": 3,
+    "description": "A small, lively breed with possible kneecap, dental, digestive, skin, and anxiety issues; safe movement, routine, and calm handling can reduce stress and restlessness."
+  }
+]

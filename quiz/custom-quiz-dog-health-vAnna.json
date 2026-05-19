@@ -1,0 +1,161 @@
+{
+  "id": "dog-health-vAnna",
+  "title": "Dog Health Quiz (Anna)",
+  "breeds": [
+    { "name": "Basset Hound",                 "risk_joint": 3, "risk_gut": 3, "risk_skin": 2, "risk_anxiety": 1 },
+    { "name": "Beagle",                       "risk_joint": 2, "risk_gut": 3, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Bernese Mountain Dog",         "risk_joint": 5, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Bichon Frisé",                 "risk_joint": 1, "risk_gut": 3, "risk_skin": 3, "risk_anxiety": 2 },
+    { "name": "Border Collie",                "risk_joint": 2, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 3 },
+    { "name": "Boxer",                        "risk_joint": 3, "risk_gut": 3, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Cane Corso",                   "risk_joint": 4, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 2 },
+    { "name": "Cavalier King Charles Spaniel","risk_joint": 2, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Chihuahua",                    "risk_joint": 2, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 3 },
+    { "name": "Cocker Spaniel",               "risk_joint": 2, "risk_gut": 2, "risk_skin": 3, "risk_anxiety": 2 },
+    { "name": "Dachshund",                    "risk_joint": 4, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 2 },
+    { "name": "Dalmatian",                    "risk_joint": 2, "risk_gut": 3, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Dobermann",                    "risk_joint": 3, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 2 },
+    { "name": "English Bulldog",              "risk_joint": 4, "risk_gut": 4, "risk_skin": 4, "risk_anxiety": 2 },
+    { "name": "French Bulldog",               "risk_joint": 3, "risk_gut": 4, "risk_skin": 4, "risk_anxiety": 2 },
+    { "name": "German Shepherd",              "risk_joint": 4, "risk_gut": 3, "risk_skin": 2, "risk_anxiety": 3 },
+    { "name": "Golden Retriever",             "risk_joint": 4, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 1 },
+    { "name": "Great Dane",                   "risk_joint": 5, "risk_gut": 3, "risk_skin": 1, "risk_anxiety": 2 },
+    { "name": "Greyhound",                    "risk_joint": 3, "risk_gut": 3, "risk_skin": 1, "risk_anxiety": 2 },
+    { "name": "Jack Russell Terrier",         "risk_joint": 2, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 3 },
+    { "name": "Labrador Retriever",           "risk_joint": 4, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 1 },
+    { "name": "Leonberger",                   "risk_joint": 4, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 1 },
+    { "name": "Lhasa Apso",                   "risk_joint": 2, "risk_gut": 2, "risk_skin": 3, "risk_anxiety": 2 },
+    { "name": "Maltese",                      "risk_joint": 1, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Mastiff",                      "risk_joint": 5, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 1 },
+    { "name": "Mixed breed",                  "risk_joint": 2, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Newfoundland",                 "risk_joint": 4, "risk_gut": 3, "risk_skin": 2, "risk_anxiety": 1 },
+    { "name": "Not sure",                     "risk_joint": 2, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Pomeranian",                   "risk_joint": 2, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 3 },
+    { "name": "Poodle",                       "risk_joint": 2, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Rottweiler",                   "risk_joint": 5, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 2 },
+    { "name": "Saint Bernard",                "risk_joint": 5, "risk_gut": 3, "risk_skin": 1, "risk_anxiety": 1 },
+    { "name": "Shih Tzu",                     "risk_joint": 2, "risk_gut": 2, "risk_skin": 3, "risk_anxiety": 2 },
+    { "name": "Siberian Husky",               "risk_joint": 2, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 3 },
+    { "name": "Spitz",                        "risk_joint": 2, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 2 },
+    { "name": "Staffordshire Bull Terrier",   "risk_joint": 3, "risk_gut": 2, "risk_skin": 3, "risk_anxiety": 2 },
+    { "name": "Vizsla",                       "risk_joint": 2, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 3 },
+    { "name": "Weimaraner",                   "risk_joint": 3, "risk_gut": 3, "risk_skin": 1, "risk_anxiety": 3 },
+    { "name": "Whippet",                      "risk_joint": 2, "risk_gut": 2, "risk_skin": 1, "risk_anxiety": 2 },
+    { "name": "Yorkshire Terrier",            "risk_joint": 2, "risk_gut": 2, "risk_skin": 2, "risk_anxiety": 3 }
+  ],
+
+  "screens": ["intro", "q1", "q2", "q3", "q4", "q5", "q6", "results"],
+  "autoAdvance": ["q2", "q3", "q5", "q6"],
+  "progressScreens": ["q1", "q2", "q3", "q4", "q5", "q6", "results"],
+
+  "personalization": {},
+
+  "answerKeys": {
+    "q1": "dog_name",
+    "q2": "dog_age_years",
+    "q3": "dog_size",
+    "q5": "dog_aspiration",
+    "q6": "dog_symptoms"
+  },
+  "questions": {
+    "q1": {
+      "type": "text",
+      "question": "What's your dog's name?",
+      "storeAs": "dog_name",
+      "placeholder": "Type your dog's name",
+      "helperText": "We'll use it to personalise your result.",
+      "required": true
+    },
+    "q2": {
+      "type": "number",
+      "question": "How old is {dog_name}?",
+      "storeAs": "dog_age_years",
+      "placeholder": "e.g. 3 or 0.5",
+      "helperText": "Age changes what support matters most.",
+      "min": 0,
+      "max": 25,
+      "step": 0.5,
+      "required": true
+    },
+    "q3": {
+      "type": "cards",
+      "question": "Which best describes {dog_name}?",
+      "storeAs": "dog_size",
+      "helperText": null,
+      "options": [
+        { "label": "Small (under 10 kg)",  "value": "small" },
+        { "label": "Medium (10–25 kg)",    "value": "medium" },
+        { "label": "Large (25–40 kg)",     "value": "large" },
+        { "label": "Giant (over 40 kg)",   "value": "giant" }
+      ]
+    },
+    "q4": {
+      "type": "breed-search",
+      "question": "Breed, if known",
+      "storeAs": "dog_breed",
+      "placeholder": "Type breed or select mixed / not sure",
+      "helperText": "Optional, but useful.",
+      "required": false
+    },
+    "q5": {
+      "type": "cards",
+      "question": "What would you most like to support right now?",
+      "storeAs": "dog_aspiration",
+      "helperText": "Choose what feels most relevant right now.",
+      "options": [
+        { "label": "Daily wellbeing for the long term",  "value": "none" },
+        { "label": "Movement and joint comfort",          "value": "move" },
+        { "label": "Tummy, gut or skin comfort",         "value": "prebiotic" },
+        { "label": "Calm and settling",                  "value": "calm" }
+      ]
+    },
+    "q6": {
+      "type": "multi-select",
+      "question": "Which of these have you noticed lately?",
+      "storeAs": "dog_symptoms",
+      "helperText": "Pick what feels most true lately.",
+      "maxSelect": 2,
+      "options": [
+        { "label": "Slowing down, stiffness or hesitant jumping", "value": "stiffness" },
+        { "label": "Sensitive tummy, inconsistent stools or gas", "value": "gut" },
+        { "label": "Itchy skin, ears, licking or irritation",     "value": "skin" },
+        { "label": "Finds it hard to settle, reacts to noise or change", "value": "anxious" },
+        { "label": "None of these",                               "value": "none" }
+      ]
+    }
+  },
+  "scoring": {
+    "outputs": ["move", "calm", "prebiotic"],
+    "threshold": 3,
+    "tieBrakeHierarchy": ["symptom", "intent", "inference"],
+    "rules": [
+      { "field": "dog_age_years",  "operator": ">",  "value": 7,          "output": "move",     "points": 2, "tier": "inference" },
+      { "field": "dog_size",       "operator": "==", "value": "large",    "output": "move",     "points": 1, "tier": "inference" },
+      { "field": "dog_size",       "operator": "==", "value": "giant",    "output": "move",     "points": 2, "tier": "inference" },
+
+      { "field": "dog_aspiration", "operator": "==", "value": "move",     "output": "move",     "points": 2, "tier": "intent" },
+      { "field": "dog_aspiration", "operator": "==", "value": "calm",     "output": "calm",     "points": 2, "tier": "intent" },
+      { "field": "dog_aspiration", "operator": "==", "value": "prebiotic","output": "prebiotic","points": 2, "tier": "intent" },
+
+      { "field": "dog_symptoms",   "operator": "contains", "value": "stiffness", "output": "move",     "points": 3, "tier": "symptom" },
+      { "field": "dog_symptoms",   "operator": "contains", "value": "gut",       "output": "prebiotic","points": 3, "tier": "symptom" },
+      { "field": "dog_symptoms",   "operator": "contains", "value": "skin",      "output": "prebiotic","points": 3, "tier": "symptom" },
+      { "field": "dog_symptoms",   "operator": "contains", "value": "anxious",   "output": "calm",     "points": 3, "tier": "symptom" }
+    ],
+    "breedRules": {
+      "breedField": "dog_breed",
+      "riskMap": {
+        "risk_joint":   { "output": "move",     "multiplier": 1 },
+        "risk_gut":     { "output": "prebiotic","multiplier": 1 },
+        "risk_skin":    { "output": "prebiotic","multiplier": 1 },
+        "risk_anxiety": { "output": "calm",     "multiplier": 1 }
+      }
+    }
+  },
+  "products": {
+    "essential":  { "rationale": "Broono's daily foundation complex — the base layer for every dog." },
+    "move":       { "rationale": "Targeted joint and mobility support for dogs showing movement or stiffness signals." },
+    "calm":       { "rationale": "Digestive and skin resilience complex for sensitive tummies and reactive coats." },
+    "prebiotic":  { "rationale": "Calming support for dogs that find it hard to settle or react to change." }
+  }
+}

@@ -1,0 +1,404 @@
+{
+  "id": "dog-health",
+  "title": "Dog Health Quiz",
+  "screens": [
+    "intro",
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "q5",
+    "q6",
+    "q7",
+    "q8",
+    "q9",
+    "q10",
+    "results",
+    "email"
+  ],
+  "autoAdvance": [
+    "q3",
+    "q5",
+    "q6",
+    "q7",
+    "q8",
+    "q9",
+    "q10"
+  ],
+  "progressScreens": [
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "q5",
+    "q6",
+    "q7",
+    "q8",
+    "q9",
+    "q10",
+    "email",
+    "results"
+  ],
+  "answerKeys": {
+    "q1": "dog_name",
+    "q2": "dog_breed",
+    "q3": "dog_weight",
+    "q4": "dog_age_years",
+    "q5": "dog_aspiration",
+    "q6": "dog_energy",
+    "q7": "dog_digestion",
+    "q8": "dog_skin",
+    "q9": "dog_stress",
+    "q10": "dog_joints"
+  },
+  "personalization": {
+    "nameQuestion": "What's your [dog's name]?",
+    "breedQuestion": "What [breed] is {name}?",
+    "ageQuestion": "[How old] is {name}? (years)",
+    "weightQuestion": "How much does {name} weigh?",
+    "aspirationQuestion": "What matters most to you for {name}?",
+    "energyQuestion": "How would you describe {name}'s energy?",
+    "digestionQuestion": "How is {name}'s digestion?",
+    "skinQuestion": "How is {name}'s skin and coat?",
+    "stressQuestion": "How does {name} handle stress?",
+    "jointsQuestion": "How are {name}'s joints and movement?",
+    "emailHeadline": "We're building {name}'s health profile. Where should we send the full report?",
+    "resultsTitle": "{name}'s Health Profile",
+    "resultsSubtitle": "Based on {name}'s profile, here's what we recommend."
+  },
+  "questions": {
+    "q1": {
+      "type": "text",
+      "question": "What's your [dog's name?",
+      "storeAs": "dog_name",
+      "placeholder": "e.g. Milo",
+      "required": true
+    },
+    "q2": {
+      "type": "breed-search",
+      "question": "What breed is {dog_name}?",
+      "storeAs": "dog_breed",
+      "required": true
+    },
+    "q3": {
+      "type": "number",
+      "question": "How much does {dog_name} weigh?",
+      "storeAs": "dog_weight",
+      "unit": "kg",
+      "unitToggle": [
+        "kg",
+        "lbs"
+      ],
+      "unitConversions": {
+        "lbs": 0.453592
+      },
+      "placeholder": "e.g. 12.5",
+      "min": 0,
+      "max": 500,
+      "step": 0.1,
+      "required": true
+    },
+    "q4": {
+      "type": "number",
+      "question": "How old is {dog_name}? (years)",
+      "storeAs": "dog_age_years",
+      "placeholder": "e.g. 3 or 0.5",
+      "min": 0,
+      "max": 25,
+      "step": 0.5,
+      "required": true
+    },
+    "q5": {
+      "type": "cards",
+      "question": "What matters most to you for {dog_name}?",
+      "storeAs": "dog_aspiration",
+      "options": [
+        {
+          "label": "Stay active and mobile",
+          "value": "mobility"
+        },
+        {
+          "label": "Calm and balanced",
+          "value": "relax"
+        },
+        {
+          "label": "Healthy digestion and coat",
+          "value": "prebiotics"
+        },
+        {
+          "label": "Overall daily resilience",
+          "value": "none"
+        }
+      ]
+    },
+    "q6": {
+      "type": "cards",
+      "question": "How would you describe {dog_name}'s energy?",
+      "storeAs": "dog_energy",
+      "options": [
+        {
+          "label": "Calm and relaxed",
+          "value": "low"
+        },
+        {
+          "label": "Moderate — a good balance",
+          "value": "medium"
+        },
+        {
+          "label": "High — always on the go",
+          "value": "high"
+        },
+        {
+          "label": "Very high — hard to settle",
+          "value": "very_high"
+        }
+      ]
+    },
+    "email": {
+      "type": "email-gate",
+      "question": "We're building {dog_name}'s health profile. Where should we send the full report?",
+      "storeAs": "email",
+      "required": false
+    },
+    "q7": {
+      "type": "cards",
+      "question": "How is {dog_name}'s digestion?",
+      "storeAs": "dog_digestion",
+      "options": [
+        {
+          "label": "All good — no issues",
+          "value": "good"
+        },
+        {
+          "label": "Sensitive stomach",
+          "value": "sensitive"
+        },
+        {
+          "label": "Flatulence or bloating",
+          "value": "flatulence"
+        },
+        {
+          "label": "Not sure",
+          "value": "unsure"
+        }
+      ]
+    },
+    "q8": {
+      "type": "cards",
+      "question": "How is {dog_name}'s skin and coat?",
+      "storeAs": "dog_skin",
+      "options": [
+        {
+          "label": "Healthy coat, no issues",
+          "value": "good"
+        },
+        {
+          "label": "Dull or dry coat",
+          "value": "dull"
+        },
+        {
+          "label": "Dermatitis or ear issues",
+          "value": "dermatitis"
+        },
+        {
+          "label": "Not sure",
+          "value": "unsure"
+        }
+      ]
+    },
+    "q9": {
+      "type": "cards",
+      "question": "How does {dog_name} handle stress?",
+      "storeAs": "dog_stress",
+      "options": [
+        {
+          "label": "Very calm — nothing phases them",
+          "value": "calm"
+        },
+        {
+          "label": "Sometimes stressed (fireworks, travel)",
+          "value": "sometimes"
+        },
+        {
+          "label": "Anxious or reactive",
+          "value": "anxious"
+        },
+        {
+          "label": "Not sure",
+          "value": "unsure"
+        }
+      ]
+    },
+    "q10": {
+      "type": "cards",
+      "question": "How are {dog_name}'s joints and movement?",
+      "storeAs": "dog_joints",
+      "options": [
+        {
+          "label": "Moving well — no issues",
+          "value": "good"
+        },
+        {
+          "label": "Some stiffness (especially mornings)",
+          "value": "stiffness"
+        },
+        {
+          "label": "Diagnosed joint condition",
+          "value": "diagnosed"
+        },
+        {
+          "label": "Not sure",
+          "value": "unsure"
+        }
+      ]
+    }
+  },
+  "scoring": {
+    "outputs": [
+      "mobility",
+      "prebiotics",
+      "relax"
+    ],
+    "threshold": 5,
+    "breedRules": {
+      "breedField": "dog_breed",
+      "riskMap": {
+        "risk_joint": {
+          "output": "mobility",
+          "multiplier": 2
+        },
+        "risk_gut": {
+          "output": "prebiotics",
+          "multiplier": 1
+        },
+        "risk_skin": {
+          "output": "prebiotics",
+          "multiplier": 1
+        },
+        "risk_anxiety": {
+          "output": "relax",
+          "multiplier": 1
+        }
+      }
+    },
+    "rules": [
+      {
+        "field": "dog_aspiration",
+        "operator": "==",
+        "value": "mobility",
+        "output": "mobility",
+        "points": 2
+      },
+      {
+        "field": "dog_aspiration",
+        "operator": "==",
+        "value": "prebiotics",
+        "output": "prebiotics",
+        "points": 2
+      },
+      {
+        "field": "dog_aspiration",
+        "operator": "==",
+        "value": "relax",
+        "output": "relax",
+        "points": 2
+      },
+      {
+        "field": "dog_digestion",
+        "operator": "==",
+        "value": "sensitive",
+        "output": "prebiotics",
+        "points": 3
+      },
+      {
+        "field": "dog_digestion",
+        "operator": "==",
+        "value": "flatulence",
+        "output": "prebiotics",
+        "points": 4
+      },
+      {
+        "field": "dog_skin",
+        "operator": "==",
+        "value": "dermatitis",
+        "output": "prebiotics",
+        "points": 3
+      },
+      {
+        "field": "dog_stress",
+        "operator": "==",
+        "value": "anxious",
+        "output": "relax",
+        "points": 4
+      },
+      {
+        "field": "dog_stress",
+        "operator": "==",
+        "value": "sometimes",
+        "output": "relax",
+        "points": 2
+      },
+      {
+        "field": "dog_joints",
+        "operator": "==",
+        "value": "diagnosed",
+        "output": "mobility",
+        "points": 5
+      },
+      {
+        "field": "dog_joints",
+        "operator": "==",
+        "value": "stiffness",
+        "output": "mobility",
+        "points": 3
+      },
+      {
+        "field": "dog_age_years",
+        "operator": ">",
+        "value": 7,
+        "output": "mobility",
+        "points": 3
+      },
+      {
+        "field": "dog_age_years",
+        "operator": "<",
+        "value": 1,
+        "output": "mobility",
+        "points": -2
+      },
+      {
+        "field": "dog_energy",
+        "operator": "==",
+        "value": "very_high",
+        "output": "relax",
+        "points": 2
+      },
+      {
+        "field": "dog_weight",
+        "operator": ">=",
+        "value": 25,
+        "output": "mobility",
+        "points": 2
+      }
+    ]
+  },
+  "products": {
+    "essential": {
+      "handle": "broono-essential-chew",
+      "rationale": "Broono's daily foundation complex. One chew a day supports immune readiness, antioxidant defence, and steady energy — the base layer for every dog."
+    },
+    "mobility": {
+      "handle": "broono-mobility-complex",
+      "rationale": "Targeted joint and mobility support. Added on top of Essential when movement, stiffness, or breed risk signals point to it."
+    },
+    "prebiotics": {
+      "handle": "broono-prebiotics-complex",
+      "rationale": "Prebiotic complex for digestive and skin resilience. Recommended when gut sensitivity, coat condition, or breed profile indicate it."
+    },
+    "relax": {
+      "handle": "broono-relax-complex",
+      "rationale": "Calming support for anxious, reactive, or high-energy dogs. Recommended when stress signals or breed risk suggest it."
+    }
+  },
+  "breedsRef": "custom-breeds.json"
+}
