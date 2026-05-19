@@ -1,3 +1,26 @@
+@font-face {
+  font-family: "Pesto Mafio";
+  src: url("../assets/fonts/Pesto Mafio Font/pesto_mafio.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Apfel Grotezk";
+  src: url("../assets/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-h1--family: "Pesto Mafio", serif;
+  --font-h2--family: "Pesto Mafio", serif;
+  --font-body--family: "Apfel Grotezk", system-ui, sans-serif;
+  --font-h3--family: "Apfel Grotezk", system-ui, sans-serif;
+}
+
 /* ── Highlight token ────────────────────────────────── */
 .quiz-highlight {
   color: #0559C6;
